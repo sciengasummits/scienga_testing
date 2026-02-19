@@ -1,0 +1,22 @@
+:root {
+  --color-primary-start: #000080;
+  --color-primary-rgb: 0, 0, 128;
+  --color-primary-end: #1e3a8a;
+  --color-primary-gradient: linear-gradient(135deg, var(--color-primary-start) 0%, var(--color-primary-end) 100%);
+  --color-text-dark: #0f172a;
+  --color-text-body: #334155;
+  --color-bg-light: #f0f9ff;
+  --color-background-alt: var(--color-bg-light);
+  --color-white: #ffffff;
+
+  --font-primary: 'Open Sans', sans-serif;
+  --font-heading: 'Barlow', sans-serif;
+
+  --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --transition-default: all 0.3s ease;
+}
