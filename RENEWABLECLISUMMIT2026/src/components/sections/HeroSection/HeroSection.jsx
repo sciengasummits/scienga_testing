@@ -46,7 +46,7 @@ const HeroSection = () => {
             <div className="container hero__container">
                 <div className="hero__content">
                     <h1 className="hero__title">
-                        <span className="hero__title-sub">Annual International Conference</span> <br />
+                        <span className="hero__title-sub" style={{ whiteSpace: 'nowrap' }}>Annual International Conference On</span> <br />
                         RENEWABLE ENERGY & CLIMATE CHANGE
                     </h1>
 
