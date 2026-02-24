@@ -3,7 +3,7 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=1920&auto=format&fit=crop');
+    background-image: url('../../../assets/images/hero-bg/POLYMATSUMMIT2026.jpg');
     background-size: cover;
     background-position: center;
     color: var(--color-white);

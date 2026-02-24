@@ -3,7 +3,7 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-image: url('../../../assets/images/Health.webp');
+    background-image: url('../../../assets/images/hero-bg/Public Health.jpg');
     background-size: cover;
     background-position: center;
     color: var(--color-white);

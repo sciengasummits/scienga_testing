@@ -3,7 +3,7 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-image: url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1920&auto=format&fit=crop');
+    background-image: url('../../../assets/images/hero-bg/70630419-CC10-4194-B1EC-CC3455424C5E_1_201_a.jpeg');
     background-size: cover;
     background-position: center;
     color: var(--color-white);
