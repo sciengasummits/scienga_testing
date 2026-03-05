@@ -26,7 +26,7 @@ const VisaInfo = () => {
                         <h2 className="visa-main-title">VISA INFORMATION FOR INTERNATIONAL PARTICIPANTS</h2>
 
                         <p className="visa-intro-text">
-                            The <strong>Global Summit on Food Science Technology and Agriculture</strong> welcomes speakers & delegates from all over the world.
+                            The <strong>International Conference On RENEWABLE ENERGY & CLIMATE CHANGE</strong> welcomes speakers & delegates from all over the world.
                             Below is essential visa-related information to assist with your travel planning to Singapore:
                         </p>
 

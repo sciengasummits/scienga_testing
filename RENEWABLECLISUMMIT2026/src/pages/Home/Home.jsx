@@ -7,6 +7,7 @@ import SpeakersSection from '../../components/sections/SpeakersSection/SpeakersS
 import VenueSection from '../../components/sections/VenueSection/VenueSection';
 import SponsorsSection from '../../components/sections/SponsorsSection/SponsorsSection';
 import StatsSection from '../../components/sections/StatsSection/StatsSection';
+import RegistrationPricingSection from '../../components/sections/RegistrationPricingSection/RegistrationPricingSection';
 import './Home.css';
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
             <AboutSection />
             <StatsSection />
             <SpeakersSection showViewAll={true} />
+            <RegistrationPricingSection />
             <KeyThemesSection showLearnMore={true} />
             <VenueSection />
             <SponsorsSection />

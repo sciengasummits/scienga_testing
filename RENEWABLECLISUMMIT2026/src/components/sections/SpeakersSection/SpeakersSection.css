@@ -2,6 +2,15 @@
     background-color: var(--color-white);
 }
 
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.25rem) !important;
+    font-weight: 800 !important;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+    color: var(--color-text-header);
+    letter-spacing: -0.5px;
+}
+
 .speakers__grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);

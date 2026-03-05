@@ -1,6 +1,6 @@
 import React from 'react';
 import './Brochure.css';
-import brochurePdf from '../../assets/brochure/World-General-Medicine-Congress-Your-Official-Digital-Platform.pdf';
+import brochurePdf from '../../assets/brochure/International_Conference_RECC_2027.pdf';
 import { Download, FileText, CheckCircle } from 'lucide-react';
 
 const Brochure = () => {
@@ -21,17 +21,16 @@ const Brochure = () => {
                                 <div className="preview-icon">
                                     <FileText size={64} strokeWidth={1} />
                                 </div>
-                                <h3 style={{ fontSize: '1.5rem' }}>Global Summit on Food Science Technology and Agriculture</h3>
+                                <h3 style={{ fontSize: '1.5rem' }}>International Conference On RENEWABLE ENERGY & CLIMATE CHANGE</h3>
                                 <p>Official Digital Platform Brochure</p>
-                                <div className="preview-badge">2026 Edition</div>
+                                <div className="preview-badge">2027 Edition</div>
                             </div>
                         </div>
 
                         <div className="brochure-details">
                             <h2 className="mb-4">Inside the Brochure</h2>
                             <p className="mb-4 text-muted">
-                                Download the official conference brochure to get comprehensive information about the Global Summit on Food Science Technology and Agriculture.
-                                It serves as your complete guide to the event, featuring detailed schedules, speaker profiles, and venue information.
+                                Download the official conference brochure to get comprehensive information about the International Conference On RENEWABLE ENERGY & CLIMATE CHANGE. It serves as your complete guide to the event, featuring detailed schedules, speaker profiles, and venue information.
                             </p>
 
                             <ul className="brochure-features mb-5">
@@ -58,7 +57,7 @@ const Brochure = () => {
                             </ul>
 
                             <div className="brochure-actions">
-                                <a href={brochurePdf} download="World-General-Medicine-Congress-Brochure.pdf" className="download-btn">
+                                <a href={brochurePdf} download="International_Conference_RECC_2027.pdf" className="download-btn">
                                     <Download size={20} />
                                     Download Brochure
                                 </a>
@@ -68,7 +67,7 @@ const Brochure = () => {
                                 </a>
                             </div>
                             <p className="download-note mt-3">
-                                * File size: 2.5 MB • Format: PDF • Updated: February 2026
+                                * File size: 2.5 MB • Format: PDF • Updated: February 2027
                             </p>
                         </div>
                     </div>

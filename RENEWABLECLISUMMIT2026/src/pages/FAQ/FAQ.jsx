@@ -13,7 +13,7 @@ const FAQ = () => {
             category: "Registration",
             items: [
                 {
-                    question: "How can I register for the Global Summit on Food Science Technology and Agriculture?",
+                    question: "How can I register for the International Conference On RENEWABLE ENERGY & CLIMATE CHANGE?",
                     answer: "You can register online through our website by visiting the 'Register' page. Early bird registration is available until the specified deadline."
                 },
                 {

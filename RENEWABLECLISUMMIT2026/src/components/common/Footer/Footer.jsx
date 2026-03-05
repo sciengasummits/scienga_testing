@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
 import Logo from '../Logo/Logo';
 import './Footer.css';
+import { fetchContent } from '../../../api/siteApi';
+
+const DEFAULT_CONTACT = {
+    email: 'contact@renewableenergyconf.com',
+    phone: '+91 7842090097',
+    venue: 'Munich, Germany',
+    facebook: 'https://www.facebook.com/profile.php?id=61588065033161',
+    linkedin: 'https://www.linkedin.com/company/scienga-summits/',
+    instagram: 'https://www.instagram.com/sciengasummits/'
+};
 
 const Footer = () => {
+    const [contact, setContact] = useState(DEFAULT_CONTACT);
+
+    useEffect(() => {
+        fetchContent('contact').then(d => d && setContact(prev => ({ ...prev, ...d })));
+    }, []);
+
     return (
         <footer className="footer">
             <div className="container">
@@ -18,21 +34,22 @@ const Footer = () => {
                             Discover ground-breaking technologies and connect with top environmental professionals.
                         </p>
                         <div className="footer__socials">
-                            <a href="#" className="social-icon"><Facebook size={20} /></a>
-                            <a href="#" className="social-icon"><Twitter size={20} /></a>
-                            <a href="#" className="social-icon"><Linkedin size={20} /></a>
-                            <a href="#" className="social-icon"><Instagram size={20} /></a>
+                            {contact.facebook && <a href={contact.facebook} target="_blank" rel="noopener noreferrer" className="social-icon"><Facebook size={20} /></a>}
+                            {contact.linkedin && <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={20} /></a>}
+                            {contact.instagram && <a href={contact.instagram} target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={20} /></a>}
                         </div>
                     </div>
 
                     <div className="footer__col">
-                        <h4>Quick Links</h4>
+                        <h4>Important Links</h4>
                         <ul className="footer__links">
-                            <li><Link to="/">Home</Link></li>
                             <li><Link to="/abstract-submission">Abstract Submission</Link></li>
+                            <li><Link to="/register">Registration</Link></li>
+                            <li><Link to="/register/onlineregistration">Discount Registration</Link></li>
+                            <li><Link to="/sessions">Sessions</Link></li>
+                            <li><Link to="/program">Program</Link></li>
                             <li><Link to="/speakers">Speakers</Link></li>
-                            <li><Link to="/sessions">Schedule</Link></li>
-                            <li><Link to="/contact">Contact Us</Link></li>
+                            <li><Link to="/unsubscribe">Unsubscribe</Link></li>
                         </ul>
                     </div>
 
@@ -43,17 +60,17 @@ const Footer = () => {
                                 <MapPin size={18} />
                                 <div>
                                     <span style={{ display: 'block', fontWeight: 'bold', color: 'white' }}>Venue:</span>
-                                    <span>Munich, Germany</span>
+                                    <span>{contact.venue}</span>
                                 </div>
                             </li>
 
                             <li>
                                 <Mail size={18} />
-                                <span>contact@renewableenergyconf.com</span>
+                                <span>{contact.email}</span>
                             </li>
                             <li>
                                 <Phone size={18} />
-                                <span>+91 7842090097</span>
+                                <span>{contact.phone}</span>
                             </li>
                         </ul>
                     </div>

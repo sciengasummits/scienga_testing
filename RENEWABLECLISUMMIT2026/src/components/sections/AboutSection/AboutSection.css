@@ -82,8 +82,8 @@
 }
 
 .section-title {
-    font-size: 2.25rem;
-    /* Slightly reduced */
+    font-size: clamp(1.8rem, 4vw, 2.25rem) !important;
+    font-weight: 800 !important;
     margin-bottom: 1.25rem;
     /* Reduced */
     line-height: 1.15;
@@ -98,7 +98,7 @@
     line-height: 1.7;
     /* Slightly reduced */
     font-size: 1rem;
-    /* Slightly reduced */
+    /* Standard size */
     text-align: justify;
     font-weight: 400;
 }
