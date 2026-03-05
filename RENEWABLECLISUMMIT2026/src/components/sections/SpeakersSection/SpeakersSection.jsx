@@ -22,9 +22,9 @@ const SpeakersSection = ({ showViewAll }) => {
         // Map frontend categories to backend categories if needed
         // Backend usually expects 'Committee', 'Keynote', 'Oral', 'Poster', etc.
         let categoryToFetch = activeCategory;
-        if (activeCategory === 'Speakers') categoryToFetch = 'Keynote'; // example mapping
+        if (activeCategory === 'Keynote') categoryToFetch = 'Keynote';
         if (activeCategory === 'Posters') categoryToFetch = 'Poster Presenter';
-        if (activeCategory === 'Students') categoryToFetch = 'Student';
+        if (activeCategory === 'Plenary') categoryToFetch = 'Plenary';
         if (activeCategory === 'Delegates') categoryToFetch = 'Delegate';
 
         fetchSpeakers(categoryToFetch).then(d => {
@@ -54,7 +54,7 @@ const SpeakersSection = ({ showViewAll }) => {
                 </div>
 
                 <div className="speakers__filters">
-                    {['Committee', 'Speakers', 'Posters', 'Students', 'Delegates'].map((category) => (
+                    {['Committee', 'Keynote', 'Posters', 'Plenary', 'Delegates'].map((category) => (
                         <button
                             key={category}
                             className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
