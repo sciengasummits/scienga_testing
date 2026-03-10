@@ -47,7 +47,9 @@ const Navbar = () => {
             dropdown: [
                 { name: "FAQ'S", path: '/faqs' },
                 { name: 'Venue', path: '/venue' },
-                { name: 'Visa Info', path: '/visa-info' }
+                { name: 'Visa Info', path: '/visa-info' },
+                { name: 'Discount Registration', path: '/online-registration' },
+                { name: 'Unsubscribe', path: '/unsubscribe' },
             ]
         },
         { name: 'CONTACT', path: '/contact' },

@@ -1,40 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { User } from 'lucide-react';
-import { speakers } from '../../../data/speakersData';
+import { speakers as staticSpeakers } from '../../../data/speakersData';
+import { fetchSpeakers } from '../../../api/siteApi';
 import './SpeakersSection.css';
 
 const SpeakersSection = ({ showViewAll }) => {
     const location = useLocation();
-    // User requested filters: Committee --Speakers--Posters--Students--Deligates
     const [activeCategory, setActiveCategory] = useState(location.state?.category || 'Committee');
     const [selectedSpeaker, setSelectedSpeaker] = useState(null);
+    const [speakers, setSpeakers] = useState(staticSpeakers);
+
+    useEffect(() => {
+        fetchSpeakers().then(data => {
+            if (data && data.length > 0) {
+                const mapped = data.filter(s => s.visible !== false).map(s => ({
+                    id: s._id,
+                    name: s.name,
+                    title: s.designation || s.title || '',
+                    affiliation: s.affiliation || s.institution || '',
+                    category: s.category || 'Speakers',
+                    image: s.image || s.photo || '',
+                    bio: s.bio || '',
+                }));
+                if (mapped.length > 0) setSpeakers(mapped);
+            }
+        });
+    }, []);
 
     const getDisplayCategory = (category) => {
         if (category === 'Student') return 'Student Speaker';
-        if (category === 'Committee') return 'Committee Speaker';
-        if (category === 'Delegate') return 'Delegate';
+        if (category === 'Committee') return 'Committee';
         return category;
     };
 
     const filteredSpeakers = speakers.filter(speaker => {
         if (activeCategory === 'Committee') return speaker.category === 'Committee';
         if (activeCategory === 'Speakers') return true;
-        if (activeCategory === 'Posters') return ['Poster Presenter', 'Poster'].includes(speaker.category);
-        if (activeCategory === 'Students') return ['Student', 'Student Speaker'].includes(speaker.category);
-        if (activeCategory === 'Delegates') return ['Delegate', 'Delegate Speaker'].includes(speaker.category);
-        return false;
-    }).slice(0, showViewAll ? 8 : speakers.length); // showViewAll=true (Home) -> limit 8. showViewAll=false/undefined (Speakers Page) -> all.
-    // WAIT. Usually `showViewAll` prop is passed as `true` on Home section to SHOW the "View All" button.
-    // The user said: "Display 8 speakers per category on the Home page and all available speakers (80+) when viewing the dedicated Speakers page."
-    // If I am on Home page, I pass `showViewAll={true}` usually?
-    // Let's check Home.jsx if possible. But assuming standard pattern:
-    // If `showViewAll` is true, we act as "Home Section".
-    // If we act as Home Section, we should slice(0, 8).
-    // If `showViewAll` is false (Speakers Page), we slice nothing.
-    // My code snippet: `.slice(0, showViewAll ? 8 : speakers.length)`
-    // If `showViewAll` is true -> 8.
-    // This seems correct.
+        if (activeCategory === 'Posters') return speaker.category === 'Poster Presenter';
+        if (activeCategory === 'Students') return speaker.category === 'Student';
+        if (activeCategory === 'Delegates') return speaker.category === 'Delegate';
+        return true;
+    }).slice(0, showViewAll ? 8 : speakers.length);
 
     const openModal = (speaker) => {
         setSelectedSpeaker(speaker);
@@ -113,13 +120,13 @@ const SpeakersSection = ({ showViewAll }) => {
                                 <h3 className="modal-title">{selectedSpeaker.name}</h3>
                                 <span className="modal-type">{selectedSpeaker.title}</span>
                                 <p className="modal-affiliation-highlight">{selectedSpeaker.affiliation}</p>
-                                <p className="modal-desc">{selectedSpeaker.bio || "A distinguished expert in the field of general medicine, contributing significantly to research and clinical practice. With years of experience leading healthcare initiatives and publishing groundbreaking studies, they have become a pivotal figure in advancing medical standards globally. Their work focuses on innovative treatment methodologies and improving patient outcomes through evidence-based medicine."}</p>
+                                <p className="modal-desc">{selectedSpeaker.bio || "A distinguished expert in the field of cybersecurity and quantum computing, contributing significantly to research and digital security. With years of experience leading security initiatives and publishing groundbreaking studies, they have become a pivotal figure in advancing quantum-safe systems globally. Their work focuses on innovative cryptographic methodologies and improving cybersecurity frameworks through evidence-based research."}</p>
                             </div>
                         </div>
                     </div>
                 )
             }
-        </section >
+        </section>
     );
 };
 

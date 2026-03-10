@@ -14,6 +14,8 @@ import FAQ from '../pages/FAQ/FAQ';
 import VisaInfo from '../pages/VisaInfo/VisaInfo';
 import Brochure from '../pages/Brochure/Brochure';
 import Program from '../pages/Program/Program';
+import Unsubscribe from '../pages/Unsubscribe/Unsubscribe';
+import OnlineRegistration from '../pages/OnlineRegistration/OnlineRegistration';
 
 const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -44,6 +46,8 @@ const AppRoutes = () => {
                     <Route path="contact" element={<Contact />} />
                     <Route path="register" element={<Register />} />
                     <Route path="register/discount" element={<Register isDiscounted={true} />} />
+                    <Route path="online-registration" element={<OnlineRegistration />} />
+                    <Route path="unsubscribe" element={<Unsubscribe />} />
                     <Route path="brochure" element={<Brochure />} />
                     <Route path="*" element={<div className="section-padding text-center"><h1>404 Not Found</h1></div>} />
                 </Route>

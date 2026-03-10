@@ -88,17 +88,14 @@ img {
     background-position: center;
     color: var(--color-white);
     padding: 170px 0 70px;
-    /* Reduced height as requested */
     text-align: center;
     margin-top: 0;
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    /* Clean edges */
 }
 
 .page-title {
     font-size: 3.5rem;
-    /* Larger title */
     margin-bottom: 0.5rem;
     color: var(--color-white);
     font-weight: 800;
@@ -150,5 +147,82 @@ img {
 
     .container {
         padding: 0 15px;
+    }
+}
+
+/* Utility Classes */
+.w-100 {
+    width: 100% !important;
+}
+
+.mt-1 { margin-top: 0.5rem !important; }
+.mt-2 { margin-top: 1rem !important; }
+.mt-3 { margin-top: 1.5rem !important; }
+.mt-4 { margin-top: 2rem !important; }
+.mt-5 { margin-top: 3rem !important; }
+.mb-1 { margin-bottom: 0.5rem !important; }
+.mb-2 { margin-bottom: 1rem !important; }
+.mb-3 { margin-bottom: 1.5rem !important; }
+.mb-4 { margin-bottom: 2rem !important; }
+.mb-5 { margin-bottom: 3rem !important; }
+
+.d-flex { display: flex !important; }
+.flex-column { flex-direction: column !important; }
+.align-items-center { align-items: center !important; }
+.justify-content-center { justify-content: center !important; }
+.gap-1 { gap: 0.5rem !important; }
+.gap-2 { gap: 1rem !important; }
+.gap-3 { gap: 1.5rem !important; }
+
+/* Floating CPD Global Badge Styles */
+.cpd-floating-badge {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    width: 250px;
+    pointer-events: auto;
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.cpd-floating-badge:hover {
+    transform: scale(1.05);
+}
+
+.cpd-floating-badge img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Premium Blinking Animation */
+.blinking-image {
+    animation: fast-blink 0.8s ease-in-out infinite;
+}
+
+@keyframes fast-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.2));
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scale(0.94);
+        filter: drop-shadow(0 0 35px rgba(52, 120, 223, 0.8));
+    }
+}
+
+/* Hide on very small screens or adjust size */
+@media (max-width: 576px) {
+    .cpd-floating-badge {
+        width: 180px;
+        bottom: 20px;
+        right: 20px;
     }
 }

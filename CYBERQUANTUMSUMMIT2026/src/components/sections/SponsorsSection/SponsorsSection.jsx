@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './SponsorsSection.css';
+import { fetchSponsors } from '../../../api/siteApi';
 
-// Import partner images
+// Static fallback imports — kept as default partners
 import partner1 from '../../../assets/images/media/486-Mediapartner-Photo.png';
 import partner2 from '../../../assets/images/media/487-Mediapartner-Photo.png';
 import partner3 from '../../../assets/images/media/488-Mediapartner-Photo.jpg';
@@ -19,7 +20,7 @@ import partner14 from '../../../assets/images/media/536-Mediapartner-Photo.png';
 import partner15 from '../../../assets/images/media/538-Mediapartner-Photo.png';
 import partner16 from '../../../assets/images/media/540-Mediapartner-Photo.png';
 
-const sponsorsData = [
+const STATIC_SPONSORS = [
     { name: 'International Conference Alerts', logo: partner1 },
     { name: 'AI & ML Events', logo: partner2 },
     { name: 'Conference Alerts', logo: partner3 },
@@ -35,23 +36,18 @@ const sponsorsData = [
     { name: 'Conference Alert Network', logo: partner13 },
     { name: 'AI Press Room', logo: partner14 },
     { name: 'DigiEvent', logo: partner15 },
-    { name: 'Global Conferencing', logo: partner16 }
+    { name: 'Global Conferencing', logo: partner16 },
 ];
 
 const MarqueeRow = ({ items, direction }) => (
     <div className={`marquee-row ${direction}`}>
-        {/* Duplicate items for seamless loop */}
         {[...items, ...items].map((sponsor, index) => (
             <div key={index} className="marquee-item">
                 <img
                     src={sponsor.logo}
                     alt={`${sponsor.name} logo`}
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'contain',
-                        filter: 'none' // Ensure full color
-                    }}
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'none' }}
+                    onError={(e) => { e.target.style.display = 'none'; }}
                 />
             </div>
         ))}
@@ -59,8 +55,18 @@ const MarqueeRow = ({ items, direction }) => (
 );
 
 export default function SponsorsSection() {
-    const row1 = sponsorsData.slice(0, 8);
-    const row2 = sponsorsData.slice(8);
+    const [sponsors, setSponsors] = useState(STATIC_SPONSORS);
+
+    useEffect(() => {
+        fetchSponsors('media_partner').then(data => {
+            if (data && data.length > 0) {
+                setSponsors(data.map(s => ({ name: s.name, logo: s.logo })));
+            }
+        });
+    }, []);
+
+    const row1 = sponsors.slice(0, Math.ceil(sponsors.length / 2));
+    const row2 = sponsors.slice(Math.ceil(sponsors.length / 2));
 
     return (
         <section id="sponsors" style={{
@@ -68,7 +74,7 @@ export default function SponsorsSection() {
             backgroundColor: '#ffffff',
             borderTop: '1px solid #e2e8f0',
             borderBottom: '1px solid #e2e8f0',
-            overflow: 'hidden' // Prevent horizontal scrollbar on page
+            overflow: 'hidden',
         }}>
             <div className="container">
                 <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
@@ -77,30 +83,31 @@ export default function SponsorsSection() {
                         fontWeight: '800',
                         color: '#1e293b',
                         marginBottom: '1rem',
-                        textAlign: 'center'
+                        textAlign: 'center',
                     }}>
-                        Promoting & Media Partners
+                        Promoting &amp; Media Partners
                     </h2>
                     <div style={{
-                        width: '60px',
-                        height: '4px',
+                        width: '60px', height: '4px',
                         background: 'var(--brand-gradient, linear-gradient(135deg, #0F172A 0%, #1E40AF 100%))',
-                        margin: '0 auto',
-                        borderRadius: '2px'
+                        margin: '0 auto', borderRadius: '2px',
                     }}></div>
                 </div>
 
                 <div className="marquee-wrapper">
                     <MarqueeRow items={row1} direction="scroll-left" />
-                    <MarqueeRow items={row2} direction="scroll-right" />
+                    {row2.length > 0 && <MarqueeRow items={row2} direction="scroll-right" />}
                 </div>
 
                 <div style={{ textAlign: 'center', marginTop: '3rem' }}>
                     <p style={{ color: '#64748b', fontSize: '0.95rem' }}>
-                        Interested in becoming a media partner? <a href="/contact" style={{ color: 'var(--primary)', fontWeight: '600', textDecoration: 'none' }}>Contact Us</a>
+                        Interested in becoming a media partner?{' '}
+                        <a href="/contact" style={{ color: 'var(--primary)', fontWeight: '600', textDecoration: 'none' }}>
+                            Contact Us
+                        </a>
                     </p>
                 </div>
             </div>
         </section>
-    )
+    );
 }

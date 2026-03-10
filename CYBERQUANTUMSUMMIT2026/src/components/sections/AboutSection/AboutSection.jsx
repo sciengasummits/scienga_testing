@@ -1,44 +1,89 @@
-import React from 'react';
-import { CalendarDays, CheckCircle, Clock, Star } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CalendarDays, CheckCircle, Clock, Star, Calendar, MapPin } from 'lucide-react';
 import Button from '../../common/Button/Button';
 import './AboutSection.css';
+import { fetchContent } from '../../../api/siteApi';
+
+const ICON_MAP = { CalendarDays, CheckCircle, Clock, Star, Calendar, MapPin };
+
+const DEFAULT_ABOUT = {
+    subtitle: 'Cybersecurity and Quantum Computing',
+    title: 'About The Conference',
+    paragraph1: 'The Annual International Conference on Cybersecurity and Quantum Computing is a premier international platform dedicated to advancing the understanding of cybersecurity challenges and quantum computing solutions in the rapidly evolving digital landscape.',
+    paragraph2: 'This conference brings together leading researchers, academicians, cybersecurity professionals, quantum scientists, engineers, and industry leaders to explore recent developments, theoretical foundations, and real-world applications of quantum-enhanced security systems.',
+    objectives: [
+        'Promote advancements in quantum computing and cybersecurity',
+        'Explore innovations in post-quantum cryptography techniques',
+        'Discuss quantum-resistant security frameworks and protocols',
+        'Bridge academia and industry in digital security research',
+        'Encourage collaboration across computer science, mathematics, and engineering domains',
+    ],
+    keyThemes: [
+        'Fundamentals of Quantum Computing',
+        'Post-Quantum Cryptography Standards',
+        'Quantum Key Distribution (QKD)',
+        'Cybersecurity Threat Intelligence',
+        'AI-Driven Security Analytics',
+        'Quantum-Safe Network Architectures',
+    ],
+};
+
+const DEFAULT_DATES = {
+    dates: [
+        { month: 'SEP', day: '15', year: '2026', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
+        { month: 'NOV', day: '25', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
+        { month: 'JAN', day: '25', year: '2027', event: 'Submission Deadline', icon: 'Clock' },
+        { month: 'DEC', day: '07', year: '2027', event: 'Conference Date', icon: 'Star', sub: 'December 07-09, 2027, Singapore' },
+    ],
+};
 
 const AboutSection = () => {
+    const navigate = useNavigate();
+    const [about, setAbout] = useState(DEFAULT_ABOUT);
+    const [datesData, setDatesData] = useState(DEFAULT_DATES);
+
+    useEffect(() => {
+        fetchContent('about').then(d => { if (d) setAbout(prev => ({ ...prev, ...d })); });
+        fetchContent('importantDates').then(d => { if (d) setDatesData(prev => ({ ...prev, ...d })); });
+    }, []);
+
+    const isHighlight = (idx, total) => idx === total - 1;
+
     return (
         <section className="about section-padding" id="about">
             <div className="container about__container">
                 {/* Left Side: Content */}
                 <div className="about__content">
-                    <h4 className="section-subtitle">Advancing Fluid Dynamics</h4>
-                    <h2 className="section-title">About The Conference</h2>
-                    <p className="about__text">
-                        The <strong>Global Summit on Liutex Theory and Applications in Vortex Identification and Vortex Dynamics (LIUTEXVORTEXSUMMIT2026)</strong> is a premier international platform dedicated to advancing the understanding of Liutex theory and its transformative applications in vortex identification and vortex dynamics.
-                    </p>
-                    <p className="about__text">
-                        This summit brings together leading researchers, academicians, computational scientists, engineers, and industry professionals to explore recent developments, theoretical foundations, numerical methods, and real-world applications of Liutex-based vortex analysis.
-                    </p>
+                    <h4 className="section-subtitle">{about.subtitle}</h4>
+                    <h2 className="section-title">{about.title}</h2>
+                    <p className="about__text">{about.paragraph1}</p>
+                    {about.paragraph2 && <p className="about__text">{about.paragraph2}</p>}
 
-                    <h3 className="section-title-sm">Conference Objectives</h3>
-                    <ul className="about__list">
-                        <li>Promote advancements in <strong>Liutex theory</strong></li>
-                        <li>Explore innovations in <strong>vortex identification techniques</strong></li>
-                        <li>Discuss computational and experimental approaches in <strong>vortex dynamics</strong></li>
-                        <li>Bridge academia and industry in fluid mechanics research</li>
-                        <li>Encourage collaboration across aerospace, mechanical, civil, and environmental engineering domains</li>
-                    </ul>
+                    {about.objectives?.length > 0 && (
+                        <>
+                            <h3 className="section-title-sm">Conference Objectives</h3>
+                            <ul className="about__list">
+                                {about.objectives.map((obj, i) => <li key={i}>{obj}</li>)}
+                            </ul>
+                        </>
+                    )}
 
-                    <h3 className="section-title-sm">Key Themes & Topics</h3>
-                    <ul className="about__list">
-                        <li>Fundamentals of Liutex Theory</li>
-                        <li>Vortex Identification Methods (Q-criterion, λ2, Ω method, Liutex)</li>
-                        <li>Turbulence Modeling and Analysis</li>
-                        <li>Computational Fluid Dynamics (CFD) Applications</li>
-                        <li>Vortex Dynamics in Aerospace Engineering</li>
-                        <li>Data-Driven and AI Approaches in Flow Field Identification</li>
-                    </ul>
+                    {about.keyThemes?.length > 0 && (
+                        <>
+                            <h3 className="section-title-sm">Key Themes &amp; Topics</h3>
+                            <ul className="about__list">
+                                {about.keyThemes.map((t, i) => <li key={i}>{t}</li>)}
+                            </ul>
+                        </>
+                    )}
+
+                    <div className="about__actions" style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
+                        <Button onClick={() => navigate('/program')}>LEARN MORE</Button>
+                        <Button variant="secondary" onClick={() => navigate('/register')}>REGISTER NOW</Button>
+                    </div>
                 </div>
 
-                {/* Right Side: Important Dates */}
                 {/* Right Side: Important Dates */}
                 <div className="about__dates-wrapper">
                     <div className="premium-dates-container">
@@ -48,66 +93,26 @@ const AboutSection = () => {
                         </div>
 
                         <div className="premium-dates-list">
-                            {/* Card 1 */}
-                            <div className="premium-date-card">
-                                <div className="pd-date-box">
-                                    <span className="pd-month">SEP</span>
-                                    <span className="pd-day">15</span>
-                                </div>
-                                <div className="pd-content">
-                                    <span className="pd-year">2026</span>
-                                    <h4 className="pd-event">Abstract Submission Opens</h4>
-                                </div>
-                                <div className="pd-icon-bg">
-                                    <CalendarDays size={40} />
-                                </div>
-                            </div>
-
-                            {/* Card 2 */}
-                            <div className="premium-date-card">
-                                <div className="pd-date-box">
-                                    <span className="pd-month">NOV</span>
-                                    <span className="pd-day">25</span>
-                                </div>
-                                <div className="pd-content">
-                                    <span className="pd-year">2026</span>
-                                    <h4 className="pd-event">Early Bird Deadline</h4>
-                                </div>
-                                <div className="pd-icon-bg">
-                                    <CheckCircle size={40} />
-                                </div>
-                            </div>
-
-                            {/* Card 3 */}
-                            <div className="premium-date-card">
-                                <div className="pd-date-box">
-                                    <span className="pd-month">JAN</span>
-                                    <span className="pd-day">25</span>
-                                </div>
-                                <div className="pd-content">
-                                    <span className="pd-year">2027</span>
-                                    <h4 className="pd-event">Submission Deadline</h4>
-                                </div>
-                                <div className="pd-icon-bg">
-                                    <Clock size={40} />
-                                </div>
-                            </div>
-
-                            {/* Card 4 - Highlight */}
-                            <div className="premium-date-card highlight-card">
-                                <div className="pd-date-box">
-                                    <span className="pd-month">MAR</span>
-                                    <span className="pd-day">23</span>
-                                </div>
-                                <div className="pd-content">
-                                    <span className="pd-year">2027</span>
-                                    <h4 className="pd-event">Conference Date</h4>
-                                    <span className="pd-sub">March 23-25, Munich</span>
-                                </div>
-                                <div className="pd-icon-bg">
-                                    <Star size={40} />
-                                </div>
-                            </div>
+                            {(datesData.dates || []).map((d, idx) => {
+                                const IconComp = ICON_MAP[d.icon] || CalendarDays;
+                                const highlight = isHighlight(idx, datesData.dates.length);
+                                return (
+                                    <div className={`premium-date-card${highlight ? ' highlight-card' : ''}`} key={idx}>
+                                        <div className="pd-date-box">
+                                            <span className="pd-month">{d.month}</span>
+                                            <span className="pd-day">{d.day}</span>
+                                        </div>
+                                        <div className="pd-content">
+                                            <span className="pd-year">{d.year}</span>
+                                            <h4 className="pd-event">{d.event}</h4>
+                                            {d.sub && <span className="pd-sub">{d.sub}</span>}
+                                        </div>
+                                        <div className="pd-icon-bg">
+                                            <IconComp size={40} />
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
