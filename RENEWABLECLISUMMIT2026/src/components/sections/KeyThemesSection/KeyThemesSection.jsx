@@ -108,7 +108,7 @@ const KeyThemesSection = ({ showLearnMore = false }) => {
                 if (d.sessions) setSessions(d.sessions.map((s, i) => typeof s === 'string' ? { title: s } : s));
                 if (d.schedule) setSchedule(d.schedule);
             }
-        });
+        }).catch(e => console.warn('[KeyThemesSection] Could not load content:', e.message));
     }, []);
 
     // Limit items if in preview mode (Home page)

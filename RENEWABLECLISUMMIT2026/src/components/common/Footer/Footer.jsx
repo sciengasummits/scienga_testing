@@ -18,7 +18,7 @@ const Footer = () => {
     const [contact, setContact] = useState(DEFAULT_CONTACT);
 
     useEffect(() => {
-        fetchContent('contact').then(d => d && setContact(prev => ({ ...prev, ...d })));
+        fetchContent('contact').then(d => d && setContact(prev => ({ ...prev, ...d }))).catch(e => console.warn('[Footer] Could not load contact:', e.message));
     }, []);
 
     return (

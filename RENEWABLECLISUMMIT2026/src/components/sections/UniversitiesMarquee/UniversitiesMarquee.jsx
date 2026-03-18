@@ -6,7 +6,7 @@ const UniversitiesMarquee = () => {
     const [data, setData] = useState({ images: [] });
 
     useEffect(() => {
-        fetchContent('marquee').then(d => d && setData(d));
+        fetchContent('marquee').then(d => d && setData(d)).catch(e => console.warn('[Marquee] Could not load content:', e.message));
     }, []);
 
     const images = data.images || [];

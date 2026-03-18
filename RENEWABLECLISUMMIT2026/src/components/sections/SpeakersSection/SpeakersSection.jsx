@@ -30,6 +30,9 @@ const SpeakersSection = ({ showViewAll }) => {
         fetchSpeakers(categoryToFetch).then(d => {
             if (d) setSpeakersList(d);
             setLoading(false);
+        }).catch(e => {
+            console.warn('[SpeakersSection] Could not load speakers:', e.message);
+            setLoading(false);
         });
     }, [activeCategory]);
 

@@ -28,7 +28,7 @@ const HeroSection = () => {
         const load = () => {
             fetchContent('hero').then(d => {
                 if (!cancelled && d) setData(prev => ({ ...prev, ...d }));
-            });
+            }).catch(e => console.warn('[HeroSection] Could not load content:', e.message));
         };
 
         load(); // initial fetch

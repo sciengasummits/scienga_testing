@@ -22,7 +22,7 @@ const VenueSection = () => {
     const images = data.images || [];
 
     useEffect(() => {
-        fetchContent('venue').then(d => d && setData(prev => ({ ...prev, ...d })));
+        fetchContent('venue').then(d => d && setData(prev => ({ ...prev, ...d }))).catch(e => console.warn('[VenueSection] Could not load content:', e.message));
     }, []);
 
     useEffect(() => {

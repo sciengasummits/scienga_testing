@@ -41,7 +41,7 @@ const StatsSection = () => {
     const [data, setData] = useState(DEFAULT_STATS);
 
     useEffect(() => {
-        fetchContent('stats').then(d => d && setData(prev => ({ ...prev, ...d })));
+        fetchContent('stats').then(d => d && setData(prev => ({ ...prev, ...d }))).catch(e => console.warn('[StatsSection] Could not load content:', e.message));
     }, []);
 
     return (

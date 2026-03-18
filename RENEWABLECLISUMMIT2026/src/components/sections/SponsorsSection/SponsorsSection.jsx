@@ -30,6 +30,9 @@ export default function SponsorsSection() {
         fetchSponsors().then(d => {
             if (d) setSponsors(d);
             setLoading(false);
+        }).catch(e => {
+            console.warn('[SponsorsSection] Could not load sponsors:', e.message);
+            setLoading(false);
         });
     }, []);
 

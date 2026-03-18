@@ -49,8 +49,8 @@ const AboutSection = () => {
     const [dates, setDates] = useState(DEFAULT_DATES);
 
     useEffect(() => {
-        fetchContent('about').then(d => d && setAbout(prev => ({ ...prev, ...d })));
-        fetchContent('importantDates').then(d => d && setDates(prev => ({ ...prev, ...d })));
+        fetchContent('about').then(d => d && setAbout(prev => ({ ...prev, ...d }))).catch(e => console.warn('[AboutSection] Could not load about:', e.message));
+        fetchContent('importantDates').then(d => d && setDates(prev => ({ ...prev, ...d }))).catch(e => console.warn('[AboutSection] Could not load dates:', e.message));
     }, []);
 
     return (
