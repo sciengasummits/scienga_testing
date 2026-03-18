@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../../components/common/Button/Button';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, MessageCircle, Send } from 'lucide-react';
+import { fetchContent } from '../../api/siteApi';
 import './Contact.css';
 
 const Contact = () => {
+    const [contactInfo, setContactInfo] = useState({
+        email: 'renewable@sciengasummits.com',
+        phone: '+91 7842090097',
+        whatsapp: '+91 7842090097',
+    });
+
+    // ── Fetch contact info from API (dashboard-driven) ──────────────────────
+    useEffect(() => {
+        fetchContent('contact').then(data => {
+            if (data) {
+                setContactInfo(prev => ({
+                    email: data.email || prev.email,
+                    phone: data.phone || prev.phone,
+                    whatsapp: data.whatsapp || prev.whatsapp,
+                }));
+            }
+        }).catch(() => {
+            // Keep defaults on failure
+        });
+    }, []);
+
     return (
         <div className="contact-page">
             <div className="page-header">
@@ -38,7 +60,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h4>Phone</h4>
-                                <p>+91 7842090097</p>
+                                <p>{contactInfo.phone}</p>
                             </div>
                         </div>
 
@@ -48,7 +70,17 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h4>Email</h4>
-                                <p>contact@renewableenergyconf.com</p>
+                                <p>{contactInfo.email}</p>
+                            </div>
+                        </div>
+
+                        <div className="info-item">
+                            <div className="info-icon">
+                                <MessageCircle size={24} />
+                            </div>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p>{contactInfo.whatsapp}</p>
                             </div>
                         </div>
 

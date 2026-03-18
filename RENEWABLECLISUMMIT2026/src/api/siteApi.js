@@ -1,42 +1,56 @@
 // API service for RENEWABLECLISUMMIT2026 website
-// Fetches live data from the dashboard backend (port 5000)
+// Fetches live data from the shared dashboard backend
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const BASE_URL = (import.meta.env.VITE_API_URL || 'https://backend-phi-ivory-81.vercel.app/api').replace(/\/$/, '');
+
+// ── This must ALWAYS be 'renewable' for this conference site ──
+const CONFERENCE_ID = 'renewable';
+
+console.log(`[SiteAPI-Renewable] Base URL: ${BASE_URL}`);
 
 async function get(endpoint) {
     try {
-        const res = await fetch(`${BASE_URL}${endpoint}`);
-        if (!res.ok) throw new Error(res.statusText);
+        const url = `${BASE_URL}${endpoint}`;
+        console.log(`[SiteAPI-Renewable] GET request to: ${url}`);
+        const res = await fetch(url);
+        if (!res.ok) {
+            const errorData = await res.json().catch(() => ({}));
+            throw new Error(errorData.error || errorData.message || `Fetch failed: ${res.statusText} (${res.status})`);
+        }
         return res.json();
     } catch (e) {
-        console.warn(`[SiteAPI] Failed to fetch ${endpoint}:`, e.message);
-        return null;
+        console.error(`[SiteAPI-Renewable] GET ${endpoint} failed:`, e.message);
+        throw new Error(`Connection Error: ${e.message} (Is the backend at ${BASE_URL} reachable?)`);
     }
 }
 
 // Get a single content block by key (e.g. 'hero', 'about', etc.)
-export const fetchContent = (key) => get(`/content/${key}?conference=renewable`);
+export const fetchContent = (key) =>
+    get(`/content/${key}?conference=${CONFERENCE_ID}`);
 
 // Get all content blocks at once
-export const fetchAllContent = () => get('/content?conference=renewable');
+export const fetchAllContent = () =>
+    get(`/content?conference=${CONFERENCE_ID}`);
 
 // Speakers — uses public endpoint (visible only, sorted by order)
-// Always pass conference=renewable so the backend filters correctly
 export const fetchSpeakers = (category) =>
-    get(`/speakers?conference=renewable${category ? `&category=${encodeURIComponent(category)}` : ''}`);
+    get(`/speakers?conference=${CONFERENCE_ID}${category ? `&category=${encodeURIComponent(category)}` : ''}`);
 
 // Sponsors/Media partners — uses public endpoint (visible only)
 export const fetchSponsors = (type) =>
-    get(`/sponsors?conference=renewable${type ? `&type=${encodeURIComponent(type)}` : ''}`);
+    get(`/sponsors?conference=${CONFERENCE_ID}${type ? `&type=${encodeURIComponent(type)}` : ''}`);
 
-// Submit an abstract — always tags conference: 'renewable'
+// Submit abstract — always tags with this conference
 export async function submitAbstract(payload) {
     const res = await fetch(`${BASE_URL}/abstracts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...payload, conference: 'renewable' }),
+        body: JSON.stringify({ ...payload, conference: CONFERENCE_ID }),
     });
-    if (!res.ok) throw new Error('Server error');
+    if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || err.message || 'Submission failed');
+    }
     return res.json();
 }
 
@@ -45,19 +59,32 @@ export async function uploadAbstractFile(file) {
     const fd = new FormData();
     fd.append('file', file);
     const res = await fetch(`${BASE_URL}/upload-file`, { method: 'POST', body: fd });
-    if (!res.ok) throw new Error('Upload failed');
+    if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || err.message || 'Upload failed');
+    }
     return res.json();
 }
 
-// Submit registration — always tags conference: 'renewable'
-export async function submitRegistration(payload) {
-    const res = await fetch(`${BASE_URL}/registrations`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...payload, conference: 'renewable' }),
-    });
-    if (!res.ok) throw new Error('Server error');
-    return res.json();
+// Submit registration — always tags with this conference
+export async function submitRegistration(data) {
+    const url = `${BASE_URL}/registrations`;
+    try {
+        console.log(`[SiteAPI-Renewable] POST request to: ${url}`);
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...data, conference: CONFERENCE_ID }),
+        });
+        if (!res.ok) {
+            const errorData = await res.json().catch(() => ({}));
+            throw new Error(errorData.error || errorData.message || `Submission failed: ${res.statusText} (${res.status})`);
+        }
+        return res.json();
+    } catch (e) {
+        console.error('[SiteAPI-Renewable] submitRegistration failed:', e.message);
+        throw new Error(`Connection Error: ${e.message} (Is the backend at ${BASE_URL} reachable?)`);
+    }
 }
 
 // Validate a discount coupon code against the backend
@@ -67,12 +94,15 @@ export async function validateDiscountCode(coupon) {
         const res = await fetch(`${BASE_URL}/discounts/validate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ coupon, conference: 'renewable' }),
+            body: JSON.stringify({ coupon, conference: CONFERENCE_ID }),
         });
-        if (!res.ok) throw new Error('Server error');
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            return { valid: false, message: err.message || 'Invalid code' };
+        }
         return res.json();
     } catch (e) {
-        console.warn('[SiteAPI] Discount validate failed:', e.message);
+        console.error('[SiteAPI-Renewable] Discount validate failed:', e.message);
         return { valid: false, message: 'Could not reach server. Please try again.' };
     }
 }
@@ -87,11 +117,11 @@ export async function createPaymentOrder(payload) {
     const res = await fetch(`${BASE_URL}/payment/create-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...payload, conference: 'renewable' }),
+        body: JSON.stringify({ ...payload, conference: CONFERENCE_ID }),
     });
     if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || 'Failed to create payment order.');
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || err.message || 'Failed to create payment order.');
     }
     return res.json();
 }
@@ -104,9 +134,8 @@ export async function verifyPayment(payload) {
         body: JSON.stringify(payload),
     });
     if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.message || 'Payment verification failed.');
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || err.message || 'Payment verification failed.');
     }
     return res.json();
 }
-
