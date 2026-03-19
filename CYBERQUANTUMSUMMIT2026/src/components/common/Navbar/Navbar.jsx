@@ -1,15 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Mail, Phone, MessageCircle } from 'lucide-react';
+import { Menu, X, Mail, Phone, MessageCircle, ChevronDown } from 'lucide-react';
 import Button from '../Button/Button';
 import Logo from '../Logo/Logo';
+import { fetchContent } from '../../../api/siteApi';
 import './Navbar.css';
 
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [contactInfo, setContactInfo] = useState({
+        email: 'cyberquantum@sciengasummits.com',
+        phone: '+91 7842090097',
+        whatsapp: '+91 7842090097',
+    });
     const location = useLocation();
+
+    // ── Fetch contact info from API (dashboard-driven) ──────────────────────
+    useEffect(() => {
+        fetchContent('contact').then(data => {
+            if (data) {
+                setContactInfo({
+                    email: data.email || 'cyberquantum@sciengasummits.com',
+                    phone: data.phone || '+91 7842090097',
+                    whatsapp: data.whatsapp || '+91 7842090097',
+                });
+            }
+        }).catch(() => {
+            // Keep defaults on failure
+        });
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -62,27 +83,41 @@ const Navbar = () => {
                     <Logo onClick={closeMobileMenu} />
 
                     <div className="navbar__contact">
-                        <div className="contact-item">
+                        <a
+                            className="contact-item"
+                            href={`mailto:${contactInfo.email}`}
+                            style={{ textDecoration: 'none' }}
+                        >
                             <Mail size={18} className="contact-icon" />
                             <div className="contact-info">
                                 <span className="contact-label">SEND US AN EMAIL</span>
-                                <span className="contact-value">contact@cyberquantumsummit.com</span>
+                                <span className="contact-value">{contactInfo.email}</span>
                             </div>
-                        </div>
-                        <div className="contact-item">
+                        </a>
+                        <a
+                            className="contact-item"
+                            href={`tel:${contactInfo.phone}`}
+                            style={{ textDecoration: 'none' }}
+                        >
                             <Phone size={18} className="contact-icon" />
                             <div className="contact-info">
                                 <span className="contact-label">CALL US NOW</span>
-                                <span className="contact-value">+91 7842090097</span>
+                                <span className="contact-value">{contactInfo.phone}</span>
                             </div>
-                        </div>
-                        <div className="contact-item">
+                        </a>
+                        <a
+                            className="contact-item"
+                            href={`https://wa.me/${contactInfo.whatsapp.replace(/\D/g, '')}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ textDecoration: 'none' }}
+                        >
                             <MessageCircle size={18} className="contact-icon" />
                             <div className="contact-info">
                                 <span className="contact-label">WHATSAPP</span>
-                                <span className="contact-value">+91 7842090097</span>
+                                <span className="contact-value">{contactInfo.whatsapp}</span>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <button className="navbar__toggle" onClick={toggleMobileMenu}>
@@ -98,7 +133,7 @@ const Navbar = () => {
                             link.dropdown ? (
                                 <div className="navbar__dropdown" key={link.name}>
                                     <span className={`navbar__link ${location.pathname === link.path ? 'active' : ''}`}>
-                                        {link.name}
+                                        {link.name} <ChevronDown size={13} style={{ marginLeft: 2, verticalAlign: 'middle' }} />
                                     </span>
                                     <div className="navbar__dropdown-menu">
                                         {link.dropdown.map((subLink) => (

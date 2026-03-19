@@ -32,7 +32,7 @@ const BrochureSection = () => {
                     {/* Placeholder for brochure preview image */}
                     <div className="preview-card">
                         <div className="preview-page">
-                            <h3>WORLD GENERAL MEDICINE CONGRESS</h3>
+                                <h3>CYBERSECURITY &amp; QUANTUM COMPUTING</h3>
                             <p>2026</p>
                             <div className="preview-lines"></div>
                         </div>

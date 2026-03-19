@@ -1,63 +1,61 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-    Sun,
-    Wind,
-    Zap,
-    Droplet,
-    Leaf,
-    Globe,
-    ShieldCheck,
-    Thermometer,
-    Recycle,
-    Battery,
-    CloudRain,
+    Shield,
+    Lock,
     Cpu,
-    Anchor,
-    Flame,
+    Globe,
     Activity,
-    Factory,
-    Lightbulb,
-    BarChart,
-    TreeDeciduous,
-    Mountain
+    Zap,
+    Database,
+    Eye,
+    Key,
+    Server,
+    Wifi,
+    AlertTriangle,
+    Code,
+    Layers,
+    Network,
+    Search,
+    ShieldCheck,
+    Binary,
+    CloudLightning,
+    BarChart
 } from 'lucide-react';
 import './KeyThemesSection.css';
 
 const sessionsData = [
-    { title: "Solar Energy & Photovoltaics", icon: Sun },
-    { title: "Wind Energy Technologies", icon: Wind },
-    { title: "Climate Change & Global Warming", icon: Thermometer },
-    { title: "Hydroelectric Power Systems", icon: Droplet },
-    { title: "Bioenergy & Biofuels", icon: Leaf },
-    { title: "Smart Grids & Energy Storage", icon: Battery },
-    { title: "Green Hydrogen Economy", icon: Flame },
-    { title: "Carbon Capture & Storage", icon: CloudRain },
-    { title: "Environmental Policy & Regulation", icon: ShieldCheck },
-    { title: "Electric Vehicles & Clean Transport", icon: Zap },
-    { title: "Geothermal Energy", icon: Mountain },
-    { title: "Ocean & Tidal Energy", icon: Anchor },
-    { title: "Sustainable Urban Planning", icon: Factory },
-    { title: "Waste-to-Energy Systems", icon: Recycle },
-    { title: "AI in Energy Management", icon: Cpu },
-    { title: "Energy Economics & Finance", icon: BarChart },
-    { title: "Circular Economy", icon: Activity },
-    { title: "Nuclear Energy & Safety", icon: Zap },
-    { title: "Climate Adaptation Strategies", icon: Globe },
-    { title: "Forestry & Carbon Sinks", icon: TreeDeciduous },
-    { title: "Energy Efficiency in Industry", icon: Factory },
-    { title: "Advanced Battery Technologies", icon: Battery },
-    { title: "Renewable Energy Integration", icon: Zap },
-    { title: "Meteorology & Climate Modeling", icon: CloudRain },
-    { title: "Sustainable Agriculture & Land Use", icon: Leaf },
-    { title: "Green Building Technologies", icon: Factory },
-    { title: "Environmental Impact Assessment", icon: Activity },
-    { title: "Social Aspects of Climate Change", icon: Globe },
-    { title: "Innovation in Clean Tech", icon: Lightbulb },
-    { title: "Future of Global Energy", icon: Sun },
+    { title: 'Quantum Computing Fundamentals', icon: Cpu },
+    { title: 'Post-Quantum Cryptography Standards', icon: Lock },
+    { title: 'Quantum Key Distribution (QKD)', icon: Key },
+    { title: 'Cybersecurity Threat Intelligence', icon: Eye },
+    { title: 'AI-Driven Security Analytics', icon: Activity },
+    { title: 'Quantum-Safe Network Architectures', icon: Network },
+    { title: 'Zero Trust Security Framework', icon: Shield },
+    { title: 'Blockchain & Distributed Ledger Security', icon: Layers },
+    { title: 'IoT & Edge Computing Security', icon: Wifi },
+    { title: 'Quantum Machine Learning & AI', icon: Binary },
+    { title: 'Digital Forensics & Incident Response', icon: Search },
+    { title: 'Cloud Security & Data Privacy', icon: CloudLightning },
+    { title: 'Ethical Hacking & Penetration Testing', icon: Code },
+    { title: 'Identity & Access Management (IAM)', icon: Key },
+    { title: 'Quantum Algorithms & Complexity', icon: Zap },
+    { title: 'Secure Multi-Party Computation', icon: ShieldCheck },
+    { title: 'Cybersecurity Policy & Governance', icon: Globe },
+    { title: 'Quantum Error Correction', icon: AlertTriangle },
+    { title: 'Secure Software Development (DevSecOps)', icon: Code },
+    { title: 'Big Data Security & Analytics', icon: BarChart },
+    { title: 'Ransomware & Malware Defense', icon: Shield },
+    { title: 'Quantum Simulation & Optimization', icon: Cpu },
+    { title: 'Network Intrusion Detection Systems', icon: Activity },
+    { title: 'Critical Infrastructure Protection', icon: Server },
+    { title: 'Cybercrime & Digital Investigation', icon: Search },
+    { title: 'Security in 5G & Beyond', icon: Wifi },
+    { title: 'Quantum Sensing & Metrology', icon: Database },
+    { title: 'Homomorphic Encryption', icon: Lock },
+    { title: 'Supply Chain Security', icon: Layers },
+    { title: 'Future of Quantum Internet', icon: Globe },
 ];
-
-const Link = ({ href, children }) => <a href={href}>{children}</a>; // Placeholder if needed
 
 const scheduleData = {
     day1: [
@@ -112,7 +110,7 @@ const KeyThemesSection = ({ showLearnMore = false }) => {
                         <div className="sessions-list-container">
                             <ul className="sessions-list-clean">
                                 {displaySessions.map((session, index) => {
-                                    const Icon = session.icon || Stethoscope;
+                                    const Icon = session.icon || Shield;
                                     return (
                                         <li key={index} className="session-item-clean">
                                             <span className="session-icon-small">

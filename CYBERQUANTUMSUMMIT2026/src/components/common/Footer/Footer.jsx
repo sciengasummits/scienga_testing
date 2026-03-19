@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
 import Logo from '../Logo/Logo';
+import { fetchContent } from '../../../api/siteApi';
 import './Footer.css';
 
 const Footer = () => {
+    const [contactInfo, setContactInfo] = useState({ email: 'cyberquantum@sciengasummits.com', phone: '+91 7842090097' });
+
+    useEffect(() => {
+        fetchContent('contact').then(data => {
+            if (data) {
+                setContactInfo(prev => ({
+                    email: data.email || prev.email,
+                    phone: data.phone || prev.phone,
+                }));
+            }
+        }).catch(() => {});
+    }, []);
+
     return (
         <footer className="footer">
             <div className="container">
@@ -14,12 +28,11 @@ const Footer = () => {
                             <Logo />
                         </div>
                         <p className="footer__desc">
-                            Global experts unite to shape the future of cybersecurity and quantum computing.
-                            Discover ground-breaking technologies and connect with top digital security professionals.
+                            Annual International Conference on Cybersecurity and Quantum Computing, where global experts unite to shape the future of digital security and quantum technologies.
                         </p>
                         <div className="footer__socials">
                             <a href="https://www.facebook.com/profile.php?id=61588065033161" target="_blank" rel="noopener noreferrer" className="social-icon"><Facebook size={20} /></a>
-                            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={20} /></a>
+                            <a href="https://www.linkedin.com/company/scienga-summits/" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={20} /></a>
                             <a href="https://www.instagram.com/sciengasummits/" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={20} /></a>
                         </div>
                     </div>
@@ -29,10 +42,10 @@ const Footer = () => {
                         <ul className="footer__links">
                             <li><Link to="/abstract-submission">Abstract Submission</Link></li>
                             <li><Link to="/register">Registration</Link></li>
+                            <li><Link to="/online-registration">Discount Registration</Link></li>
                             <li><Link to="/sessions">Sessions</Link></li>
                             <li><Link to="/program">Program</Link></li>
                             <li><Link to="/speakers">Speakers</Link></li>
-                            <li><Link to="/online-registration">Discount Registration</Link></li>
                             <li><Link to="/unsubscribe">Unsubscribe</Link></li>
                         </ul>
                     </div>
@@ -47,14 +60,13 @@ const Footer = () => {
                                     <span>Marina Bay, Singapore</span>
                                 </div>
                             </li>
-
                             <li>
                                 <Mail size={18} />
-                                <span>contact@cyberquantumsummit.com</span>
+                                <span>{contactInfo.email}</span>
                             </li>
                             <li>
                                 <Phone size={18} />
-                                <span>+91 7842090097</span>
+                                <span>{contactInfo.phone}</span>
                             </li>
                         </ul>
                     </div>

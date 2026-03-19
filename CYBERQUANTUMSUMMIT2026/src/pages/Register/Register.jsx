@@ -1,9 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Register.css';
 import { countries } from '../../assets/constants/countries';
 import * as siteApi from '../../api/siteApi';
 
+/* ── Default fallback pricing (used if API is unavailable) ── */
+const DEFAULTS = {
+    earlyBirdEndDate: '2026-10-25',
+    standardEndDate: '2027-02-16',
+    onspotEndDate: '2027-04-20',
+    categories: [
+        { id: 'speaker',  label: 'Speaker Registration',  early: 749,  standard: 849,  onspot: 949  },
+        { id: 'delegate', label: 'Delegate Registration', early: 899,  standard: 999,  onspot: 1099 },
+        { id: 'poster',   label: 'Poster Registration',   early: 449,  standard: 549,  onspot: 649  },
+        { id: 'student',  label: 'Student',               early: 299,  standard: 399,  onspot: 499  },
+        { id: 'virtual',  label: 'Virtual (Online)',       early: 199,  standard: 299,  onspot: 399  },
+    ],
+    sponsorships: [
+        { id: 'platinum',  label: 'Platinum Sponsor', price: 4999 },
+        { id: 'diamond',   label: 'Diamond Sponsor',  price: 3999 },
+        { id: 'gold',      label: 'Gold Sponsor',     price: 2999 },
+        { id: 'exhibitor', label: 'Exhibitor',        price: 1999 },
+    ],
+    accommodation: [
+        { nights: 2, single: 360, double: 400, triple: 440 },
+        { nights: 3, single: 540, double: 600, triple: 660 },
+        { nights: 4, single: 720, double: 800, triple: 880 },
+        { nights: 5, single: 900, double: 1000, triple: 1100 },
+    ],
+    accompanyingPersonPrice: 249,
+    processingFeePercent: 5,
+};
+
 const Register = ({ isDiscounted = false }) => {
+    // ── Pricing state loaded from backend ──
+    const [regPricing, setRegPricing] = useState(DEFAULTS);
+
+    useEffect(() => {
+        siteApi.fetchContent('registration-prices')
+            .then(data => {
+                if (data && !data.error) {
+                    setRegPricing(prev => ({ ...prev, ...data }));
+                }
+            })
+            .catch(e => console.warn('[Register] Could not load pricing:', e.message));
+    }, []);
+
+    // State for form fields
     const [formData, setFormData] = useState({
         designation: '',
         fullName: '',
@@ -24,12 +66,12 @@ const Register = ({ isDiscounted = false }) => {
 
     // Discount multiplier (20% off if discounted)
     const discountMultiplier = isDiscounted ? 0.8 : 1;
-    const applyDiscount = (price) => Math.round(price * discountMultiplier);
+    const applyDiscount = (price) => Math.round(Number(price) * discountMultiplier);
 
-    // Date Logic to determine active phase
+    // ── Date Logic to determine active phase (driven by backend dates) ──
     const currentDate = new Date();
-    const earlyBirdEnd = new Date('2026-10-25');
-    const standardEnd = new Date('2027-02-16');
+    const earlyBirdEnd = new Date(regPricing.earlyBirdEndDate || DEFAULTS.earlyBirdEndDate);
+    const standardEnd  = new Date(regPricing.standardEndDate  || DEFAULTS.standardEndDate);
 
     let activePhase = 'early';
     if (currentDate <= earlyBirdEnd) {
@@ -40,32 +82,37 @@ const Register = ({ isDiscounted = false }) => {
         activePhase = 'onspot';
     }
 
-    // Pricing Data (CyberQuantum-specific)
-    const pricingData = [
-        { id: 'speaker', label: 'Speaker Registration', early: applyDiscount(749), standard: applyDiscount(849), onspot: applyDiscount(949) },
-        { id: 'delegate', label: 'Delegate Registration', early: applyDiscount(899), standard: applyDiscount(999), onspot: applyDiscount(1099) },
-        { id: 'poster', label: 'Poster Registration', early: applyDiscount(449), standard: applyDiscount(549), onspot: applyDiscount(649) },
-        { id: 'student', label: 'Student', early: applyDiscount(299), standard: applyDiscount(399), onspot: applyDiscount(499) },
-        { id: 'virtual', label: 'Virtual (Online)', early: applyDiscount(199), standard: applyDiscount(299), onspot: applyDiscount(399) },
-    ];
+    // Helper to format date for display in table headers
+    const formatDate = (dateStr, fallback) => {
+        try {
+            return new Date(dateStr || fallback).toLocaleDateString('en-US', {
+                month: 'long', day: 'numeric', year: 'numeric'
+            });
+        } catch {
+            return dateStr || fallback;
+        }
+    };
 
-    const accommodationOptions = [
-        { nights: 2, single: 360, double: 400, triple: 440 },
-        { nights: 3, single: 540, double: 600, triple: 660 },
-        { nights: 4, single: 720, double: 800, triple: 880 },
-        { nights: 5, single: 900, double: 1000, triple: 1100 },
-    ];
+    // ── Derived pricing arrays from backend data ──
+    const pricingData = (regPricing.categories || DEFAULTS.categories).map(cat => ({
+        ...cat,
+        early:    applyDiscount(cat.early),
+        standard: applyDiscount(cat.standard),
+        onspot:   applyDiscount(cat.onspot),
+    }));
 
-    const sponsorshipPricing = [
-        { id: 'platinum', label: 'Platinum Sponsor', price: applyDiscount(4999) },
-        { id: 'diamond', label: 'Diamond Sponsor', price: applyDiscount(3999) },
-        { id: 'gold', label: 'Gold Sponsor', price: applyDiscount(2999) },
-        { id: 'exhibitor', label: 'Exhibitor', price: applyDiscount(1999) },
-    ];
+    const accommodationOptions = regPricing.accommodation || DEFAULTS.accommodation;
 
+    const sponsorshipPricing = (regPricing.sponsorships || DEFAULTS.sponsorships).map(sp => ({
+        ...sp,
+        price: applyDiscount(sp.price),
+    }));
+
+    const accompanyingPersonPrice = Number(regPricing.accompanyingPersonPrice ?? DEFAULTS.accompanyingPersonPrice);
+
+    // Helper to calculate total
     const calculateTotal = () => {
         let total = 0;
-
         if (selectedAcademicCategory) {
             const item = pricingData.find(p => p.id === selectedAcademicCategory);
             if (item) total += item[activePhase];
@@ -74,13 +121,12 @@ const Register = ({ isDiscounted = false }) => {
             const item = sponsorshipPricing.find(p => p.id === selectedSponsorship);
             if (item) total += item.price;
         }
-        if (includeAccompanying) total += 249;
+        if (includeAccompanying) total += accompanyingPersonPrice;
         if (selectedAccommodation) {
             const [nights, type] = selectedAccommodation.split('-');
             const option = accommodationOptions.find(o => o.nights === parseInt(nights));
             if (option) total += option[type];
         }
-
         return total;
     };
 
@@ -122,8 +168,13 @@ const Register = ({ isDiscounted = false }) => {
             const sp = sponsorshipPricing.find(p => p.id === selectedSponsorship);
             if (sp) descParts.push(`${sp.label} : $${sp.price}`);
         }
-        if (includeAccompanying) descParts.push('Accompanying Person : $249');
-        if (selectedAccommodation) descParts.push(`Accommodation : ${selectedAccommodation}`);
+        if (includeAccompanying) descParts.push(`Accompanying Person : $${accompanyingPersonPrice}`);
+        if (selectedAccommodation) {
+            const [nights, type] = selectedAccommodation.split('-');
+            const accOpt = accommodationOptions.find(o => o.nights === parseInt(nights));
+            const accPrice = accOpt ? accOpt[type] : '';
+            descParts.push(`Accommodation (${nights} nights, ${type}) : $${accPrice}`);
+        }
 
         const payload = {
             title: formData.designation,
@@ -134,10 +185,12 @@ const Register = ({ isDiscounted = false }) => {
             company: formData.company,
             address: formData.address,
             registrationCategory: selectedAcademicCategory
-                ? pricingData.find(p => p.id === selectedAcademicCategory)?.label || '' : '',
+                ? pricingData.find(p => p.id === selectedAcademicCategory)?.label || ''
+                : '',
             accommodation: selectedAccommodation || '',
             sponsorship: selectedSponsorship
-                ? sponsorshipPricing.find(p => p.id === selectedSponsorship)?.label || '' : '',
+                ? sponsorshipPricing.find(p => p.id === selectedSponsorship)?.label || ''
+                : '',
             accompanyingPerson: includeAccompanying,
             totalAmount: total,
             description: descParts.join('\n'),
@@ -146,6 +199,7 @@ const Register = ({ isDiscounted = false }) => {
 
         setSubmitting(true);
         setSubmitStatus(null);
+
         try {
             // 1. Create registration record (Pending)
             const registration = await siteApi.submitRegistration(payload);
@@ -156,7 +210,7 @@ const Register = ({ isDiscounted = false }) => {
             const { order } = await siteApi.createPaymentOrder({
                 amount: total,
                 registrationId: registration._id,
-                description: `CyberQuantum Registration: ${formData.fullName}`
+                description: `CyberQuantum Summit Registration: ${formData.fullName}`
             });
 
             // 3. Open Razorpay Checkout
@@ -195,9 +249,7 @@ const Register = ({ isDiscounted = false }) => {
                     }
                 },
                 modal: {
-                    ondismiss: () => {
-                        setSubmitting(false);
-                    }
+                    ondismiss: () => setSubmitting(false)
                 }
             };
 
@@ -225,7 +277,7 @@ const Register = ({ isDiscounted = false }) => {
             <div className="container section-padding">
 
                 <div className="registration-form-container">
-                    {/* Left Side: Form */}
+                    {/* Personal Details Form */}
                     <div className="form-section full-width-form">
                         <div className="form-row">
                             <select
@@ -303,6 +355,7 @@ const Register = ({ isDiscounted = false }) => {
                     </div>
                 </div>
 
+                {/* ── Pricing Table — values from backend ── */}
                 <div className="pricing-section">
                     <h2 className="pricing-title">SELECT FROM VARIOUS CATEGORIES BELOW</h2>
 
@@ -312,17 +365,23 @@ const Register = ({ isDiscounted = false }) => {
                                 <th className="category-header">Types of Participation</th>
                                 <th className={activePhase === 'early' ? 'active-header-early' : ''}>
                                     Early Bird Registration<br />
-                                    <span className="date">October 25, 2026</span>
+                                    <span className="date">
+                                        {formatDate(regPricing.earlyBirdEndDate, DEFAULTS.earlyBirdEndDate)}
+                                    </span>
                                     {activePhase === 'early' && <span className="badge-active">ACTIVE</span>}
                                 </th>
                                 <th className={activePhase === 'standard' ? 'active-header-standard' : ''}>
                                     Standard Registration<br />
-                                    <span className="date">February 16, 2027</span>
+                                    <span className="date">
+                                        {formatDate(regPricing.standardEndDate, DEFAULTS.standardEndDate)}
+                                    </span>
                                     {activePhase === 'standard' && <span className="badge-active">ACTIVE</span>}
                                 </th>
                                 <th className={activePhase === 'onspot' ? 'active-header-onspot' : ''}>
                                     OnSpot Registration<br />
-                                    <span className="date">April 20, 2027</span>
+                                    <span className="date">
+                                        {formatDate(regPricing.onspotEndDate, DEFAULTS.onspotEndDate)}
+                                    </span>
                                     {activePhase === 'onspot' && <span className="badge-active">ACTIVE</span>}
                                 </th>
                             </tr>
@@ -355,6 +414,7 @@ const Register = ({ isDiscounted = false }) => {
                         </tbody>
                     </table>
 
+                    {/* ── Sponsorship Table ── */}
                     <h2 className="pricing-title" style={{ marginTop: '3rem' }}>SPONSORSHIP OPPORTUNITIES</h2>
                     <table className="pricing-table sponsorship-table">
                         <thead>
@@ -384,7 +444,7 @@ const Register = ({ isDiscounted = false }) => {
                     </table>
                 </div>
 
-                {/* Accommodation Section */}
+                {/* ── Accommodation Section — values from backend ── */}
                 <div className="accommodation-section">
                     <div className="accompanying-checkbox">
                         <label className="checkbox-label">
@@ -393,7 +453,7 @@ const Register = ({ isDiscounted = false }) => {
                                 checked={includeAccompanying}
                                 onChange={(e) => setIncludeAccompanying(e.target.checked)}
                             />
-                            <strong>Include Accompanying Person ( $249 Extra)</strong>
+                            <strong>Include Accompanying Person ( ${accompanyingPersonPrice} Extra)</strong>
                         </label>
                     </div>
 
@@ -449,6 +509,7 @@ const Register = ({ isDiscounted = false }) => {
                     </table>
                 </div>
 
+                {/* ── Summary & Submit ── */}
                 <div className="summary-section">
                     <div className="total-display">
                         <span className="total-label">TOTAL PRICE($) :</span>
@@ -466,7 +527,9 @@ const Register = ({ isDiscounted = false }) => {
                         </label>
                     </div>
 
-                    <p className="processing-fee">Note: 5% of processing charges will be applicable.</p>
+                    <p className="processing-fee">
+                        Note: {regPricing.processingFeePercent ?? 5}% of processing charges will be applicable.
+                    </p>
 
                     {submitStatus === 'success' && (
                         <div style={{ padding: '14px 20px', background: '#f0fdf4', border: '1px solid #86efac', borderRadius: '10px', color: '#15803d', fontWeight: 600, marginBottom: '16px', textAlign: 'center' }}>

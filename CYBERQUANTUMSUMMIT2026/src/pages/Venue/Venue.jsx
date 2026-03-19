@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import VenueSection from '../../components/sections/VenueSection/VenueSection';
 import Button from '../../components/common/Button/Button';
+import { fetchContent } from '../../api/siteApi';
 import './Venue.css';
 
-const Venue = () => {
-    const venueFeatures = [
+const DEFAULTS = {
+    venueFeatures: [
         {
             title: 'World-Class Facilities',
             description: 'State-of-the-art conference halls equipped with the latest audio-visual technology'
@@ -29,25 +31,51 @@ const Venue = () => {
             title: 'Accessibility',
             description: 'Fully accessible facilities for all participants'
         }
-    ];
-
-    const nearbyAttractions = [
+    ],
+    nearbyAttractions: [
         {
-            name: 'Marienplatz',
+            name: 'Marina Bay Sands',
+            distance: '0.2 km',
+            image: 'https://images.unsplash.com/photo-1555217851-6141535bd771?w=800&q=80'
+        },
+        {
+            name: 'Gardens by the Bay',
             distance: '0.5 km',
-            image: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800&q=80"
+            image: 'https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&q=80'
         },
         {
-            name: 'English Garden',
-            distance: '3.2 km',
-            image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80"
-        },
-        {
-            name: 'Nymphenburg Palace',
-            distance: '6.5 km',
-            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Schloss_Nymphenburg.jpg/800px-Schloss_Nymphenburg.jpg"
+            name: 'Singapore Botanic Gardens',
+            distance: '4.5 km',
+            image: 'https://images.unsplash.com/photo-1562602836-019d3c1b9ab6?w=800&q=80'
         }
-    ];
+    ],
+    cityAbout: {
+        title: 'About the Host City',
+        subtitle: 'Discover Singapore',
+        description1: 'Singapore is a global hub for innovation, technology, and cybersecurity excellence. Known as the "Smart Nation," it offers a unique blend of cutting-edge digital infrastructure and multicultural vibrancy, making it the perfect setting for a conference on Cybersecurity and Quantum Computing.',
+        description2: 'The Marina Bay area represents the heart of modern Singapore, featuring iconic architecture, world-class dining, and premium conference facilities. With Asia\'s leading tech ecosystem and government-backed quantum research initiatives, Singapore is the ideal host city for this summit.',
+        image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80',
+        stats: [
+            { label: 'Population', value: '5.9M+' },
+            { label: 'Avg. Temperature', value: '31°C' },
+            { label: 'Time Zone', value: 'GMT+8' }
+        ]
+    }
+};
+
+const Venue = () => {
+    const navigate = useNavigate();
+    const [venueData, setVenueData] = useState(DEFAULTS);
+
+    useEffect(() => {
+        fetchContent('venue-page').then(data => {
+            if (data && !data.error) {
+                setVenueData(prev => ({ ...prev, ...data }));
+            }
+        }).catch(err => console.warn('[Venue] Could not load venue content:', err));
+    }, []);
+
+    const { venueFeatures, nearbyAttractions, cityAbout } = venueData;
 
     return (
         <div className="venue-page">
@@ -87,39 +115,21 @@ const Venue = () => {
                 <div className="container">
                     <div className="about-city-content">
                         <div className="about-city-text">
-                            <h4 className="section-subtitle">Discover Munich</h4>
-                            <h2 className="section-title">About the Host City</h2>
-                            <p className="city-description">
-                                Munich is the capital of Bavaria and one of Germany’s most popular destinations. Known for its
-                                rich history, stunning architecture, and vibrant culture, the city seamlessly blends
-                                traditional Bavarian charm with modern innovation.
-                            </p>
-                            <p className="city-description">
-                                As a major European hub for technology and research, Munich provides world-class
-                                conference facilities and excellent infrastructure. Visitors can explore centuries-old
-                                buildings, numerous museums, and the famous English Garden, making it an ideal location
-                                for international summits.
-                            </p>
+                            <h4 className="section-subtitle">{cityAbout.subtitle}</h4>
+                            <h2 className="section-title">{cityAbout.title}</h2>
+                            <p className="city-description">{cityAbout.description1}</p>
+                            <p className="city-description">{cityAbout.description2}</p>
                             <div className="city-stats">
-                                <div className="stat-box">
-                                    <h3>1.5M+</h3>
-                                    <p>Population</p>
-                                </div>
-                                <div className="stat-box">
-                                    <h3>14°C</h3>
-                                    <p>Avg. Temperature</p>
-                                </div>
-                                <div className="stat-box">
-                                    <h3>GMT+1</h3>
-                                    <p>Time Zone</p>
-                                </div>
+                                {cityAbout.stats.map((stat, idx) => (
+                                    <div className="stat-box" key={idx}>
+                                        <h3>{stat.value}</h3>
+                                        <p>{stat.label}</p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                         <div className="about-city-image">
-                            <img
-                                src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80"
-                                alt="Munich City"
-                            />
+                            <img src={cityAbout.image} alt="Singapore City" />
                         </div>
                     </div>
                 </div>
@@ -129,7 +139,7 @@ const Venue = () => {
             <section className="nearby-attractions section-padding">
                 <div className="container">
                     <div className="text-center mb-5">
-                        <h4 className="section-subtitle">Explore Munich</h4>
+                        <h4 className="section-subtitle">Explore Singapore</h4>
                         <h2 className="section-title">Nearby Attractions</h2>
                         <p className="section-desc">
                             Make the most of your visit with these must-see destinations
@@ -159,9 +169,13 @@ const Venue = () => {
                         Ready to Join Us?
                     </h2>
                     <p className="cta-desc" style={{ color: 'rgba(255,255,255,0.9)', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem' }}>
-                        Secure your spot at the Global Summit on Food Science Technology and Agriculture and be part of this transformative event
+                        Secure your spot at the Annual International Conference on Cybersecurity and Quantum Computing
                     </p>
-                    <Button variant="outline" style={{ borderColor: 'white', color: 'white', background: 'transparent' }}>
+                    <Button
+                        onClick={() => navigate('/register')}
+                        variant="outline"
+                        style={{ borderColor: 'white', color: 'white', background: 'transparent' }}
+                    >
                         Register Now
                     </Button>
                 </div>
