@@ -3,8 +3,8 @@
 
 const BASE_URL = (import.meta.env.VITE_API_URL || 'https://backend-phi-ivory-81.vercel.app/api').replace(/\/$/, '');
 
-// ── This must ALWAYS be 'iqces' for this conference site ──
-const CONFERENCE_ID = 'iqces';
+// ── This must ALWAYS be 'iqces2026' for this conference site ──
+const CONFERENCE_ID = 'iqces2026';
 
 console.log(`[SiteAPI-IQCES] Base URL: ${BASE_URL}`);
 

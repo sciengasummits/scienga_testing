@@ -41,7 +41,24 @@ const StatsSection = () => {
     const [data, setData] = useState(DEFAULT_STATS);
 
     useEffect(() => {
-        fetchContent('stats').then(d => d && setData(prev => ({ ...prev, ...d }))).catch(e => console.warn('[StatsSection] Could not load content:', e.message));
+        let cancelled = false;
+
+        const load = () => {
+            fetchContent('stats')
+                .then(d => { if (!cancelled && d) setData(prev => ({ ...prev, ...d })); })
+                .catch(e => console.warn('[StatsSection] Could not load content:', e.message));
+        };
+
+        load();
+        const interval = setInterval(load, 30000);
+        const onVisible = () => { if (document.visibilityState === 'visible') load(); };
+        document.addEventListener('visibilitychange', onVisible);
+
+        return () => {
+            cancelled = true;
+            clearInterval(interval);
+            document.removeEventListener('visibilitychange', onVisible);
+        };
     }, []);
 
     return (

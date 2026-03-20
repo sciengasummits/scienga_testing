@@ -177,9 +177,9 @@ const DiscountRegistration = () => {
             email: formData.email,
             phone: formData.phone,
             country: formData.country,
-            company: formData.company,
+            affiliation: formData.company,
             address: formData.address,
-            registrationCategory: selectedCategory
+            category: selectedCategory
                 ? registrationCategories.find(p => p.id === selectedCategory)?.label || ''
                 : '',
             accommodation: selectedAccommodation || '',
@@ -187,10 +187,10 @@ const DiscountRegistration = () => {
                 ? sponsorshipOptions.find(p => p.id === selectedSponsorship)?.label || ''
                 : '',
             accompanyingPerson: includeAccompanying,
-            totalAmount: total,
+            amount: total,
             description: descParts.join('\n'),
             status: 'Pending',
-            conference: 'iqces'
+            conference: 'iqces2026'
         };
 
         setSubmitting(true);

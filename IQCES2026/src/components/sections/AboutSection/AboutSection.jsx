@@ -49,8 +49,29 @@ const AboutSection = () => {
     const [dates, setDates] = useState(DEFAULT_DATES);
 
     useEffect(() => {
-        fetchContent('about').then(d => d && setAbout(prev => ({ ...prev, ...d }))).catch(e => console.warn('[AboutSection] Could not load about:', e.message));
-        fetchContent('importantDates').then(d => d && setDates(prev => ({ ...prev, ...d }))).catch(e => console.warn('[AboutSection] Could not load dates:', e.message));
+        let cancelled = false;
+
+        const load = () => {
+            fetchContent('about')
+                .then(d => { if (!cancelled && d) setAbout(prev => ({ ...prev, ...d })); })
+                .catch(e => console.warn('[AboutSection] Could not load about:', e.message));
+            fetchContent('importantDates')
+                .then(d => { if (!cancelled && d?.dates) setDates(prev => ({ ...prev, dates: d.dates })); })
+                .catch(e => console.warn('[AboutSection] Could not load dates:', e.message));
+        };
+
+        load(); // initial fetch
+
+        // Poll every 15 seconds so dashboard edits appear without a page reload
+        const interval = setInterval(load, 15000);
+        const onVisible = () => { if (document.visibilityState === 'visible') load(); };
+        document.addEventListener('visibilitychange', onVisible);
+
+        return () => {
+            cancelled = true;
+            clearInterval(interval);
+            document.removeEventListener('visibilitychange', onVisible);
+        };
     }, []);
 
     return (

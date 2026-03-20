@@ -13,7 +13,7 @@ const DEFAULTS = {
         { id: 'delegate', label: 'Delegate Registration', early: 899, standard: 999, onspot: 1099 },
         { id: 'poster', label: 'Poster Registration', early: 449, standard: 549, onspot: 649 },
         { id: 'student', label: 'Student', early: 299, standard: 399, onspot: 499 },
-        { id: 'Virtual', label: 'Virtual (Online)', early: 199, standard: 249, onspot: 299 },
+        { id: 'virtual', label: 'Virtual (Online)', early: 199, standard: 249, onspot: 299 },
     ],
     sponsorships: [
         { id: 'platinum', label: 'Platinum Sponsor', price: 4999 },
@@ -174,9 +174,9 @@ const Register = ({ isDiscounted = false }) => {
             email: formData.email,
             phone: formData.telephone,
             country: formData.country,
-            company: formData.company,
+            affiliation: formData.company,
             address: formData.address,
-            registrationCategory: selectedAcademicCategory
+            category: selectedAcademicCategory
                 ? academicPricing.find(p => p.id === selectedAcademicCategory)?.label || ''
                 : '',
             accommodation: selectedAccommodation || '',
@@ -184,10 +184,10 @@ const Register = ({ isDiscounted = false }) => {
                 ? sponsorshipPricing.find(p => p.id === selectedSponsorship)?.label || ''
                 : '',
             accompanyingPerson: includeAccompanying,
-            totalAmount: total,
+            amount: total,
             description: descParts.join('\n'),
             status: 'Pending',
-            conference: 'iqces'
+            conference: 'iqces2026'
         };
 
         setSubmitting(true);

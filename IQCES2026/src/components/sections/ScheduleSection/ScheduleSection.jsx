@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { fetchContent } from '../../../api/siteApi';
 import './ScheduleSection.css';
 
-const scheduleData = {
+const DEFAULT_SCHEDULE = {
     day1: [
         { time: '8.30 – 9.00', program: 'Registration' },
         { time: '9.00 – 9.30', program: 'Conference Inauguration' },
@@ -35,7 +36,33 @@ const scheduleData = {
 
 const ScheduleSection = () => {
     const [activeDay, setActiveDay] = useState('day1');
+    const [schedule, setSchedule] = useState(DEFAULT_SCHEDULE);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        let cancelled = false;
+
+        const load = () => {
+            fetchContent('sessions').then(d => {
+                if (!cancelled && d?.schedule) {
+                    setSchedule(d.schedule);
+                }
+            }).catch(e => console.warn('[ScheduleSection] Could not load schedule:', e.message));
+        };
+
+        load();
+        const interval = setInterval(load, 30000);
+        const onVisible = () => { if (document.visibilityState === 'visible') load(); };
+        document.addEventListener('visibilitychange', onVisible);
+
+        return () => {
+            cancelled = true;
+            clearInterval(interval);
+            document.removeEventListener('visibilitychange', onVisible);
+        };
+    }, []);
+
+    const currentDaySchedule = (schedule[activeDay] || []).slice(0, 6);
 
     return (
         <section className="schedule section-padding" id="schedule">
@@ -81,7 +108,7 @@ const ScheduleSection = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {scheduleData[activeDay].slice(0, 6).map((item, index) => (
+                                {currentDaySchedule.map((item, index) => (
                                     <tr key={index}>
                                         <td className="time-col">
                                             <div className="time-badge">{item.time}</div>

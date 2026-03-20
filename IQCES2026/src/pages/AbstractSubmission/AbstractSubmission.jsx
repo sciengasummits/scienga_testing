@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../../components/common/Button/Button';
-import { CalendarDays } from 'lucide-react';
+import { CalendarDays, CheckCircle, Clock, Star } from 'lucide-react';
 import './AbstractSubmission.css';
-import { submitAbstract } from '../../api/siteApi';
+import { submitAbstract, uploadAbstractFile, fetchContent } from '../../api/siteApi';
 import { countries } from '../../data/countriesData';
 
+// ─── Default Important Dates (shown if backend is unreachable) ────────────────
+const DEFAULT_DATES = [
+    { month: 'DEC', day: '10', year: '2025', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
+    { month: 'FEB', day: '15', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
+    { month: 'APR', day: '20', year: '2026', event: 'Abstract Submission Deadline', icon: 'Clock' },
+    { month: 'JUN', day: '24', year: '2026', event: 'Conference Date', sub: 'June 24–26, 2026, Bern', icon: 'Star' },
+];
 
-
+const ICON_MAP = { CalendarDays, CheckCircle, Clock, Star };
 
 const AbstractSubmission = () => {
     const [formData, setFormData] = useState({
@@ -20,12 +27,40 @@ const AbstractSubmission = () => {
         topic: '',
         address: ''
     });
-    const [file, setFile] = useState(null);
+    const [abstractFile, setAbstractFile] = useState(null);
+    const [submitting, setSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error'
+
+    // ── Live Important Dates from backend ──────────────────────────────────────
+    const [importantDates, setImportantDates] = useState(DEFAULT_DATES);
+
+    useEffect(() => {
+        let cancelled = false;
+
+        const load = () => {
+            fetchContent('importantDates').then(data => {
+                if (!cancelled && data?.dates?.length) {
+                    setImportantDates(data.dates);
+                }
+            }).catch(e => console.warn('[AbstractSubmission] Failed to fetch dates:', e.message));
+        };
+
+        load();
+        const interval = setInterval(load, 15000);
+        const onVisible = () => { if (document.visibilityState === 'visible') load(); };
+        document.addEventListener('visibilitychange', onVisible);
+
+        return () => {
+            cancelled = true;
+            clearInterval(interval);
+            document.removeEventListener('visibilitychange', onVisible);
+        };
+    }, []);
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
-        if (files) {
-            setFile(files[0]);
+        if (name === 'file') {
+            setAbstractFile(files[0] || null);
         } else {
             setFormData(prev => ({ ...prev, [name]: value }));
         }
@@ -34,26 +69,57 @@ const AbstractSubmission = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const data = new FormData();
-        Object.keys(formData).forEach(key => data.append(key, formData[key]));
-        if (file) data.append('file', file);
-        data.append('conference', 'iqces');
+        if (!formData.name || !formData.email) {
+            alert('Please fill in your Name and Email before submitting.');
+            return;
+        }
+
+        setSubmitting(true);
+        setSubmitStatus(null);
+
+        let fileUrl = '';
+        let fileName = '';
+
+        // Upload file first if one was selected
+        if (abstractFile) {
+            try {
+                const uploaded = await uploadAbstractFile(abstractFile);
+                fileUrl = uploaded.url || '';
+                fileName = uploaded.originalName || abstractFile.name;
+            } catch {
+                fileName = abstractFile.name; // non-fatal
+            }
+        }
+
+        const payload = {
+            title: formData.title,
+            name: formData.name,
+            email: formData.email,
+            phone: formData.mobile,
+            organization: formData.organization,
+            country: formData.country,
+            interest: formData.interest,
+            topic: formData.topic,
+            address: formData.address,
+            fileName,
+            fileUrl,
+            status: 'Pending',
+            conference: 'iqces2026',
+        };
 
         try {
-            const res = await submitAbstract(data);
-            if (res.success) {
-                alert('Abstract submitted successfully! We will contact you soon.');
-                setFormData({
-                    title: '', name: '', email: '', mobile: '', organization: '',
-                    country: '', interest: '', topic: '', address: ''
-                });
-                setFile(null);
-            } else {
-                alert('Submission failed. Please try again or contact support.');
-            }
+            await submitAbstract(payload);
+            setSubmitStatus('success');
+            setFormData({
+                title: '', name: '', email: '', mobile: '',
+                organization: '', country: '', interest: '', topic: '', address: ''
+            });
+            setAbstractFile(null);
         } catch (err) {
             console.error(err);
-            alert('An error occurred. Please try again.');
+            setSubmitStatus('error');
+        } finally {
+            setSubmitting(false);
         }
     };
 
@@ -177,13 +243,13 @@ const AbstractSubmission = () => {
                                         className="form-control"
                                     >
                                         <option value="" disabled>- Select Topics of Discussion: -</option>
-                                        <option value="quantum_algorithms">Quantum Algorithms & Complexity</option>
+                                        <option value="quantum_algorithms">Quantum Algorithms &amp; Complexity</option>
                                         <option value="quantum_info">Quantum Information Processing</option>
-                                        <option value="quantum_error">Quantum Error Correction & Fault Tolerance</option>
+                                        <option value="quantum_error">Quantum Error Correction &amp; Fault Tolerance</option>
                                         <option value="quantum_hardware">Quantum Hardware: Superconducting, Trapped Ion, Photonic</option>
-                                        <option value="quantum_crypto">Quantum Cryptography & Post-Quantum Security</option>
-                                        <option value="quantum_sensing">Quantum Sensing & Precision Measurements</option>
-                                        <option value="quantum_control">Scalability & Control of Quantum Systems</option>
+                                        <option value="quantum_crypto">Quantum Cryptography &amp; Post-Quantum Security</option>
+                                        <option value="quantum_sensing">Quantum Sensing &amp; Precision Measurements</option>
+                                        <option value="quantum_control">Scalability &amp; Control of Quantum Systems</option>
                                         <option value="hybrid_systems">Hybrid Quantum-Classical Systems</option>
                                         <option value="industrial_applications">Industrial Applications of Quantum Technologies</option>
                                         <option value="other">Other</option>
@@ -215,56 +281,50 @@ const AbstractSubmission = () => {
                                 </div>
                             </div>
 
+                            {/* Inline feedback banners */}
+                            {submitStatus === 'success' && (
+                                <div style={{ padding: '14px 20px', background: '#ecfdf5', border: '1px solid #6ee7b7', borderRadius: '10px', color: '#065f46', fontWeight: 600, marginBottom: '16px', textAlign: 'center' }}>
+                                    ✅ Abstract submitted successfully! We will review your submission and get back to you.
+                                </div>
+                            )}
+                            {submitStatus === 'error' && (
+                                <div style={{ padding: '14px 20px', background: '#fef2f2', border: '1px solid #fca5a5', borderRadius: '10px', color: '#dc2626', fontWeight: 600, marginBottom: '16px', textAlign: 'center' }}>
+                                    ❌ Submission failed. Please check your internet connection and try again.
+                                </div>
+                            )}
+
                             <div className="form-actions">
-                                <Button type="submit">Submit Abstract</Button>
+                                <Button
+                                    type="submit"
+                                    disabled={submitting}
+                                    style={{ opacity: submitting ? 0.7 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}
+                                >
+                                    {submitting ? 'Submitting…' : 'Submit Abstract'}
+                                </Button>
                             </div>
                         </form>
                     </div>
 
-                    {/* Right Column: Important Dates */}
+                    {/* Right Column: Important Dates — live from backend */}
                     <div className="abstract-col-right">
                         <h3 className="dates-header-title">Important Dates</h3>
 
                         <div className="dates-list-vertical">
-                            <div className="date-card-item">
-                                <div className="date-icon-circle">
-                                    <CalendarDays size={20} />
-                                </div>
-                                <div className="date-content">
-                                    <h4>Abstract Submission Opens</h4>
-                                    <p>December 10, 2025</p>
-                                </div>
-                            </div>
-
-                            <div className="date-card-item">
-                                <div className="date-icon-circle">
-                                    <CalendarDays size={20} />
-                                </div>
-                                <div className="date-content">
-                                    <h4>Early Bird Deadline</h4>
-                                    <p>February 15, 2026</p>
-                                </div>
-                            </div>
-
-                            <div className="date-card-item">
-                                <div className="date-icon-circle">
-                                    <CalendarDays size={20} />
-                                </div>
-                                <div className="date-content">
-                                    <h4>Abstract Submission Deadline</h4>
-                                    <p>April 20, 2026</p>
-                                </div>
-                            </div>
-
-                            <div className="date-card-item">
-                                <div className="date-icon-circle">
-                                    <CalendarDays size={20} />
-                                </div>
-                                <div className="date-content">
-                                    <h4>Conference Date</h4>
-                                    <p>June 24–26, 2026</p>
-                                </div>
-                            </div>
+                            {importantDates.map((d, i) => {
+                                const Icon = ICON_MAP[d.icon] || CalendarDays;
+                                const label = [d.month, d.day, d.year].filter(Boolean).join(' ');
+                                return (
+                                    <div key={i} className="date-card-item">
+                                        <div className="date-icon-circle">
+                                            <Icon size={20} />
+                                        </div>
+                                        <div className="date-content">
+                                            <h4>{d.event}</h4>
+                                            <p>{d.sub || label}</p>
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
 
