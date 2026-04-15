@@ -1,0 +1,19 @@
+/*
+  # Security headers that also signal trust to search engines
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/sitemap-images.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400, must-revalidate

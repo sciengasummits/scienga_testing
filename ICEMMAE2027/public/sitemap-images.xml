@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- HOME PAGE IMAGES -->
+  <url>
+    <loc>https://liutex2026.com/</loc>
+    <image:image>
+      <image:loc>https://liutex2026.com/og-image.png</image:loc>
+      <image:title>LIUTEX2026 – INTERNATIONAL CONFERENCE ON LIUTEX THEORY AND TURBULENCE MECHANISM, Singapore December 2026</image:title>
+      <image:caption>Official conference banner for LIUTEX2026 held December 14–16, 2026 in Outram, Singapore</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://liutex2026.com/liutex-favicon.svg</image:loc>
+      <image:title>LIUTEX2026 Conference Logo</image:title>
+      <image:caption>LIUTEX2026 official logo – INTERNATIONAL CONFERENCE ON LIUTEX THEORY AND TURBULENCE MECHANISM</image:caption>
+    </image:image>
+  </url>
+
+  <!-- SPEAKERS PAGE -->
+  <url>
+    <loc>https://liutex2026.com/speakers</loc>
+    <image:image>
+      <image:loc>https://liutex2026.com/og-image.png</image:loc>
+      <image:title>LIUTEX2026 Keynote Speakers – Fluid Mechanics &amp; Vortex Dynamics Experts</image:title>
+      <image:caption>International keynote speakers at LIUTEX2026, Singapore, December 2026</image:caption>
+    </image:image>
+  </url>
+
+  <!-- VENUE PAGE -->
+  <url>
+    <loc>https://liutex2026.com/venue</loc>
+    <image:image>
+      <image:loc>https://liutex2026.com/og-image.png</image:loc>
+      <image:title>LIUTEX2026 Venue – Outram, Singapore</image:title>
+      <image:caption>Conference venue for LIUTEX2026 in Outram, Singapore</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
