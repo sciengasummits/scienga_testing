@@ -3,12 +3,12 @@
     display: flex;
     align-items: center;
     background-color: var(--color-dark-void);
-    background-image: url('https://tse1.mm.bing.net/th/id/OIP.VZRtysBC7-QzrZRTpLLZQAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3');
+    background-image: url('../../../assets/images/WhatsApp Image 2026-04-16 at 3.37.35 PM (1).jpeg');
     background-size: cover;
     background-position: center;
     color: var(--color-white);
     padding-top: 100px;
-    padding-bottom: 380px;
+    padding-bottom: 100px;
     /* Space for collaborations banner */
     min-height: 100vh;
     overflow-x: hidden;
@@ -70,7 +70,7 @@
 }
 
 .hero__title-sub {
-    color: #4da3ff;
+    color: #20b2aa;
     display: block;
     font-size: 1.6rem;
     font-weight: 800;
@@ -118,14 +118,14 @@
 }
 
 .btn-elevate {
-    box-shadow: 0 10px 20px rgba(52, 120, 223, 0.4);
+    box-shadow: 0 10px 20px rgba(32, 178, 170, 0.4);
     z-index: 10;
     transition: all 0.3s ease;
 }
 
 .btn-elevate:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(99, 155, 239, 0.6);
+    box-shadow: 0 15px 30px rgba(32, 178, 170, 0.6);
 }
 
 .hero__info-cards {
@@ -149,13 +149,13 @@
 .date-card {
     top: 0;
     left: 0;
-    background: var(--color-secondary-blue);
+    background: #20b2aa;
     width: 240px;
     text-align: center;
     z-index: 2;
     padding: 1.5rem 1rem;
-    border: 1px solid rgba(52, 120, 223, 0.3);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(52, 120, 223, 0.2);
+    border: 1px solid rgba(32, 178, 170, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(32, 178, 170, 0.2);
 }
 
 .date-card h3 {
@@ -179,7 +179,7 @@
     font-size: 1.2rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
-    color: #4da3ff;
+    color: #20b2aa;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -219,8 +219,8 @@
     width: 220px;
     z-index: 1;
     padding: 1.5rem 1.2rem;
-    border: 1px solid rgba(52, 120, 223, 0.3);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(52, 120, 223, 0.2);
+    border: 1px solid rgba(32, 178, 170, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(32, 178, 170, 0.2);
 }
 
 .venue-card h3 {
@@ -318,7 +318,7 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--color-secondary-blue, #2563eb);
+    background: #20b2aa;
     color: white;
     padding: 6px 14px;
     font-size: 0.75rem;
@@ -349,7 +349,7 @@
 }
 
 .chair-country-v {
-    color: #4da3ff;
+    color: #20b2aa;
     font-size: 0.8rem;
     font-weight: 700;
     margin: 0;

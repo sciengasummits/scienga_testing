@@ -84,7 +84,7 @@ img {
 
 /* Page Header Generic Styles */
 .page-header {
-    background: linear-gradient(135deg, rgba(52, 120, 223, 0.9) 0%, rgba(52, 120, 223, 0.8) 100%), url('https://tse1.mm.bing.net/th/id/OIP.VZRtysBC7-QzrZRTpLLZQAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3');
+    background: linear-gradient(135deg, rgba(32, 178, 170, 0.9) 0%, rgba(32, 178, 170, 0.8) 100%), url('https://tse1.mm.bing.net/th/id/OIP.VZRtysBC7-QzrZRTpLLZQAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3');
     background-size: cover;
     background-position: center;
     color: var(--color-white);

@@ -20,12 +20,12 @@
 .btn--primary {
     background: var(--color-primary-gradient);
     color: var(--color-white);
-    box-shadow: 0 8px 20px rgba(52, 120, 223, 0.25);
+    box-shadow: 0 8px 20px rgba(32, 178, 170, 0.25);
 }
 
 .btn--primary:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(52, 120, 223, 0.35);
+    box-shadow: 0 12px 25px rgba(32, 178, 170, 0.35);
     filter: brightness(1.1);
 }
 

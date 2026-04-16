@@ -25,7 +25,7 @@
     background: var(--color-primary-gradient);
     margin: 0 auto;
     border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(52, 120, 223, 0.2);
+    box-shadow: 0 2px 10px rgba(32, 178, 170, 0.2);
 }
 
 .conference-marquee-wrapper {

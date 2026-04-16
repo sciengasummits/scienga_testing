@@ -67,7 +67,7 @@
     background: var(--color-primary-gradient);
     margin: 0 auto;
     border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(52, 120, 223, 0.2);
+    box-shadow: 0 2px 10px rgba(32, 178, 170, 0.2);
 }
 
 
@@ -201,8 +201,8 @@
 
 .premium-date-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(52, 120, 223, 0.15);
-    border-color: rgba(52, 120, 223, 0.1);
+    box-shadow: 0 12px 30px rgba(32, 178, 170, 0.15);
+    border-color: rgba(32, 178, 170, 0.1);
 }
 
 /* Date Box */

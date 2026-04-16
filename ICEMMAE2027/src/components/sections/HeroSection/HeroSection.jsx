@@ -219,27 +219,7 @@ const HeroSection = () => {
                         </div>
                     </div>
 
-                    {chairs && chairs.length > 0 && (
-                        <div className="hero__chairs-row">
-                            {chairs.map((chair, idx) => (
-                                <div className="chair-card-v" key={chair.id || idx}>
-                                    <div className="chair-badge-v">{chair.title || 'Conference Chairman'}</div>
-                                    {chair.image ? (
-                                        <img src={resolveUrl(chair.image)} alt={chair.name} className="chair-card-bg" />
-                                    ) : (
-                                        <div className="chair-placeholder-v"><User size={40} color="#fff" /></div>
-                                    )}
-                                    <div className="chair-card-overlay">
-                                        <h4 className="chair-name-v">{chair.name}</h4>
-                                        <p className="chair-aff-v">{chair.affiliation}</p>
-                                        {chair.country && (
-                                            <p className="chair-country-v"><MapPin size={12} /> {chair.country}</p>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
+
                 </div>
             </div>
 

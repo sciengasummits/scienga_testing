@@ -1,17 +1,17 @@
 :root {
   /* Unified Dark Blue Palette */
-  --color-primary-start: #3478DF;
+  --color-primary-start: #20b2aa;
   /* Unified Deep Navy */
-  --color-primary-rgb: 52, 120, 223;
-  --color-primary-end: #3478DF;
-  --color-secondary-blue: #3478DF;
+  --color-primary-rgb: 32, 178, 170;
+  --color-primary-end: #20b2aa;
+  --color-secondary-blue: #20b2aa;
 
   --color-accent-blue: #caf0f8;
-  --color-dark-void: #3478DF;
+  --color-dark-void: #1B8C86;
 
-  --color-primary-gradient: linear-gradient(135deg, #3478DF 0%, #3478DF 100%);
-  --color-vortex-gradient: radial-gradient(circle at center, #ffffff 0%, #3478DF 30%, #3478DF 100%);
-  --color-deep-blue-gradient: linear-gradient(180deg, #3478DF 0%, #3478DF 100%);
+  --color-primary-gradient: linear-gradient(135deg, #20b2aa 0%, #20b2aa 100%);
+  --color-vortex-gradient: radial-gradient(circle at center, #ffffff 0%, #20b2aa 30%, #20b2aa 100%);
+  --color-deep-blue-gradient: linear-gradient(180deg, #20b2aa 0%, #20b2aa 100%);
 
   --color-text-dark: #000814;
   /* Drenched Blue-Black */
@@ -24,8 +24,8 @@
   --font-primary: 'Open Sans', sans-serif;
   --font-heading: 'Barlow', sans-serif;
 
-  --shadow-card: 0 10px 25px rgba(52, 120, 223, 0.15);
-  --shadow-glow: 0 0 20px rgba(52, 120, 223, 0.4);
+  --shadow-card: 0 10px 25px rgba(32, 178, 170, 0.15);
+  --shadow-glow: 0 0 20px rgba(32, 178, 170, 0.4);
 
   --radius-sm: 4px;
   --radius-md: 8px;

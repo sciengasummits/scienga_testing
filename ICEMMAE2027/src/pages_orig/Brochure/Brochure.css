@@ -23,7 +23,7 @@
 }
 
 .preview-card {
-    background: radial-gradient(circle at center, #3478DF 0%, #3478DF 100%);
+    background: radial-gradient(circle at center, #20b2aa 0%, #20b2aa 100%);
     color: white;
     width: 280px;
     height: 400px;
@@ -37,7 +37,7 @@
         inset 0 0 100px rgba(255, 255, 255, 0.05);
     position: relative;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(52, 120, 223, 0.2);
+    border: 1px solid rgba(32, 178, 170, 0.2);
     cursor: default;
     overflow: hidden;
     transform-style: preserve-3d;
@@ -89,7 +89,7 @@
     position: absolute;
     width: 150px;
     height: 150px;
-    background: radial-gradient(circle, rgba(52, 120, 223, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(32, 178, 170, 0.3) 0%, transparent 70%);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -208,14 +208,14 @@
 .download-btn {
     background: var(--color-primary-gradient);
     color: white;
-    box-shadow: 0 4px 15px rgba(52, 120, 223, 0.3);
+    box-shadow: 0 4px 15px rgba(32, 178, 170, 0.3);
     border: none;
 }
 
 .download-btn:hover {
-    background: linear-gradient(90deg, #3478DF, #3478DF);
+    background: linear-gradient(90deg, #20b2aa, #20b2aa);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(52, 120, 223, 0.4);
+    box-shadow: 0 8px 25px rgba(32, 178, 170, 0.4);
 }
 
 .view-btn {

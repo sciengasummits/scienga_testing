@@ -21,7 +21,7 @@ export async function POST(req) {
       adminEmail,
       `📩 Brochure Download Request - ${conference.toUpperCase()}`,
       `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-        <div style="background: linear-gradient(135deg, #3478df, #2563eb); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+        <div style="background: linear-gradient(135deg, #20b2aa, #2563eb); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
           <h1 style="color: white; margin: 0; font-size: 24px;">Brochure Download Request</h1>
           <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">SCIENGASUMMITS 2026</p>
         </div>
@@ -43,7 +43,7 @@ export async function POST(req) {
       email,
       `✅ Brochure Access Granted - ${conference.toUpperCase()}`,
       `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-        <div style="background: linear-gradient(135deg, #3478df, #2563eb); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+        <div style="background: linear-gradient(135deg, #20b2aa, #2563eb); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
           <h1 style="color: white; margin: 0; font-size: 24px;">Conference Brochure</h1>
           <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">SCIENGASUMMITS 2026</p>
         </div>

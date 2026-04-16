@@ -22,7 +22,7 @@
     justify-content: center;
     color: white;
     margin: 0 auto 2rem auto;
-    box-shadow: 0 10px 20px rgba(52, 120, 223, 0.2);
+    box-shadow: 0 10px 20px rgba(32, 178, 170, 0.2);
     animation: float 3s ease-in-out infinite;
 }
 

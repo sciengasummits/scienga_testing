@@ -105,7 +105,7 @@
     background: var(--color-primary-gradient);
     border-color: transparent;
     transform: scale(1.15);
-    box-shadow: 0 0 20px rgba(52, 120, 223, 0.6);
+    box-shadow: 0 0 20px rgba(32, 178, 170, 0.6);
 }
 
 .venue__indicators {

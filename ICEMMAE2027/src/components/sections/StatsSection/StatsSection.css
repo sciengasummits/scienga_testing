@@ -50,7 +50,7 @@
 
 .stats-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(52, 120, 223, 0.1);
+    box-shadow: 0 20px 40px rgba(32, 178, 170, 0.1);
     border-bottom-color: var(--color-secondary-blue);
 }
 

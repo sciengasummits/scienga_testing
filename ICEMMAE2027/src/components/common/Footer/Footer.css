@@ -42,7 +42,7 @@
 .social-icon:hover {
     background: var(--color-primary-gradient);
     transform: translateY(-5px) rotate(8deg);
-    box-shadow: 0 5px 15px rgba(52, 120, 223, 0.4);
+    box-shadow: 0 5px 15px rgba(32, 178, 170, 0.4);
 }
 
 .footer h4 {
