@@ -56,7 +56,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h4>Address</h4>
-                                <p>Outram, Singapore</p>
+                                <p>Munich, Germany</p>
                             </div>
                         </div>
 

@@ -38,7 +38,7 @@ const DigitalBrochure = () => {
                                 <MapPin size={24} />
                                 <div>
                                     <p className="info-label">VENUE</p>
-                                    <p className="info-value">Outram, Singapore</p>
+                                    <p className="info-value">Munich, Germany</p>
                                 </div>
                             </div>
                         </div>

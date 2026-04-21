@@ -83,7 +83,7 @@ const DEFAULTS = {
             items: [
                 {
                     question: 'Where is the congress taking place?',
-                    answer: 'The congress will be held in Outram, Singapore. Detailed venue information and maps are available on the Venue page.',
+                    answer: 'The congress will be held in Munich, Germany. Detailed venue information and maps are available on the Venue page.',
                 },
                 {
                     question: 'Are there recommended hotels nearby?',

@@ -114,7 +114,7 @@ const Brochure = () => {
                                 </div>
                                 <div className="preview-footer">
                                     <p>December 14-17, 2026</p>
-                                    <p>Outram, Singapore</p>
+                                    <p>Munich, Germany</p>
                                 </div>
                             </div>
                         </div>

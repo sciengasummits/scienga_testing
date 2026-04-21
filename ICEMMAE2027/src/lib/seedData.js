@@ -209,7 +209,7 @@
                 title: 'FLUID MECHANICS & TURBOMACHINERY',
                 description: 'International Conference on Fluid Mechanics & Turbomachinery, where global experts unite to shape the future of engineering dynamics. Discover ground-breaking innovations in fluid systems, connect with top mechanical engineers, and explore solutions transforming industrial efficiency.',
                 conferenceDate: 'December 14-16, 2026',
-                venue: 'Outram, Singapore',
+                venue: 'Munich, Germany',
                 countdownTarget: '2026-12-14T09:00:00+01:00',
                 showRegister: true,
                 showAbstract: true,
@@ -355,7 +355,7 @@
             key: 'venue',
             data: {
                 title: 'Conference Venue',
-                name: 'Outram, Singapore',
+                name: 'Munich, Germany',
                 address: 'Singapore',
                 description: 'A world-class conference venue in the heart of Singapore, offering state-of-the-art facilities for an international engineering conference.',
                 images: [
