@@ -1,10 +1,14 @@
-import React, { useRef } from 'react';
+'use client';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 import Button from '../../common/Button/Button';
 import './BrochureSection.css';
 
 const BrochureSection = () => {
+    const router = useRouter();
+    const navigate = (path) => router.push(path);
     const handleDownload = () => {
-        window.open('/brochure.pdf', '_blank');
+        navigate('/brochure');
     };
 
     return (
@@ -32,8 +36,8 @@ const BrochureSection = () => {
                     {/* Placeholder for brochure preview image */}
                     <div className="preview-card">
                         <div className="preview-page">
-                            <h3>WORLD GENERAL MEDICINE CONGRESS</h3>
-                            <p>2026</p>
+                            <h3>Renewable Energy & Climate Change</h3>
+                            <p>2026 EDITION</p>
                             <div className="preview-lines"></div>
                         </div>
                     </div>

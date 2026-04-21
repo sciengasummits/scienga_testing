@@ -21,11 +21,19 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
     opacity: 0;
     transform: translateX(100%);
     transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+.venue__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35));
+    z-index: 1;
 }
 
 .venue__slide.active {
@@ -79,25 +87,25 @@
 }
 
 .venue__arrow {
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    font-size: 1.8rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
 }
 
 .venue__arrow:hover {
-    background: rgba(255, 255, 255, 0.25);
-    border-color: white;
-    transform: scale(1.1);
+    background: var(--color-primary-gradient);
+    border-color: transparent;
+    transform: scale(1.15);
+    box-shadow: 0 0 20px rgba(52, 120, 223, 0.6);
 }
 
 .venue__indicators {
@@ -116,6 +124,8 @@
     transition: all 0.3s ease;
     padding: 0;
 }
+
+
 
 .venue__indicator.active {
     background: white;

@@ -1,5 +1,5 @@
 .schedule {
-    background-color: var(--color-white);
+    background-color: #ffffff;
     position: relative;
     overflow: hidden;
 }
@@ -33,7 +33,7 @@
 .schedule__tabs {
     display: flex;
     gap: 1rem;
-    background: #f1f5f9;
+    background: #ffffff;
     padding: 0.5rem;
     border-radius: 50px;
     max-width: 600px;
@@ -257,7 +257,7 @@
 
 .btn-view-schedule:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+    box-shadow: 0 8px 25px rgba(248, 168, 8, 0.939);
 }
 
 @media (max-width: 768px) {

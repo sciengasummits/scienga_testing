@@ -33,57 +33,54 @@
 
 .stats-card {
     background: var(--color-white);
-    padding: 1.5rem 1rem;
-    border-radius: 10px;
+    padding: 2.5rem 1rem;
+    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    /* Subtle shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    /* Added border */
-    border-bottom: 3px solid transparent;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 4px solid transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
 .stats-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    /* More pronounced shadow */
-    border-color: rgba(0, 0, 0, 0.05);
-    /* Slightly lighter border on hover maybe? Or keep original */
-    border-bottom-color: var(--color-primary-start);
-    /* Maintain the accent */
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(52, 120, 223, 0.1);
+    border-bottom-color: var(--color-secondary-blue);
 }
 
-/* Specific red border for all cards to match image style exactly if needed, 
-   but hover effect is nice. The image has a red bottom border on hover? 
-   Or maybe it's just the design. I'll stick to hover or permanent if requested.
-   The image shows a subtle shadow and clean look. */
-
 .stats-icon {
-    color: var(--color-primary-start);
-    /* Green icon color */
-    margin-bottom: 0.75rem;
+    color: var(--color-secondary-blue);
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.4s ease;
+}
+
+.stats-card:hover .stats-icon {
+    transform: scale(1.2);
 }
 
 .stats-number {
-    font-size: 1.75rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: var(--color-text-dark);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
     line-height: 1.2;
 }
 
 .stats-label {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-text-body);
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Responsive Design */
@@ -95,10 +92,19 @@
 
 @media (max-width: 576px) {
     .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     .stats-card {
-        padding: 2rem 1rem;
+        padding: 1.5rem 0.5rem;
+    }
+
+    .stats-number {
+        font-size: 1.5rem;
+    }
+
+    .stats-label {
+        font-size: 0.75rem;
     }
 }

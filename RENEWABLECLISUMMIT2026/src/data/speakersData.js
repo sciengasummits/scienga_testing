@@ -1,49 +1,49 @@
 export const speakers = [
     {
         id: 1,
-        name: "Dr. Kadhim Alabady",
-        title: "Senior Food Safety Specialist",
-        affiliation: "International Food Policy Research Institute",
+        name: "Prof. Chaoqun Liu",
+        title: "Distinguished Professor",
+        affiliation: "University of Texas at Arlington, USA",
         category: "Keynote Speaker",
         image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80"
     },
     {
         id: 2,
-        name: "Assoc. Prof. Dr. Suriyadeo Tripathi",
-        title: "Director of Agricultural Innovation",
-        affiliation: "Institute for Sustainable Agriculture",
-        category: "Keynote Speaker",
+        name: "Prof. Yifei Chen",
+        title: "Professor of renewable energy",
+        affiliation: "Tsinghua University, China",
+        category: "Invited Speaker",
         image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80"
     },
     {
         id: 3,
-        name: "Prof. Qing Ping Xie",
-        title: "Head of Food Engineering",
-        affiliation: "Academy of Agricultural Sciences, China",
+        name: "Dr. James C. Williams",
+        title: "Senior Research Scientist",
+        affiliation: "NASA Langley Research Center, USA",
         category: "Keynote Speaker",
         image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80"
     },
     {
         id: 4,
-        name: "Dr. Sarah Mitchell",
-        title: "Professor of Plant Genetics",
-        affiliation: "University of California, Davis",
+        name: "Prof. Sarah Mitchell",
+        title: "Professor of Computational Physics",
+        affiliation: "University of Cambridge, UK",
         category: "Plenary Speaker",
         image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80"
     },
     {
         id: 5,
         name: "Prof. Dr. Ahmed Hassan",
-        title: "Professor of Soil Science",
-        affiliation: "Cairo University Faculty of Engineering, Egypt",
-        category: "Plenary Speaker",
+        title: "Head of Aerospace Engineering",
+        affiliation: "Cairo University, Egypt",
+        category: "Featured",
         image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80"
     },
     {
         id: 6,
         name: "Dr. Maria Rodriguez",
-        title: "Director of Food Technology",
-        affiliation: "Barcelona Agrifood Research Center, Spain",
+        title: "Director of CFD Research",
+        affiliation: "Technical University of Munich, Germany",
         category: "Plenary Speaker",
         image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=80"
     },
@@ -51,7 +51,7 @@ export const speakers = [
         id: 7,
         name: "Dr. James Chen",
         title: "Senior Agricultural Economist",
-        affiliation: "Singapore Food Agency",
+        affiliation: "Munich, Germany Food Agency",
         category: "Poster Presenter",
         image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
     },
@@ -303,7 +303,6 @@ export const speakers = [
         category: "Delegate",
         image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80"
     },
-    // Keynote Speakers (17 more)
     {
         id: 39,
         name: "Dr. Elena Rossi",
@@ -348,7 +347,7 @@ export const speakers = [
         id: 44,
         name: "Prof. Sarah Lee",
         title: "Sustainability Director",
-        affiliation: "National University of Singapore",
+        affiliation: "National University of Munich, Germany",
         category: "Keynote Speaker",
         image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
     },
@@ -440,8 +439,6 @@ export const speakers = [
         category: "Keynote Speaker",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
     },
-
-    // Plenary Speakers (17 more)
     {
         id: 56,
         name: "Dr. Oliver Scott",
@@ -534,7 +531,7 @@ export const speakers = [
         id: 67,
         name: "Prof. Daniel Kim",
         title: "Green Building Architect",
-        affiliation: "National University of Singapore",
+        affiliation: "National University of Munich, Germany",
         category: "Plenary Speaker",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
     },
@@ -578,8 +575,6 @@ export const speakers = [
         category: "Plenary Speaker",
         image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80"
     },
-
-    // Poster Presenters (12 more needed)
     {
         id: 73,
         name: "Dr. Grace Lee",
@@ -676,8 +671,6 @@ export const speakers = [
         category: "Poster Presenter",
         image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80"
     },
-
-    // Students (12 more needed)
     {
         id: 85,
         name: "Alice Johnson",
@@ -774,8 +767,6 @@ export const speakers = [
         category: "Student",
         image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80"
     },
-
-    // Delegates (12 more needed)
     {
         id: 97,
         name: "Dr. Mark Spencer",
@@ -872,8 +863,6 @@ export const speakers = [
         category: "Delegate",
         image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
     },
-
-    // Committee (12 more needed)
     {
         id: 109,
         name: "Prof. Yale Harvard",

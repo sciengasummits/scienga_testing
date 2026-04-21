@@ -23,12 +23,12 @@
     color: var(--color-primary-end);
 }
 
-.logo-icon-heart {
+.logo-icon-accent {
     position: absolute;
     top: 0;
     right: -2px;
-    color: #e63946;
-    /* Accent color for the heart */
+    color: var(--color-primary-start);
+    /* Electric blue Climate accent */
     animation: heartPulse 1.5s infinite;
 }
 
@@ -53,24 +53,29 @@
     line-height: 1;
 }
 
+.logo-text-top {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--color-text-body);
+    margin-bottom: 2px;
+}
+
 .logo-text-main {
     font-size: 1.5rem;
-    /* Adjusted to match icon height better */
     font-weight: 800;
     text-transform: uppercase;
     color: var(--color-text-dark);
-    line-height: 1;
-    /* Ensure line-height doesn't add extra space */
-    display: flex;
-    align-items: center;
 }
 
-/* Logo text styling removal of old classes */
-/* .logo-text-top and .logo-text-sub were removed in previous step implicitly by overwritten them or making them unused */
-
 .logo-text-sub {
-    display: none;
-    /* Safely hide any lingering elements if they exist in markup */
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--color-primary-end);
+    text-transform: uppercase;
+    margin-top: 1px;
 }
 
 /* Footer variant styles */
@@ -91,12 +96,5 @@
 }
 
 .footer__coll-logo .logo-text-sub {
-    color: #a0d2eb;
-    /* Lighter blue for dark background */
-}
-
-/* Footer-specific logo sizing to prevent collision */
-.footer__coll-logo .logo-text-main {
-    font-size: 1.2rem;
-    white-space: nowrap;
+    color: var(--color-primary-start);
 }

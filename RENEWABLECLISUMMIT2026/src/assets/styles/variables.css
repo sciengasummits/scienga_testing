@@ -1,41 +1,32 @@
 :root {
-  /* Primary Green Theme Colors */
-  --color-primary: #2E7D32;
+  /* Green Theme Palette */
   --color-primary-start: #2E7D32;
-  --color-primary-end: #43A047;
-  --color-primary-dark: #1B5E20;
-  --color-primary-light: #66BB6A;
   --color-primary-rgb: 46, 125, 50;
-  --color-primary-gradient: linear-gradient(135deg, var(--color-primary-start) 0%, var(--color-primary-end) 100%);
-  
-  /* Text Colors */
-  --color-text-dark: #1a1a1a;
-  --color-text-body: #4a4a4a;
-  --color-text-header: #2c3e50;
-  
-  /* Background Colors */
-  --color-bg-light: #f8f9fa;
+  --color-primary-end: #43A047;
+  --color-secondary-green: #388E3C;
+
+  --color-accent-green: #E8F5E9;
+  --color-dark-void: #1B5E20;
+
+  --color-primary-gradient: linear-gradient(135deg, #2E7D32 0%, #43A047 100%);
+  --color-Climate-gradient: radial-gradient(circle at center, #ffffff 0%, #2E7D32 30%, #43A047 100%);
+  --color-deep-green-gradient: linear-gradient(180deg, #1B5E20 0%, #2E7D32 100%);
+
+  --color-text-dark: #001a00;
+  --color-text-body: #2c3e2c;
+  --color-bg-light: #f1f8f1;
   --color-white: #ffffff;
-  
-  /* Accent Colors */
-  --color-accent: #43A047;
-  --color-success: #4CAF50;
-  --color-info: #2196F3;
-  
-  /* Fonts */
+
   --font-primary: 'Open Sans', sans-serif;
   --font-heading: 'Barlow', sans-serif;
 
-  /* Shadows */
-  --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.05);
-  --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.1);
-  
-  /* Border Radius */
+  --shadow-card: 0 10px 25px rgba(46, 125, 50, 0.15);
+  --shadow-glow: 0 0 20px rgba(46, 125, 50, 0.4);
+
   --radius-sm: 4px;
   --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
 
-  /* Transitions */
-  --transition-default: all 0.3s ease;
+  --transition-default: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
