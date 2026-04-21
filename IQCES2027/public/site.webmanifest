@@ -1,0 +1,17 @@
+{
+  "name": "LIUTEX2026 – INTERNATIONAL CONFERENCE ON LIUTEX THEORY AND TURBULENCE MECHANISM",
+  "short_name": "LIUTEX2026",
+  "description": "INTERNATIONAL CONFERENCE ON LIUTEX THEORY AND TURBULENCE MECHANISM – December 14-16, 2026, Outram, Singapore.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f2e",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/liutex-favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

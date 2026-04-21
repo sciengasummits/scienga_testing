@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- HOME PAGE IMAGES -->
+  <url>
+    <loc>https://iqce2027.com/</loc>
+    <image:image>
+      <image:loc>https://iqce2027.com/og-image.png</image:loc>
+      <image:title>iqce2027 – INTERNATIONAL CONFERENCE ON iqce2027 THEORY AND TURBULENCE MECHANISM, Singapore December 2026</image:title>
+      <image:caption>Official conference banner for iqce2027 held December 14–16, 2026 in Outram, Singapore</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://iqce2027.com/iqce2027-favicon.svg</image:loc>
+      <image:title>iqce2027 Conference Logo</image:title>
+      <image:caption>iqce2027 official logo – INTERNATIONAL CONFERENCE ON iqce2027 THEORY AND TURBULENCE MECHANISM</image:caption>
+    </image:image>
+  </url>
+
+  <!-- SPEAKERS PAGE -->
+  <url>
+    <loc>https://iqce2027.com/speakers</loc>
+    <image:image>
+      <image:loc>https://iqce2027.com/og-image.png</image:loc>
+      <image:title>iqce2027 Keynote Speakers – Fluid Mechanics &amp; Vortex Dynamics Experts</image:title>
+      <image:caption>International keynote speakers at iqce2027, Singapore, December 2026</image:caption>
+    </image:image>
+  </url>
+
+  <!-- VENUE PAGE -->
+  <url>
+    <loc>https://iqce2027.com/venue</loc>
+    <image:image>
+      <image:loc>https://iqce2027.com/og-image.png</image:loc>
+      <image:title>iqce2027 Venue – Outram, Singapore</image:title>
+      <image:caption>Conference venue for iqce2027 in Outram, Singapore</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
