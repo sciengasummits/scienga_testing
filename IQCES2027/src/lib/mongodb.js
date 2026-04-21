@@ -6,10 +6,6 @@ dns.setDefaultResultOrder('ipv4first');
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable in .env');
-}
-
 /**
  * Global is used here to maintain a cached connection across hot reloads
  * in development. This prevents connections growing exponentially
@@ -24,6 +20,18 @@ if (!cached) {
 async function connectDB() {
   if (cached.conn) {
     return cached.conn;
+  }
+
+  if (!MONGODB_URI) {
+    console.error('❌ MONGODB_URI is not defined in environment variables');
+    // In some build environments, we want to allow the build to proceed even if DB is missing
+    if (process.env.NODE_ENV === 'production') {
+       // Return null or throw depending on how critical it is
+       // For now, let's keep it throwing to ensure the user knows they MUST set it, 
+       // but since it's inside the function, it won't crash the module import.
+       throw new Error('Please define the MONGODB_URI environment variable in .env (or Vercel Settings)');
+    }
+    return null;
   }
 
   if (!cached.promise) {
