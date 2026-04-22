@@ -7,7 +7,7 @@ import { fetchContent } from '../../../api/contentApi';
 import './Footer.css';
 
 const Footer = () => {
-    const [contactInfo, setContactInfo] = useState({ email: 'contact@RECCClimatesummit.com', phone: '+91 7842090097' });
+    const [contactInfo, setContactInfo] = useState({ email: 'renewable@sciengasummits.com', phone: '+91 7842090097' });
 
     useEffect(() => {
         fetchContent('contact').then(data => {
@@ -29,7 +29,7 @@ const Footer = () => {
                             <Logo />
                         </div>
                         <p className="footer__desc">
-                            Advancing the science of Liutex-based vortex identification to unlock deeper insights into turbulence and rotational flow dynamics.
+                            Advancing the science of Renewable Energy & Climate Change to unlock deeper insights into sustainable energy and environmental dynamics.
                         </p>
                         <div className="footer__socials">
                             <a href="https://www.facebook.com/profile.php?id=61588065033161" target="_blank" rel="noopener noreferrer" className="social-icon">FB</a>

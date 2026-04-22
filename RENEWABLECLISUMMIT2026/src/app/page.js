@@ -6,15 +6,14 @@ import KeyThemesSection from '../components/sections/KeyThemesSection/KeyThemesS
 import SpeakersSection from '../components/sections/SpeakersSection/SpeakersSection';
 import PricingSection from '../components/sections/PricingSection/PricingSection';
 import SponsorsSection from '../components/sections/SponsorsSection/SponsorsSection';
-import PreviousConferenceSection from '../components/sections/PreviousConferenceSection/PreviousConferenceSection';
 import UniversitiesMarquee from '../components/sections/UniversitiesMarquee/UniversitiesMarquee';
 import '../pages_orig/Home/Home.css';
 
 export const metadata = {
-    title: 'Home | RENEWABLECLISUMMIT2026',
-    description: 'RENEWABLECLISUMMIT2026 – INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE. December 14–16, 2026, Munich, Germany. Submit abstracts and register now.',
+    title: 'Home | RECC 2027',
+    description: 'RECC 2027 – International Conference on Renewable Energy & Climate Change. March 23-25, 2027, Munich, Germany. Submit abstracts and register now.',
     alternates: {
-        canonical: 'https://renewableclisummit2026.sciengasummits.com/',
+        canonical: 'https://recc2027.sciengasummits.com/',
     }
 };
 
@@ -28,7 +27,6 @@ export default function Home() {
             <SpeakersSection showViewAll={true} />
             <PricingSection />
             <KeyThemesSection showLearnMore={true} />
-            <PreviousConferenceSection />
             <SponsorsSection />
         </div>
     );

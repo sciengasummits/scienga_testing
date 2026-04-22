@@ -9,11 +9,12 @@ import { resolveImageUrl } from '../../../api/utilsApi';
 
 const DEFAULTS = {
     subtitle: 'INTERNATIONAL CONFERENCE ON',
-    title: 'RENEWABLE ENERGY &\nCLIMATE CHANGE',
-    description: 'INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE where global experts unite to shape the future of fluid mechanics. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
+    title: 'Renewable Energy AND\nClimate Change',
+    description: 'International Conference on Renewable Energy & Climate Change where global experts unite to shape the future of renewable energy. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
     conferenceDate: 'March 23-25, 2027',
     venue: 'Munich, Germany',
     countdownTarget: '2027-03-23T09:00:00+01:00',
+    bgImage: '/images/hero-bg.png',
     showRegister: true,
     showAbstract: true,
     showBrochure: true,
@@ -26,17 +27,7 @@ const HeroSection = () => {
     const navigate = (path) => router.push(path);
     const [hero, setHero] = useState(DEFAULTS);
     const [chairs, setChairs] = useState(null);
-    const calcTimeLeft = (target) => {
-        const diff = new Date(target).getTime() - Date.now();
-        if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-        return {
-            days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-            hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-            minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-            seconds: Math.floor((diff % (1000 * 60)) / 1000),
-        };
-    };
-    const [timeLeft, setTimeLeft] = useState(() => calcTimeLeft(DEFAULTS.countdownTarget));
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [collaborations, setCollaborations] = useState([]);
 
     // resolveImageUrl from siteApi.js handles both local (localhost:5050) and
@@ -85,9 +76,9 @@ const HeroSection = () => {
                     } else if (data === null || data === undefined) {
                         // Fallback dummy data if nothing is saved yet
                         setChairs([
-                            { id: 1, name: 'Dr. Chaoqun Liu', affiliation: 'University of Texas at Arlington', country: 'USA', title: 'Conference Chairman' },
-                            { id: 2, name: 'Dr. Yiqian Wang', affiliation: 'Soochow University', country: 'China', title: 'Conference Co-chairman' },
-                            { id: 3, name: 'Dr. James Chen', affiliation: 'Munich, Germany Food Agency', country: 'Munich, Germany', title: 'Conference Co-chairman' }
+                            { id: 1, name: 'Prof. Hans Müller', affiliation: 'Technical University of Munich', country: 'Germany', title: 'Conference Chairman' },
+                            { id: 2, name: 'Dr. Sarah Johnson', affiliation: 'Renewable Energy Institute', country: 'UK', title: 'Conference Co-chairman' },
+                            { id: 3, name: 'Prof. Tanaka Sato', affiliation: 'Sustainable Tech University', country: 'Japan', title: 'Conference Co-chairman' }
                         ]);
                     } else {
                         setChairs([]);
@@ -124,14 +115,20 @@ const HeroSection = () => {
     }, []);
 
     useEffect(() => {
-        const target = hero.countdownTarget || DEFAULTS.countdownTarget;
-        // Calculate immediately so countdown shows correct value on first render
-        setTimeLeft(calcTimeLeft(target));
+        const targetDate = new Date(hero.countdownTarget || DEFAULTS.countdownTarget).getTime();
 
         const interval = setInterval(() => {
-            const tl = calcTimeLeft(target);
-            setTimeLeft(tl);
-            if (tl.days === 0 && tl.hours === 0 && tl.minutes === 0 && tl.seconds === 0) {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                setTimeLeft({ days, hours, minutes, seconds });
+            } else {
                 clearInterval(interval);
             }
         }, 1000);
@@ -266,8 +263,7 @@ const HeroSection = () => {
                 </div>
             )}
         </section>
-    ); 
+    );
 };
 
 export default HeroSection;
-//

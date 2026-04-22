@@ -5,10 +5,10 @@ const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_change_me';
 
 export const CONFERENCE_ACCOUNTS = [
   {
-    username: 'RENEWABLECLISUMMIT2026',
-    email: process.env.LIUTEX_EMAIL || 'contact@RECCClimatesummit.com',
-    conferenceId: 'liutex',
-    displayName: 'LIUTEX SUMMIT 2026',
+    username: 'RECCSUMMIT2026',
+    email: process.env.RECC_EMAIL || 'renewable@sciengasummits.com',
+    conferenceId: 'renewable',
+    displayName: 'RECC SUMMIT 2027',
   },
   {
     username: 'FOODAGRISUMMIT2026',
@@ -21,12 +21,6 @@ export const CONFERENCE_ACCOUNTS = [
     email: process.env.FLUID_EMAIL || 'fluid@sciengasummits.com',
     conferenceId: 'fluid',
     displayName: 'FLUID MECHANICS & TURBOMACHINERY 2026',
-  },
-  {
-    username: 'RENEWABLECLISUMMIT2026',
-    email: process.env.RENEWABLE_EMAIL || 'renewable@sciengasummits.com',
-    conferenceId: 'renewable',
-    displayName: 'RENEWABLE ENERGY & CLIMATE CHANGE 2026',
   },
   {
     username: 'CYBERQUANTUMSUMMIT2026',
@@ -44,7 +38,7 @@ export const CONFERENCE_ACCOUNTS = [
     username: 'POLYMATSUMMIT2026',
     email: process.env.POLYMAT_EMAIL || 'contact@polymatsummit.com',
     conferenceId: 'polymat',
-    displayName: 'INTERNATIONAL CONFERENCE ON POLYMERS AND COMPOSITE MATERIALS 2026',
+    displayName: 'ANNUAL INTERNATIONAL CONFERENCE ON POLYMERS AND COMPOSITE MATERIALS 2026',
   },
   {
     username: 'IQCES2026',

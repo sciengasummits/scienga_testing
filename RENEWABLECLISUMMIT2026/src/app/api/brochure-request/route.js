@@ -5,14 +5,14 @@ import { escapeHtml } from '@/lib/utils';
 
 export async function POST(req) {
   try {
-    const { name, email, number, conference = 'liutex' } = await req.json();
+    const { name, email, number, conference = 'renewable' } = await req.json();
 
     if (!email || !name) {
       return NextResponse.json({ success: false, error: 'Name and Email required' }, { status: 400 });
     }
 
     const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
-    const adminEmail = account ? account.email : 'contact@RECCClimatesummit.com';
+    const adminEmail = account ? account.email : 'renewable@sciengasummits.com';
 
     const emailSender = new RealEmailSender();
 
@@ -21,9 +21,9 @@ export async function POST(req) {
       adminEmail,
       `📩 Brochure Download Request - ${conference.toUpperCase()}`,
       `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-        <div style="background: linear-gradient(135deg, #3478df, #2563eb); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+        <div style="background: linear-gradient(135deg, #1bb385, #169e76); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
           <h1 style="color: white; margin: 0; font-size: 24px;">Brochure Download Request</h1>
-          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">SCIENGASUMMITS 2026</p>
+          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">RECC 2027</p>
         </div>
         <div style="background: #f8fafc; padding: 30px; border-radius: 10px; border: 1px solid #e2e8f0;">
           <h2 style="color: #1e293b; margin: 0 0 20px 0;">New Brochure Request</h2>
@@ -43,9 +43,9 @@ export async function POST(req) {
       email,
       `✅ Brochure Access Granted - ${conference.toUpperCase()}`,
       `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-        <div style="background: linear-gradient(135deg, #3478df, #2563eb); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+        <div style="background: linear-gradient(135deg, #1bb385, #169e76); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
           <h1 style="color: white; margin: 0; font-size: 24px;">Conference Brochure</h1>
-          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">SCIENGASUMMITS 2026</p>
+          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">RECC 2027</p>
         </div>
         <div style="background: #f8fafc; padding: 30px; border-radius: 10px; border: 1px solid #e2e8f0;">
           <h2 style="color: #1e293b; margin: 0 0 20px 0;">Hello ${escapeHtml(name)},</h2>
@@ -54,7 +54,7 @@ export async function POST(req) {
           <p style="color: #64748b; font-size: 14px; margin: 20px 0 0 0;">If you have any questions, feel free to reach out to us.</p>
         </div>
         <div style="text-align: center; margin-top: 20px; padding: 20px;">
-          <p style="color: #94a3b8; font-size: 12px; margin: 0;">© 2026 LIUTEX SUMMIT. All rights reserved.</p>
+          <p style="color: #94a3b8; font-size: 12px; margin: 0;">© 2027 RECC SUMMIT. All rights reserved.</p>
         </div>
       </div>`,
       'BROCHURE',

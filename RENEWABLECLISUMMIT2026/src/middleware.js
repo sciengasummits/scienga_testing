@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 
 const ALLOWED_ORIGINS = [
-  'https://renewableclisummit2026.sciengasummits.com',
-  'https://www.renewableclisummit2026.sciengasummits.com',
+  'https://recc2027.sciengasummits.com',
+  'https://www.recc2027.sciengasummits.com',
   'https://sciengasummits.com',
   'https://www.sciengasummits.com',
 ];

@@ -3,11 +3,12 @@
             key: 'hero',
             data: {
                 subtitle: 'INTERNATIONAL CONFERENCE ON',
-                title: 'LIUTEX AND VORTEX\nIDENTIFICATION',
+                title: 'RECC AND VORTEX\nIDENTIFICATION',
                 description: 'International Conference on Liutex and Vortex Identification. where global experts unite to shape the future of fluid mechanics. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
-                conferenceDate: 'March 23-25, 2027',
+                conferenceDate: 'December 14-16, 2026',
                 venue: 'Munich, Germany',
-                countdownTarget: '2027-03-23T09:00:00+01:00',
+                countdownTarget: '2026-12-14T09:00:00+01:00',
+                bgImage: '/images/hero-bg.png',
                 showRegister: true,
                 showAbstract: true,
                 showBrochure: true
@@ -18,8 +19,8 @@
             data: {
                 subtitle: 'Liutex and Vortex Identification and Its Applications',
                 title: 'About The Conference',
-                paragraph1: 'The International Conference on Liutex Theory and Applications in Vortex Identification and Vortex Dynamics is a premier international platform dedicated to advancing the understanding of Liutex theory and its transformative applications in vortex identification and vortex dynamics.',
-                paragraph2: 'This conference brings together leading researchers, academicians, computational scientists, engineers, and industry professionals to explore recent developments, theoretical foundations, numerical methods, and real-world applications of Liutex-based vortex analysis.',
+                paragraph1: 'The International Conference on Renewable Energy Systems and Applications in Vortex Identification and Climate Action is a premier international platform dedicated to advancing the understanding of Liutex theory and its transformative applications in vortex identification and vortex dynamics.',
+                paragraph2: 'This conference brings together leading researchers, academicians, computational scientists, engineers, and industry professionals to explore recent developments, theoretical foundations, numerical methods, and real-world applications of Renewable-based vortex analysis.',
                 objectives: [
                     'Promote advancements in Liutex theory',
                     'Explore innovations in vortex identification techniques',
@@ -28,11 +29,11 @@
                     'Encourage collaboration across aerospace, mechanical, civil, and environmental engineering domains'
                 ],
                 keyThemes: [
-                    'Fundamentals of Liutex Theory',
+                    'Fundamentals of Renewable Energy Systems',
                     'Vortex Identification Methods (Q-criterion, ?2, ? method, Liutex)',
                     'Turbulence Modeling and Analysis',
                     'Computational Fluid Dynamics (CFD) Applications',
-                    'Vortex Dynamics in Aerospace Engineering',
+                    'Climate Action in Aerospace Engineering',
                     'Data-Driven and AI Approaches in Flow Field Identification'
                 ]
             }
@@ -44,14 +45,14 @@
                     { month: 'JUN', day: '15', year: '2026', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
                     { month: 'SEP', day: '25', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
                     { month: 'OCT', day: '30', year: '2026', event: 'Submission Deadline', icon: 'Clock' },
-                    { month: 'DEC', day: '14', year: '2026', event: 'Conference Date', icon: 'Star', sub: 'March 23-25, 2027, Munich, Germany' }
+                    { month: 'DEC', day: '14', year: '2026', event: 'Conference Date', icon: 'Star', sub: 'December 14-16, 2026, Munich, Germany' }
                 ]
             }
         },
         {
             key: 'stats',
             data: {
-                title: 'LIUTEX VORTEX SUMMIT CONFERENCES APPROACH',
+                title: 'RECC VORTEX SUMMIT CONFERENCES APPROACH',
                 items: [
                     { number: '15+', label: 'Years Experience' },
                     { number: '100+', label: 'Events' },
@@ -94,11 +95,11 @@
             key: 'sessions',
             data: {
                 sessions: [
-                    'Fundamentals of Liutex Theory',
+                    'Fundamentals of Renewable Energy Systems',
                     'Vortex Identification Methods (Q-criterion, ?2, ?, Liutex)',
                     'Turbulence Modeling and Analysis',
-                    'CFD Applications in Vortex Dynamics',
-                    'Vortex Dynamics in Aerospace Engineering',
+                    'Energy Storage in Climate Action',
+                    'Climate Action in Aerospace Engineering',
                     'AI & Data-Driven Flow Field Identification',
                     'Experimental Methods in Vortex Research',
                     'Liutex Applications in Ocean Engineering',
@@ -113,7 +114,7 @@
                     'Vortex-Induced Vibrations',
                     'Flow Visualization Techniques',
                     'Machine Learning for Fluid Mechanics',
-                    'Green Energy & Vortex Dynamics'
+                    'Green Energy & Climate Action'
                 ],
                 schedule: {
                     day1: [
@@ -164,7 +165,7 @@
         {
             key: 'contact',
             data: {
-                email: 'info@renewableclisummit2026.sciengasummits.com',
+                email: 'renewable@sciengasummits.com',
                 phone: '+65 0000 0000',
                 address: 'Munich, Germany',
                 socialLinks: {
@@ -203,9 +204,9 @@
                 subtitle: 'INTERNATIONAL CONFERENCE ON',
                 title: 'FLUID MECHANICS & TURBOMACHINERY',
                 description: 'International Conference on Fluid Mechanics & Turbomachinery, where global experts unite to shape the future of engineering dynamics. Discover ground-breaking innovations in fluid systems, connect with top mechanical engineers, and explore solutions transforming industrial efficiency.',
-                conferenceDate: 'March 23-25, 2027',
+                conferenceDate: 'December 14-16, 2026',
                 venue: 'Munich, Germany',
-                countdownTarget: '2027-03-23T09:00:00+01:00',
+                countdownTarget: '2026-12-14T09:00:00+01:00',
                 showRegister: true,
                 showAbstract: true,
                 showBrochure: true
@@ -243,7 +244,7 @@
                     { month: 'JUN', day: '15', year: '2026', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
                     { month: 'SEP', day: '25', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
                     { month: 'OCT', day: '30', year: '2026', event: 'Submission Deadline', icon: 'Clock' },
-                    { month: 'DEC', day: '14', year: '2026', event: 'Conference Date', icon: 'Star', sub: 'March 23-25, 2027, Munich, Germany' }
+                    { month: 'DEC', day: '14', year: '2026', event: 'Conference Date', icon: 'Star', sub: 'December 14-16, 2026, Munich, Germany' }
                 ]
             }
         },
@@ -403,7 +404,7 @@
                 title: 'FOOD SCIENCE TECHNOLOGY AND AGRICULTURE',
                 description: 'International Conference on Food Science Technology and Agriculture, where global experts unite to shape the future of food science and agricultural innovation. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
                 conferenceDate: 'December 07-09, 2026',
-                venue: 'Marina Bay, Munich, Germany',
+                venue: 'Munich, Munich, Germany',
                 countdownTarget: '2026-12-07T09:00:00+08:00',
                 showRegister: true,
                 showAbstract: true,
@@ -548,9 +549,9 @@
             key: 'venue',
             data: {
                 title: 'Conference Venue',
-                name: 'Marina Bay, Munich, Germany',
+                name: 'Munich, Munich, Germany',
                 address: 'Munich, Germany',
-                description: 'A world-class conference venue in Marina Bay, Munich, Germany, offering state-of-the-art facilities for an international food science and agriculture conference.',
+                description: 'A world-class conference venue in Munich, Munich, Germany, offering state-of-the-art facilities for an international food science and agriculture conference.',
                 images: [
                     'https://images.unsplash.com/photo-1540575861501-7ad05823c93e?w=1920&q=80',
                     'https://images.unsplash.com/photo-1512470876302-972fad2aa9dd?w=1920&q=80',
@@ -580,7 +581,6 @@
 
     // ??? Seed Data for All Conferences ????????????????????????????
     const conferences = [
-        { name: 'liutex', defaults: liutexDefaults },
         { name: 'fluid', defaults: fluidDefaults },
         { name: 'foodagri', defaults: foodagriDefaults },
         {
@@ -752,7 +752,7 @@
                 {
                     key: 'contact',
                     data: {
-                        email: 'info@renewableclisummit.com',
+                        email: 'renewable@sciengasummits.com',
                         phone: '+49 000 000 000',
                         address: 'Munich, Germany',
                         socialLinks: {
@@ -789,11 +789,11 @@
                 {
                     key: 'hero',
                     data: {
-                        subtitle: 'INTERNATIONAL CONFERENCE ON',
+                        subtitle: 'ANNUAL INTERNATIONAL CONFERENCE ON',
                         title: 'CYBERSECURITY AND QUANTUM COMPUTING',
                         description: 'Global Summit on Cybersecurity and Quantum Computing, where global experts unite to shape the future of digital security and quantum technologies. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
                         conferenceDate: 'December 07-09, 2027',
-                        venue: 'Marina Bay, Munich, Germany',
+                        venue: 'Munich, Munich, Germany',
                         countdownTarget: '2027-12-07T09:00:00+08:00',
                         showRegister: true,
                         showAbstract: true,
@@ -938,9 +938,9 @@
                     key: 'venue',
                     data: {
                         title: 'Conference Venue',
-                        name: 'Marina Bay, Munich, Germany',
+                        name: 'Munich, Munich, Germany',
                         address: 'Munich, Germany',
-                        description: 'A world-class conference facility in Marina Bay, Munich, Germany ? a global hub for fintech, cybersecurity, and digital innovation ? offering state-of-the-art facilities and stunning waterfront views.',
+                        description: 'A world-class conference facility in Munich, Munich, Germany ? a global hub for fintech, cybersecurity, and digital innovation ? offering state-of-the-art facilities and stunning waterfront views.',
                         images: [
                             'https://images.unsplash.com/photo-1540575861501-7ad05823c93e?w=1920&q=80',
                             'https://images.unsplash.com/photo-1512470876302-972fad2aa9dd?w=1920&q=80',
@@ -953,7 +953,7 @@
                     data: {
                         email: 'contact@cyberquantumsummit.com',
                         phone: '+91 7842090097',
-                        address: 'Marina Bay, Munich, Germany',
+                        address: 'Munich, Munich, Germany',
                         socialLinks: {
                             facebook: 'https://www.facebook.com/profile.php?id=61588065033161',
                             twitter: '',
@@ -988,7 +988,7 @@
                 {
                     key: 'hero',
                     data: {
-                        subtitle: 'INTERNATIONAL CONFERENCE ON',
+                        subtitle: 'ANNUAL INTERNATIONAL CONFERENCE ON',
                         title: 'POWER ENERGY AND ELECTRICAL ENGINEERING',
                         description: 'Annual International Conference on Power Energy and Electrical Engineering, where global experts unite to shape the future of sustainable energy. Discover ground-breaking power technologies, connect with top industry professionals, and explore solutions transforming our planet\'s energy grid.',
                         conferenceDate: 'March 23-25, 2027',
@@ -1190,7 +1190,7 @@
                     key: 'hero', 
                     data: {
                     
-                        subtitle: 'INTERNATIONAL CONFERENCE ON', 
+                        subtitle: 'ANNUAL INTERNATIONAL CONFERENCE ON', 
                         title: 'POLYMERS AND COMPOSITE MATERIALS', 
                         description: 'Annual International Conference on Polymers and Composite Materials, where global experts unite to advance polymer science and composite engineering. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming the future of materials.', 
                         conferenceDate: 'November 16-18, 2026', 

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const DiscountSchema = new mongoose.Schema({
-    conference: { type: String, default: 'liutex', index: true }, // 'liutex' | 'foodagri'
+    conference: { type: String, default: 'renewable', index: true }, // 'renewable' | 'foodagri'
     coupon: { type: String, required: true, uppercase: true, trim: true },
     category: { type: String, default: 'registration' }, // 'registration' | 'accommodation' | 'both'
     percentage: { type: Number, required: true, min: 1, max: 100 },

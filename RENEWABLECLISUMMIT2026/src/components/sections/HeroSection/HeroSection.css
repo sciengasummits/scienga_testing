@@ -58,7 +58,7 @@
 }
 
 .hero__title {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     line-height: 1.1;
     margin-bottom: 1.2rem;
     font-weight: 900;
@@ -70,7 +70,7 @@
 }
 
 .hero__title-sub {
-    color: #4da3ff;
+    color: var(--color-primary-start);
     display: block;
     font-size: 1.6rem;
     font-weight: 800;
@@ -117,14 +117,14 @@
 }
 
 .btn-elevate {
-    box-shadow: 0 10px 20px rgba(52, 120, 223, 0.4);
+    box-shadow: 0 10px 20px rgba(27, 179, 133, 0.4);
     z-index: 10;
     transition: all 0.3s ease;
 }
 
 .btn-elevate:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(99, 155, 239, 0.6);
+    box-shadow: 0 15px 30px rgba(27, 179, 133, 0.6);
 }
 
 .hero__info-cards {
@@ -148,13 +148,13 @@
 .date-card {
     top: 0;
     left: 0;
-    background: var(--color-secondary-blue);
+    background: var(--color-primary-start);
     width: 240px;
     text-align: center;
     z-index: 2;
     padding: 1.5rem 1rem;
-    border: 1px solid rgba(52, 120, 223, 0.3);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(52, 120, 223, 0.2);
+    border: 1px solid rgba(27, 179, 133, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(27, 179, 133, 0.2);
 }
 
 .date-card h3 {
@@ -178,7 +178,7 @@
     font-size: 1.2rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
-    color: #4da3ff;
+    color: var(--color-primary-start);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -214,12 +214,12 @@
 .venue-card {
     bottom: 0;
     right: 0;
-    background: var(--color-dark-void);
+    background: var(--color-primary-start);
     width: 220px;
     z-index: 1;
     padding: 1.5rem 1.2rem;
-    border: 1px solid rgba(52, 120, 223, 0.3);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(52, 120, 223, 0.2);
+    border: 1px solid rgba(27, 179, 133, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(27, 179, 133, 0.2);
 }
 
 .venue-card h3 {
@@ -348,7 +348,7 @@
 }
 
 .chair-country-v {
-    color: #4da3ff;
+    color: var(--color-primary-start);
     font-size: 0.8rem;
     font-weight: 700;
     margin: 0;
@@ -382,7 +382,7 @@
     }
 
     .hero__title {
-        font-size: 3rem;
+        font-size: 2.4rem;
     }
 
     .hero__desc {
@@ -408,7 +408,7 @@
     }
 
     .hero__title {
-        font-size: 2.2rem;
+        font-size: 2.0rem;
     }
 
     .hero__title-sub {
@@ -459,7 +459,7 @@
     }
 
     .hero__title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         letter-spacing: -0.5px;
     }
 

@@ -1,10 +1,10 @@
-import Speakers from '../../pages_orig/Speakers';
+import Speakers from '../../pages_orig/Speakers/Speakers';
 
 export const metadata = {
-    title: 'Speakers | RENEWABLECLISUMMIT2026',
-    description: 'Keynote speakers, plenary speakers, and special session chairs for RENEWABLECLISUMMIT2026.',
+    title: 'Speakers | RECC 2027',
+    description: 'Keynote speakers, plenary speakers, and special session chairs for RECC 2027.',
     alternates: {
-        canonical: 'https://liutex2026.com/speakers',
+        canonical: 'https://RECC 2027.com/speakers',
     }
 };
 

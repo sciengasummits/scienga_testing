@@ -1,10 +1,10 @@
-import Sessions from '../../pages_orig/Sessions';
+import Sessions from '../../pages_orig/Sessions/Sessions';
 
 export const metadata = {
-    title: 'Sessions | RENEWABLECLISUMMIT2026',
-    description: 'Special sessions and themes for the RENEWABLECLISUMMIT2026 conference in Munich, Germany.',
+    title: 'Sessions | RECC 2027',
+    description: 'Special sessions and themes for the RECC 2027 conference in Munich, Germany.',
     alternates: {
-        canonical: 'https://liutex2026.com/sessions',
+        canonical: 'https://RECC 2027.com/sessions',
     }
 };
 

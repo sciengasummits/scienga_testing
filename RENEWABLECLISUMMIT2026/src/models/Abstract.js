@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const AbstractSchema = new mongoose.Schema({
-    conference: { type: String, default: 'liutex', index: true }, // 'liutex' | 'foodagri'
+    conference: { type: String, default: 'renewable', index: true }, // 'renewable' | 'foodagri'
     title: { type: String, default: '' },
     name: { type: String, required: true },
     email: { type: String, required: true },

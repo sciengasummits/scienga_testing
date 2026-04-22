@@ -20,7 +20,7 @@ const Navbar = () => {
         fetchContent('contact').then(data => {
             if (data) {
                 setContactInfo({
-                    email: data.email || 'contact@RECCClimatesummit.com',
+                    email: data.email || 'renewable@sciengasummits.com',
                     phone: data.phone || '+91 7842090097',
                     whatsapp: data.whatsapp || '+91 7842090097',
                 });

@@ -8,7 +8,7 @@ export async function GET(req) {
     await connectDB();
     const { searchParams } = new URL(req.url);
     const type = searchParams.get('type');
-    const conf = searchParams.get('conference') || 'liutex';
+    const conf = searchParams.get('conference') || 'renewable';
 
     const filter = { visible: true, conference: conf };
     if (type) filter.type = type;

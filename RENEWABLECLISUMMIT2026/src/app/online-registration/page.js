@@ -1,10 +1,10 @@
-import OnlineRegistration from '../../pages_orig/OnlineRegistration';
+import OnlineRegistration from '../../pages_orig/OnlineRegistration/OnlineRegistration';
 
 export const metadata = {
-    title: 'Online Registration | RENEWABLECLISUMMIT2026',
-    description: 'Register online with a discount code for RENEWABLECLISUMMIT2026.',
+    title: 'Online Registration | RECC 2027',
+    description: 'Register online with a discount code for RECC 2027.',
     alternates: {
-        canonical: 'https://liutex2026.com/online-registration',
+        canonical: 'https://RECC 2027.com/online-registration',
     }
 };
 

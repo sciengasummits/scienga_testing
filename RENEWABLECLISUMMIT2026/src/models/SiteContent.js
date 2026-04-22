@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const SiteContentSchema = new mongoose.Schema({
-  conference: { type: String, default: 'liutex', index: true }, // 'liutex' | 'foodagri'
+  conference: { type: String, default: 'renewable', index: true }, // 'renewable' | 'foodagri'
   key: { type: String, required: true }, // e.g. 'hero', 'about', 'stats', etc.
   data: { type: mongoose.Schema.Types.Mixed, required: true },
   updatedAt: { type: Date, default: Date.now }

@@ -1,17 +1,17 @@
 :root {
-  /* Unified Dark Blue Palette */
-  --color-primary-start: #3478DF;
-  /* Unified Deep Navy */
-  --color-primary-rgb: 52, 120, 223;
-  --color-primary-end: #3478DF;
-  --color-secondary-blue: #3478DF;
+  /* Unified Specific Green Palette from User Screenshot */
+  --color-primary-start: #1bb385;
+  /* Specific Green */
+  --color-primary-rgb: 27, 179, 133;
+  --color-primary-end: #169e76;
+  --color-secondary-blue: #1bb385;
 
-  --color-accent-blue: #caf0f8;
-  --color-dark-void: #3478DF;
+  --color-accent-blue: #f0fdfa;
+  --color-dark-void: #064e3b;
 
-  --color-primary-gradient: linear-gradient(135deg, #3478DF 0%, #3478DF 100%);
-  --color-vortex-gradient: radial-gradient(circle at center, #ffffff 0%, #3478DF 30%, #3478DF 100%);
-  --color-deep-blue-gradient: linear-gradient(180deg, #3478DF 0%, #3478DF 100%);
+  --color-primary-gradient: linear-gradient(135deg, #1bb385 0%, #169e76 100%);
+  --color-vortex-gradient: radial-gradient(circle at center, #ffffff 0%, #1bb385 30%, #169e76 100%);
+  --color-deep-blue-gradient: linear-gradient(180deg, #065f46 0%, #064e3b 100%);
 
   --color-text-dark: #000814;
   /* Drenched Blue-Black */

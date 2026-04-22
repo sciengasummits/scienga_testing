@@ -6,8 +6,8 @@ import Footer from '../components/common/Footer/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'RENEWABLECLISUMMIT2026',
-  description: 'International Conference on Liutex Theory and Turbulence Mechanism',
+  title: 'RECC 2027',
+  description: 'International Conference on Renewable Energy & Climate Change',
 };
 
 export default function RootLayout({ children }) {

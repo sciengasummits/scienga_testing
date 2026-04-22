@@ -1,9 +1,9 @@
 /* 
-  Service Worker for RECC 2027
+  Service Worker for LIUTEX2026
   - Handles caching and offline functionality (placeholder for now)
 */
 
-const CACHE_NAME = 'RECC-v1';
+const CACHE_NAME = 'liutex-v1';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',

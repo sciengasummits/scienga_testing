@@ -1,10 +1,10 @@
-import Venue from '../../pages_orig/Venue';
+import Venue from '../../pages_orig/Venue/Venue';
 
 export const metadata = {
-    title: 'Venue | RENEWABLECLISUMMIT2026',
-    description: 'Information about the RENEWABLECLISUMMIT2026 conference venue at Munich, Germany.',
+    title: 'Venue | RECC 2027',
+    description: 'Information about the RECC 2027 conference venue at Munich, Germany.',
     alternates: {
-        canonical: 'https://liutex2026.com/venue',
+        canonical: 'https://RECC 2027.com/venue',
     }
 };
 

@@ -9,24 +9,23 @@ import { fetchContent } from '../../../api/contentApi';
 const ICON_MAP = { CalendarDays, CheckCircle, Clock, Star, Calendar, MapPin };
 
 const DEFAULT_ABOUT = {
-
     title: 'About The Conference',
-    paragraph1: 'The INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE is a premier international platform dedicated to advancing the understanding of Liutex theory and its transformative applications in turbulence mechanisms.',
-    paragraph2: 'This conference brings together leading researchers, academicians, computational scientists, engineers, and industry professionals to explore recent developments, theoretical foundations, numerical methods, and real-world applications of Liutex-based vortex analysis.',
+    paragraph1: 'The INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY AND CLIMATE CHANGE is a premier international platform dedicated to advancing the understanding of sustainable energy and its transformative applications in environmental conservation.',
+    paragraph2: 'This conference brings together leading researchers, academicians, scientists, engineers, and industry professionals to explore recent developments, theoretical foundations, and real-world applications of renewable energy technologies and climate change mitigation.',
     objectives: [
-        'Promote advancements in Liutex theory',
-        'Explore innovations in vortex identification techniques',
-        'Discuss computational and experimental approaches in vortex dynamics',
-        'Bridge academia and industry in fluid mechanics research',
-        'Encourage collaboration across aerospace, mechanical, civil, and environmental engineering domains',
+        'Promote advancements in renewable energy research',
+        'Explore innovations in solar, wind, and bioenergy techniques',
+        'Discuss computational and experimental approaches in climate modeling',
+        'Bridge academia and industry in sustainable engineering',
+        'Encourage collaboration across energy, mechanical, civil, and environmental engineering domains',
     ],
     keyThemes: [
-        'Fundamentals of Liutex Theory',
-        'Vortex Identification Methods (Q-criterion, λ2, Ω method, Liutex)',
-        'Turbulence Modeling and Analysis',
-        'Computational Fluid Dynamics (CFD) Applications',
-        'Vortex Dynamics in Aerospace Engineering',
-        'Data-Driven and AI Approaches in Flow Field Identification',
+        'Solar Energy Technologies',
+        'Wind Power and Ocean Energy Systems',
+        'Biomass, Biofuel, and Waste-to-Energy',
+        'Climate Change Impact and Adaptation',
+        'Smart Grids and Energy Storage',
+        'Sustainable Cities and Green Infrastructure',
     ],
 };
 
@@ -35,7 +34,7 @@ const DEFAULT_DATES = {
         { month: 'JUN', day: '15', year: '2026', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
         { month: 'SEP', day: '25', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
         { month: 'OCT', day: '30', year: '2026', event: 'Submission Deadline', icon: 'Clock' },
-        { month: 'DEC', day: '14', year: '2026', event: 'Conference Date', icon: 'Star', sub: 'December 14-17, 2026, Munich, Germany' },
+        { month: 'MAR', day: '23', year: '2027', event: 'Conference Date', icon: 'Star', sub: 'March 23-25, 2027, Munich, Germany' },
     ],
 };
 

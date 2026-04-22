@@ -114,7 +114,7 @@ export default function SponsorsSection() {
                     </h2>
                     <div style={{
                         width: '60px', height: '4px',
-                        background: 'var(--brand-gradient, linear-gradient(135deg, #0F172A 0%, #1E40AF 100%))',
+                        background: 'linear-gradient(135deg, #1bb385 0%, #169e76 100%)',
                         margin: '0 auto', borderRadius: '2px',
                     }}></div>
                 </div>

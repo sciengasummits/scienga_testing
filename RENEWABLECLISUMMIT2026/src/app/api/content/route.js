@@ -6,7 +6,7 @@ export async function GET(req) {
   try {
     await connectDB();
     const { searchParams } = new URL(req.url);
-    const conf = searchParams.get('conference') || 'liutex';
+    const conf = searchParams.get('conference') || 'renewable';
     
     const all = await SiteContent.find({ conference: conf });
     const result = {};

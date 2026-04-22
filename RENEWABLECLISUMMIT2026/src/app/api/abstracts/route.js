@@ -9,7 +9,7 @@ export async function GET(req) {
   try {
     await connectDB();
     const { searchParams } = new URL(req.url);
-    const conf = searchParams.get('conference') || 'liutex';
+    const conf = searchParams.get('conference') || 'renewable';
     const abstracts = await Abstract.find({ conference: conf }).sort({ createdAt: -1 });
     return NextResponse.json(abstracts);
   } catch (err) {
@@ -24,27 +24,52 @@ export async function POST(req) {
     const abs = new Abstract(body);
     await abs.save();
 
-    const { name, email, title, conference = 'liutex' } = body;
+    const { name, email, title, conference = 'renewable' } = body;
     const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
-    const adminEmail = account ? account.email : 'contact@RECCClimatesummit.com';
-    const siteUrl = process.env.FRONTEND_URL || 'https://renewableclisummit2026.sciengasummits.com';
+    const adminEmail = account ? account.email : 'renewable@sciengasummits.com';
+    const siteUrl = process.env.FRONTEND_URL || 'https://recc2027.sciengasummits.com';
 
     const emailSender = new RealEmailSender();
     
     // User confirmation
-    emailSender.sendEmail(
+    await emailSender.sendEmail(
       email,
       `✅ Abstract Submission Received - ${conference.toUpperCase()}`,
-      `<div style="font-family: Arial; padding: 20px;"><h2>Abstract Received</h2><p>Hello ${escapeHtml(name)}, your abstract "${escapeHtml(title)}" has been received.</p></div>`,
+      `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="background: linear-gradient(135deg, #1bb385, #169e76); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+          <h1 style="color: white; margin: 0; font-size: 24px;">Abstract Received</h1>
+          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">RECC 2027</p>
+        </div>
+        <div style="background: #f8fafc; padding: 30px; border-radius: 10px; border: 1px solid #e2e8f0;">
+          <h2 style="color: #1e293b; margin: 0 0 20px 0;">Hello ${escapeHtml(name)},</h2>
+          <p style="color: #64748b; margin: 0 0 20px 0;">Your abstract titled "<strong>${escapeHtml(title)}</strong>" has been successfully submitted for the <strong>RECC 2027</strong> conference.</p>
+          <p style="color: #64748b; margin: 0 0 20px 0;">The scientific committee will review your submission and provide an update regarding its status shortly.</p>
+        </div>
+        <div style="text-align: center; margin-top: 20px; padding: 20px;">
+          <p style="color: #94a3b8; font-size: 12px; margin: 0;">© 2027 RECC SUMMIT. All rights reserved.</p>
+        </div>
+      </div>`,
       'ABSTRACT',
       conference
     ).catch(e => console.error('User email error:', e.message));
 
     // Admin notification
-    emailSender.sendEmail(
+    await emailSender.sendEmail(
       adminEmail,
       `📄 New Abstract Submission - ${conference.toUpperCase()}`,
-      `<div style="font-family: Arial; padding: 20px;"><h2>New Abstract</h2><p>Name: ${escapeHtml(name)}</p><p>Email: ${email}</p><p>Title: ${escapeHtml(title)}</p></div>`,
+      `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="background: linear-gradient(135deg, #1bb385, #169e76); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+          <h1 style="color: white; margin: 0; font-size: 24px;">New Abstract</h1>
+          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">RECC 2027</p>
+        </div>
+        <div style="background: #f8fafc; padding: 30px; border-radius: 10px; border: 1px solid #e2e8f0;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr><td style="padding: 8px 0; color: #64748b; font-weight: 600;">Name:</td><td style="padding: 8px 0; color: #1e293b;">${escapeHtml(name)}</td></tr>
+            <tr><td style="padding: 8px 0; color: #64748b; font-weight: 600;">Email:</td><td style="padding: 8px 0; color: #1e293b;">${email}</td></tr>
+            <tr><td style="padding: 8px 0; color: #64748b; font-weight: 600;">Title:</td><td style="padding: 8px 0; color: #1e293b;">${escapeHtml(title)}</td></tr>
+          </table>
+        </div>
+      </div>`,
       'ABSTRACT',
       conference
     ).catch(e => console.error('Admin email error:', e.message));

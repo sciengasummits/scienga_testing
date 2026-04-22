@@ -4,7 +4,7 @@ export async function submitRegistration(payload) {
     const res = await fetch(`${BASE_URL}/registrations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...payload, conference: 'liutex' }),
+        body: JSON.stringify({ ...payload, conference: 'renewable' }),
     });
     if (!res.ok) throw new Error('Server error');
     return res.json();

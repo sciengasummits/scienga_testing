@@ -1,10 +1,10 @@
-import Unsubscribe from '../../pages_orig/Unsubscribe';
+import Unsubscribe from '../../pages_orig/Unsubscribe/Unsubscribe';
 
 export const metadata = {
-    title: 'Unsubscribe | RENEWABLECLISUMMIT2026',
-    description: 'Unsubscribe from RENEWABLECLISUMMIT2026 mailing list.',
+    title: 'Unsubscribe | RECC 2027',
+    description: 'Unsubscribe from RECC 2027 mailing list.',
     alternates: {
-        canonical: 'https://liutex2026.com/unsubscribe',
+        canonical: 'https://RECC 2027.com/unsubscribe',
     }
 };
 

@@ -1,10 +1,10 @@
-import AbstractSubmission from '../../pages_orig/AbstractSubmission';
+import AbstractSubmission from '../../pages_orig/AbstractSubmission/AbstractSubmission';
 
 export const metadata = {
-    title: 'Abstract Submission | RENEWABLECLISUMMIT2026',
-    description: 'Submit your research abstract for RENEWABLECLISUMMIT2026. Topics include Liutex Theory, Turbulence Mechanism, CFD, and AI in flow field analysis. Deadline: October 30, 2026.',
+    title: 'Abstract Submission | RECC 2027',
+    description: 'Submit your research abstract for RECC 2027. Topics include Renewable Energy Systems, Climate Mitigation, CFD, and AI in flow field analysis. Deadline: October 30, 2026.',
     alternates: {
-        canonical: 'https://liutex2026.com/abstract-submission',
+        canonical: 'https://RECC 2027.com/abstract-submission',
     }
 };
 

@@ -36,8 +36,8 @@ const BrochureSection = () => {
                     {/* Placeholder for brochure preview image */}
                     <div className="preview-card">
                         <div className="preview-page">
-                            <h3>LIUTEX THEORY & TURBULENCE MECHANISM</h3>
-                            <p>2026 EDITION</p>
+                            <h3>RENEWABLE ENERGY & CLIMATE CHANGE</h3>
+                            <p>2027 EDITION</p>
                             <div className="preview-lines"></div>
                         </div>
                     </div>

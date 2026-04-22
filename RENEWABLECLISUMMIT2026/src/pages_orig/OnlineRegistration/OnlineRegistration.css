@@ -147,7 +147,7 @@
     align-items: center;
     gap: 6px;
     padding: 11px 22px;
-    background: var(--color-primary-gradient, linear-gradient(135deg, #3b82f6, #6366f1));
+    background: var(--color-primary-gradient, linear-gradient(135deg, #1bb385, #3b82f6));
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -330,7 +330,7 @@ select.reg-control {
 }
 
 .or-pricing-table th.or-active-col {
-    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    background: var(--color-primary-gradient);
     color: #fff;
 }
 

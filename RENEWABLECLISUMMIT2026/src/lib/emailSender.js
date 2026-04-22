@@ -1,8 +1,4 @@
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
 /**
  * Per-conference email sender.
  * Each conference has its own Gmail account + App Password so OTPs
@@ -14,14 +10,14 @@ dotenv.config();
 export class RealEmailSender {
     constructor() {
         // Legacy / fallback credentials
-        this._defaultUser = process.env.SMTP_USER || 'contact@RECCClimatesummit.com';
+        this._defaultUser = process.env.SMTP_USER || 'renewable@sciengasummits.com';
         this._defaultPass = (process.env.SMTP_PASS || '').replace(/\s/g, '');
 
         // Per-conference credential map  { conferenceId → { user, pass } }
         this._accounts = {
             liutex: {
-                user: process.env.LIUTEX_SMTP_USER || this._defaultUser,
-                pass: (process.env.LIUTEX_SMTP_PASS || this._defaultPass).replace(/\s/g, ''),
+                user: process.env.RECC_SMTP_USER || this._defaultUser,
+                pass: (process.env.RECC_SMTP_PASS || this._defaultPass).replace(/\s/g, ''),
             },
             foodagri: {
                 user: process.env.FOODAGRI_SMTP_USER || this._defaultUser,
@@ -55,20 +51,41 @@ export class RealEmailSender {
             // If the password is a placeholder or empty, we'll fall back to the
             // default transporter at send time instead of crashing at startup.
             if (!creds.pass || creds.pass.startsWith('REPLACE_WITH')) {
-                console.warn(`⚠️  No valid SMTP password for "${confId}" — will fall back to liutex sender`);
+                console.warn(`⚠️  No valid SMTP password for "${confId}" — will fall back to default sender`);
                 continue;
             }
 
+            console.log(`🔑 Initializing [${confId}] with user [${creds.user}] (Pass length: ${creds.pass.length})`);
+
             this._transporters[confId] = nodemailer.createTransport({
-                service: 'gmail',
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: false, // false for 587, true for 465
                 auth: { user: creds.user, pass: creds.pass },
+                tls: {
+                    rejectUnauthorized: false
+                }
+            });
+            
+            // Verify connection
+            this._transporters[confId].verify((error) => {
+                if (error) {
+                    console.error(`❌ SMTP verification failed for "${confId}":`, error.message);
+                } else {
+                    console.log(`✅ SMTP connection verified for "${confId}" (${creds.user})`);
+                }
             });
         }
 
-        // Always build a default/fallback transporter (liutex)
-        this._defaultTransporter = this._transporters['liutex'] || nodemailer.createTransport({
-            service: 'gmail',
+        // Always build a default/fallback transporter (renewable)
+        this._defaultTransporter = this._transporters['renewable'] || nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
             auth: { user: this._defaultUser, pass: this._defaultPass },
+            tls: {
+                rejectUnauthorized: false
+            }
         });
 
         // Backward-compat: keep .user / .pass / .transporter so nothing else breaks
@@ -83,7 +100,7 @@ export class RealEmailSender {
      * @param {string} subject     - Email subject
      * @param {string} htmlContent - HTML body
      * @param {string} otp         - OTP value (also sent as plain-text)
-     * @param {string} [conferenceId] - Optional: 'liutex' | 'foodagri' | 'fluid' | 'renewable'
+     * @param {string} [conferenceId] - Optional: 'renewable' | 'foodagri' | 'fluid' | 'renewable'
      */
     async sendEmail(to, subject, htmlContent, otp, conferenceId) {
         // Pick the right transporter
@@ -109,7 +126,7 @@ export class RealEmailSender {
             console.log(`✅ Email sent! Message ID: ${info.messageId}`);
             return { success: true, messageId: info.messageId };
         } catch (error) {
-            console.error(`❌ Nodemailer Gmail error:`, error.message);
+            console.error(`❌ Nodemailer error for [${conferenceId || 'default'}]:`, error);
             return { success: false, error: error.message };
         }
     }
@@ -117,9 +134,9 @@ export class RealEmailSender {
     async sendOTPEmail(email, otp, username, conferenceId) {
         const htmlContent = `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-                <div style="background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+                <div style="background: linear-gradient(135deg, #1bb385, #169e76); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
                     <h1 style="color: white; margin: 0; font-size: 24px;">Conference Management System</h1>
-                    <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">SCIENGASUMMITS 2026</p>
+                    <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">RECC SUMMIT 2027</p>
                 </div>
                 
                 <div style="background: #f8fafc; padding: 30px; border-radius: 10px; border: 1px solid #e2e8f0;">
@@ -147,7 +164,7 @@ export class RealEmailSender {
                 
                 <div style="text-align: center; margin-top: 20px; padding: 20px;">
                     <p style="color: #94a3b8; font-size: 12px; margin: 0;">
-                        © 2026 LIUTEX SUMMIT. All rights reserved.
+                        © 2027 RECC SUMMIT. All rights reserved.
                     </p>
                 </div>
             </div>

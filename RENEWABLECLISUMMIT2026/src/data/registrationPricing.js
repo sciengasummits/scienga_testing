@@ -6,7 +6,6 @@ export const PRICING_DEFAULTS = {
     categories: [
         { id: 'speaker', label: 'Speaker Registration', early: 599, standard: 699, onspot: 799 },
         { id: 'delegate', label: 'Delegate Registration', early: 699, standard: 799, onspot: 899 },
-        { id: 'poster', label: 'Poster Registration', early: 399, standard: 499, onspot: 599 },
         { id: 'student', label: 'Student', early: 299, standard: 399, onspot: 499 },
         { id: 'virtual', label: 'Virtual (Online)', early: 200, standard: 300, onspot: 400 },
     ],
