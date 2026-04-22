@@ -10,8 +10,8 @@ import usePageSEO from '../../hooks/usePageSEO';
 const Sponsors = () => {
     usePageSEO({
         title: 'Sponsorship Opportunities',
-        description: 'Sponsor RECC 2027 – Platinum, Gold, Silver, and Exhibitor packages available. Showcase your brand to global renewable energy researchers and engineers in Munich, Germany, December 2026.',
-        canonical: 'https://RECC 2027.com/sponsors',
+        description: 'Sponsor RENEWABLECLISUMMIT2026 – Platinum, Gold, Silver, and Exhibitor packages available. Showcase your brand to global fluid mechanics researchers and engineers in Munich, Germany, December 2026.',
+        canonical: 'https://liutex2026.com/sponsors',
     });
     const router = useRouter();
     const navigate = (path) => router.push(path);

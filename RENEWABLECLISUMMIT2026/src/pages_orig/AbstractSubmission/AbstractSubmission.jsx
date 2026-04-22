@@ -20,8 +20,8 @@ const DEFAULT_DATES = [
 ];
 
 const DEFAULT_SESSIONS = [
-    'Fundamentals of Renewable Energy',
-    'Climate Change Methods',
+    'Fundamentals of Liutex Theory',
+    'Vortex Identification Methods',
     'Vector & Tensor Decompositions',
     'Omega (Ω) Method Applications',
 ];
@@ -108,7 +108,7 @@ const AbstractSubmission = () => {
         };
 
         try {
-            // submitAbstract() in siteApi.js automatically adds conference: 'RECC'
+            // submitAbstract() in siteApi.js automatically adds conference: 'liutex'
             await submitAbstract(payload);
             setSubmitStatus('success');
             // Reset form

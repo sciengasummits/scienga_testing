@@ -10,8 +10,8 @@ import usePageSEO from '../../hooks/usePageSEO';
 const Program = () => {
     usePageSEO({
         title: 'Program Schedule',
-        description: 'RECC 2027 conference program – keynote sessions, technical presentations, and workshops on Renewable Energy, Climate Change, and CFD. Full schedule to be announced May 2026.',
-        canonical: 'https://RECC 2027.com/program',
+        description: 'RENEWABLECLISUMMIT2026 conference program – keynote sessions, technical presentations, and workshops on Liutex Theory, Turbulence Mechanism, and CFD. Full schedule to be announced May 2026.',
+        canonical: 'https://liutex2026.com/program',
     });
     const [formData, setFormData] = useState({ name: '', email: '', number: '' });
     const [isSubmitted, setIsSubmitted] = useState(false);

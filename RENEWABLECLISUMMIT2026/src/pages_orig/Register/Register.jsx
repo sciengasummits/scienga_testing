@@ -190,12 +190,12 @@ const Register = ({ isDiscounted = false }) => {
             const { key } = await siteApi.fetchPaymentKey();
             const fullDescription = descParts.length > 0
                 ? descParts.join(' | ')
-                : 'RECC Summit Registration';
+                : 'LIUTEX Summit Registration';
 
             const { order } = await siteApi.createPaymentOrder({
                 amount: total,
                 registrationId: registration._id,
-                description: `RECC Registration: ${formData.fullName} — ${fullDescription}`
+                description: `LIUTEX Registration: ${formData.fullName} — ${fullDescription}`
             });
 
             // 3. Open Razorpay Checkout
@@ -203,7 +203,7 @@ const Register = ({ isDiscounted = false }) => {
                 key: key,
                 amount: order.amount,
                 currency: order.currency,
-                name: 'RECC Summit 2026',
+                name: 'LIUTEX Summit 2026',
                 description: descParts.length > 0
                     ? descParts.join(' | ')
                     : `Registration for ${formData.fullName}`,

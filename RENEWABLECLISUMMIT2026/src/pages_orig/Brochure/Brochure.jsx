@@ -10,8 +10,8 @@ import usePageSEO from '../../hooks/usePageSEO';
 
 const DEFAULTS = {
     pdfUrl: '',
-    title: 'International Conference on International Conference on Renewable Energy & Climate Change',
-    description: 'Download the official conference brochure to get comprehensive information about the International Conference on International Conference on Renewable Energy & Climate Change. It serves as your complete guide to the event, featuring detailed schedules, speaker profiles, and venue information.',
+    title: 'International Conference on Liutex Theory and Applications in Vortex Identification and Vortex Dynamics',
+    description: 'Download the official conference brochure to get comprehensive information about the International Conference on Liutex Theory and Applications in Vortex Identification and Vortex Dynamics. It serves as your complete guide to the event, featuring detailed schedules, speaker profiles, and venue information.',
     note: '* PDF will be available soon. Format: PDF',
     features: [
         'Complete 3-Day Program Schedule',
@@ -25,8 +25,8 @@ const DEFAULTS = {
 const Brochure = () => {
     usePageSEO({
         title: 'Conference Brochure',
-        description: 'Download the official RECC 2027 conference brochure – program schedule, keynote speaker profiles, workshop details, venue maps, and sponsorship opportunities.',
-        canonical: 'https://RECC 2027.com/brochure',
+        description: 'Download the official RENEWABLECLISUMMIT2026 conference brochure – program schedule, keynote speaker profiles, workshop details, venue maps, and sponsorship opportunities.',
+        canonical: 'https://liutex2026.com/brochure',
     });
     const router = useRouter();
     const navigate = (path) => router.push(path);
@@ -71,7 +71,7 @@ const Brochure = () => {
                     name: formData.name,
                     email: formData.email,
                     number: formData.number,
-                    conference: 'RECC',
+                    conference: 'liutex',
                 }),
             });
             const data = await res.json();
@@ -107,13 +107,13 @@ const Brochure = () => {
                                     <div className="preview-badge">2026 Edition</div>
                                 </div>
                                 <div className="preview-main">
-                                    <div className="Climate-accent"></div>
+                                    <div className="vortex-accent"></div>
                                     <h3 className="preview-title">{brochureData.title}</h3>
                                     <div className="preview-divider"></div>
                                     <p className="preview-subtitle">Official Conference Brochure</p>
                                 </div>
                                 <div className="preview-footer">
-                                    <p>March 23-25, 2027</p>
+                                    <p>December 14-17, 2026</p>
                                     <p>Munich, Germany</p>
                                 </div>
                             </div>

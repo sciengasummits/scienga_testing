@@ -10,7 +10,7 @@ export async function createPaymentOrder(payload) {
     const res = await fetch(`${BASE_URL}/payment/create-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...payload, conference: 'RECC' }),
+        body: JSON.stringify({ ...payload, conference: 'liutex' }),
     });
     if (!res.ok) {
         const err = await res.json();

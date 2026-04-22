@@ -3,12 +3,12 @@
     display: flex;
     align-items: center;
     background-color: var(--color-dark-void);
-    background-image: url('https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202004/running-numbers-clean-energy-01%2520%25281%2529.jpg?itok=S0gv_INu');
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     color: var(--color-white);
     padding-top: 100px;
-    padding-bottom: 100px;
+    padding-bottom: 380px;
     /* Space for collaborations banner */
     min-height: 100vh;
     overflow-x: hidden;
@@ -19,7 +19,7 @@
     display: none;
 }
 
-@keyframes ClimateRotate {
+@keyframes vortexRotate {
     from {
         transform: rotate(0deg);
     }
@@ -148,13 +148,13 @@
 .date-card {
     top: 0;
     left: 0;
-    background: var(--color-dark-void);
+    background: var(--color-secondary-blue);
     width: 240px;
     text-align: center;
     z-index: 2;
     padding: 1.5rem 1rem;
     border: 1px solid rgba(52, 120, 223, 0.3);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(52, 120, 223, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(52, 120, 223, 0.2);
 }
 
 .date-card h3 {
@@ -248,7 +248,116 @@
     z-index: 5;
 }
 
+.hero__chairs-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 15px;
+    flex-wrap: nowrap;
+    transform: translate(60px, 80px);
+}
 
+.chair-card-v {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    background: #0f172a;
+    transition: transform 0.3s ease;
+}
+
+.chair-card-v:hover {
+    transform: translateY(-5px);
+}
+
+.chair-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.chair-placeholder-v {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.chair-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    background: linear-gradient(to top, rgba(0, 9, 20, 1) 0%, rgba(0, 9, 20, 0.7) 50%, transparent 100%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px 15px 15px;
+    text-align: center;
+}
+
+.chair-badge-v {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-secondary-blue, #2563eb);
+    color: white;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 0 0 8px 8px;
+    white-space: nowrap;
+    z-index: 3;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.chair-name-v {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0 0 5px 0;
+    z-index: 3;
+    line-height: 1.2;
+}
+
+.chair-aff-v {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.8rem;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+    z-index: 3;
+}
+
+.chair-country-v {
+    color: #4da3ff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    z-index: 3;
+}
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -286,7 +395,11 @@
         width: 100%;
     }
 
-
+    .hero__chairs-row {
+        justify-content: center;
+        transform: none;
+        flex-wrap: wrap;
+    }
 }
 
 @media (max-width: 768px) {
@@ -333,7 +446,10 @@
         margin: 0 !important;
     }
 
-
+    .chair-card-v {
+        width: 160px;
+        height: 250px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -432,7 +548,30 @@
         padding: 0 10px;
     }
 
+    .hero__chairs-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        padding: 0 10px;
+        gap: 20px;
+        transform: none;
+    }
 
+    .chair-card-v {
+        width: 220px;
+        height: 320px;
+        flex-shrink: 0;
+    }
+
+    .chair-name-v {
+        font-size: 1rem;
+    }
+
+    .chair-aff-v {
+        font-size: 0.75rem;
+    }
 }
 
 /* Animations */

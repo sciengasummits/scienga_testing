@@ -29,7 +29,7 @@ import usePageSEO from '../../hooks/usePageSEO';
 /* ── Default fallback content ── */
 const DEFAULTS = {
     pageTitle: 'Visa Information',
-    intro: 'The International Conference on Renewable Energy & Climate Change welcomes speakers & delegates from all over the world. Below is essential visa-related information to assist with your travel planning.',
+    intro: 'The INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE welcomes speakers & delegates from all over the world. Below is essential visa-related information to assist with your travel planning.',
     sections: [
         {
             id: 'visa_need',
@@ -67,15 +67,15 @@ const DEFAULTS = {
             ],
         },
     ],
-    contactEmail: 'info@RECCsummit.com',
+    contactEmail: 'info@liutexsummit.com',
     note: 'Please ensure you apply for your visa well in advance of the conference date. We recommend applying at least 8 weeks before your intended travel date.',
 };
 
 const VisaInfo = () => {
     usePageSEO({
         title: 'Visa Information',
-        description: 'Visa information for international participants attending RECC 2027 in Munich, Germany. Learn about visa requirements, required documents, and how to request an official invitation letter.',
-        canonical: 'https://RECC 2027.com/visa-info',
+        description: 'Visa information for international participants attending RENEWABLECLISUMMIT2026 in Munich, Germany. Learn about visa requirements, required documents, and how to request an official invitation letter.',
+        canonical: 'https://liutex2026.com/visa-info',
     });
     const [visaData, setVisaData] = useState(DEFAULTS);
     const [email, setEmail] = useState('');

@@ -1,10 +1,10 @@
 import Register from '../../pages_orig/Register/Register';
 
 export const metadata = {
-    title: 'Register Online | RECC 2027',
-    description: 'Register for RECC 2027 – International Conference on Renewable Energy & Climate Change, Munich, Germany. Early bird, standard, and on-spot rates available for speakers, delegates, students, and virtual attendees.',
+    title: 'Register Online | RENEWABLECLISUMMIT2026',
+    description: 'Register for RENEWABLECLISUMMIT2026 – INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE, Munich, Germany. Early bird, standard, and on-spot rates available for speakers, delegates, students, and virtual attendees.',
     alternates: {
-        canonical: 'https://RECC 2027.com/register',
+        canonical: 'https://liutex2026.com/register',
     }
 };
 

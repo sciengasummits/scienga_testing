@@ -34,7 +34,7 @@ export const sendOTPEmail = async (email, otp, username) => {
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
                     <div style="background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
                         <h1 style="color: white; margin: 0; font-size: 24px;">Conference Management System</h1>
-                        <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">RECC SUMMIT 2026</p>
+                        <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">LIUTEX SUMMIT 2026</p>
                     </div>
                     
                     <div style="background: #f8fafc; padding: 30px; border-radius: 10px; border: 1px solid #e2e8f0;">
@@ -62,7 +62,7 @@ export const sendOTPEmail = async (email, otp, username) => {
                     
                     <div style="text-align: center; margin-top: 20px; padding: 20px;">
                         <p style="color: #94a3b8; font-size: 12px; margin: 0;">
-                            © 2026 RECC Climate SUMMIT. All rights reserved.
+                            © 2026 LIUTEX VORTEX SUMMIT. All rights reserved.
                         </p>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Button from '../../components/common/Button/Button';
 import { fetchContent } from '../../api/contentApi';
 import './Venue.css';
-import ClimateImg from '../../assets/images/Climate.jpg';
+import vortexImg from '../../assets/images/vortex.jpg';
 
 const Venue = () => {
 
@@ -48,19 +48,19 @@ const Venue = () => {
 
     const nearbyAttractions = [
         {
-            name: 'Marienplatz',
-            distance: '0.5 km',
-            image: 'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800&q=80'
+            name: 'Gardens by the Bay',
+            distance: '1.5 km',
+            image: "https://www.bing.com/th/id/OIP.d4BXWuPhEaobxhJHDsmpfgHaE8?w=238&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
         },
         {
-            name: 'English Garden',
-            distance: '3.2 km',
-            image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80'
+            name: 'Marina Bay Sands',
+            distance: '2.0 km',
+            image: "https://www.bing.com/th/id/OIP.w-__LWQfcodvks2nfUOsdAHaEj?w=252&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
         },
         {
-            name: 'Nymphenburg Palace',
-            distance: '6.5 km',
-            image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80'
+            name: 'Munich, Germany Botanic Gardens',
+            distance: '4.5 km',
+            image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80"
         }
     ];
 
@@ -99,15 +99,15 @@ const Venue = () => {
                             )}
                             <div className="city-stats" style={{ marginTop: '2rem' }}>
                                 <div className="stat-box">
-                                    <h3>1.5M+</h3>
+                                    <h3>5.6M+</h3>
                                     <p>Population</p>
                                 </div>
                                 <div className="stat-box">
-                                    <h3>14°C</h3>
+                                    <h3>31°C</h3>
                                     <p>Avg. Temperature</p>
                                 </div>
                                 <div className="stat-box">
-                                    <h3>GMT+1</h3>
+                                    <h3>GMT+8</h3>
                                     <p>Time Zone</p>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@ const Venue = () => {
                                         alt={attraction.name}
                                         onError={(e) => {
                                             e.target.onerror = null;
-                                            e.target.src = ClimateImg;
+                                            e.target.src = vortexImg;
                                         }}
                                     />
                                     <div className="attraction-distance">{attraction.distance}</div>
@@ -189,7 +189,7 @@ const Venue = () => {
                         Ready to Join Us?
                     </h2>
                     <p className="cta-desc">
-                        Secure your spot at the International Conference on Renewable Energy & Climate Change and be part of this transformative event
+                        Secure your spot at the International Conference on RENEWABLE ENERGY & CLIMATE CHANGES and be part of this transformative event
                     </p>
                     <div className="cta-action">
                         <Button

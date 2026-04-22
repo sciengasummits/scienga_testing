@@ -1,13 +1,13 @@
-    const RECCDefaults = [
+    const liutexDefaults = [
         {
             key: 'hero',
             data: {
                 subtitle: 'INTERNATIONAL CONFERENCE ON',
-                title: 'RECC AND Climate\nIDENTIFICATION',
-                description: 'International Conference on RECC and Climate Change. where global experts unite to shape the future of renewable energy. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
+                title: 'LIUTEX AND VORTEX\nIDENTIFICATION',
+                description: 'International Conference on Liutex and Vortex Identification. where global experts unite to shape the future of fluid mechanics. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
                 conferenceDate: 'March 23-25, 2027',
                 venue: 'Munich, Germany',
-                countdownTarget: '2026-12-14T09:00:00+01:00',
+                countdownTarget: '2027-03-23T09:00:00+01:00',
                 showRegister: true,
                 showAbstract: true,
                 showBrochure: true
@@ -16,23 +16,23 @@
         {
             key: 'about',
             data: {
-                subtitle: 'RECC and Climate Change and Its Applications',
+                subtitle: 'Liutex and Vortex Identification and Its Applications',
                 title: 'About The Conference',
-                paragraph1: 'The International Conference on International Conference on Renewable Energy & Climate Change is a premier international platform dedicated to advancing the understanding of Renewable Energy and its transformative applications in Climate Change and Climate dynamics.',
-                paragraph2: 'This conference brings together leading researchers, academicians, computational scientists, engineers, and industry professionals to explore recent developments, theoretical foundations, numerical methods, and real-world applications of RECC-based Climate analysis.',
+                paragraph1: 'The International Conference on Liutex Theory and Applications in Vortex Identification and Vortex Dynamics is a premier international platform dedicated to advancing the understanding of Liutex theory and its transformative applications in vortex identification and vortex dynamics.',
+                paragraph2: 'This conference brings together leading researchers, academicians, computational scientists, engineers, and industry professionals to explore recent developments, theoretical foundations, numerical methods, and real-world applications of Liutex-based vortex analysis.',
                 objectives: [
-                    'Promote advancements in Renewable Energy',
-                    'Explore innovations in Climate Change techniques',
-                    'Discuss computational and experimental approaches in Climate dynamics',
-                    'Bridge academia and industry in renewable energy research',
+                    'Promote advancements in Liutex theory',
+                    'Explore innovations in vortex identification techniques',
+                    'Discuss computational and experimental approaches in vortex dynamics',
+                    'Bridge academia and industry in fluid mechanics research',
                     'Encourage collaboration across aerospace, mechanical, civil, and environmental engineering domains'
                 ],
                 keyThemes: [
-                    'Fundamentals of Renewable Energy',
-                    'Climate Change Methods (Q-criterion, ?2, ? method, RECC)',
-                    'Climate Modeling and Analysis',
+                    'Fundamentals of Liutex Theory',
+                    'Vortex Identification Methods (Q-criterion, ?2, ? method, Liutex)',
+                    'Turbulence Modeling and Analysis',
                     'Computational Fluid Dynamics (CFD) Applications',
-                    'Climate Dynamics in Aerospace Engineering',
+                    'Vortex Dynamics in Aerospace Engineering',
                     'Data-Driven and AI Approaches in Flow Field Identification'
                 ]
             }
@@ -51,7 +51,7 @@
         {
             key: 'stats',
             data: {
-                title: 'RECC Climate SUMMIT CONFERENCES APPROACH',
+                title: 'LIUTEX VORTEX SUMMIT CONFERENCES APPROACH',
                 items: [
                     { number: '15+', label: 'Years Experience' },
                     { number: '100+', label: 'Events' },
@@ -94,26 +94,26 @@
             key: 'sessions',
             data: {
                 sessions: [
-                    'Fundamentals of Renewable Energy',
-                    'Climate Change Methods (Q-criterion, ?2, ?, RECC)',
-                    'Climate Modeling and Analysis',
-                    'CFD Applications in Climate Dynamics',
-                    'Climate Dynamics in Aerospace Engineering',
+                    'Fundamentals of Liutex Theory',
+                    'Vortex Identification Methods (Q-criterion, ?2, ?, Liutex)',
+                    'Turbulence Modeling and Analysis',
+                    'CFD Applications in Vortex Dynamics',
+                    'Vortex Dynamics in Aerospace Engineering',
                     'AI & Data-Driven Flow Field Identification',
-                    'Experimental Methods in Climate Research',
-                    'RECC Applications in Ocean Engineering',
+                    'Experimental Methods in Vortex Research',
+                    'Liutex Applications in Ocean Engineering',
                     'DNS and LES of Turbulent Flows',
                     'Instability and Transition in Fluid Flows',
-                    'Boundary Layer Climate Structures',
-                    'Coherent Structures in Climate',
-                    'Multi-Scale Climate Interactions',
+                    'Boundary Layer Vortex Structures',
+                    'Coherent Structures in Turbulence',
+                    'Multi-Scale Vortex Interactions',
                     'Particle Tracking in Vortical Flows',
                     'Wake Dynamics and Control',
-                    'Biorenewable energy and Climate Patterns',
-                    'Climate-Induced Vibrations',
+                    'Biofluid Mechanics and Vortex Patterns',
+                    'Vortex-Induced Vibrations',
                     'Flow Visualization Techniques',
-                    'Machine Learning for renewable energy',
-                    'Green Energy & Climate Dynamics'
+                    'Machine Learning for Fluid Mechanics',
+                    'Green Energy & Vortex Dynamics'
                 ],
                 schedule: {
                     day1: [
@@ -164,7 +164,7 @@
         {
             key: 'contact',
             data: {
-                email: 'info@RECCClimatesummit.com',
+                email: 'info@renewableclisummit2026.sciengasummits.com',
                 phone: '+65 0000 0000',
                 address: 'Munich, Germany',
                 socialLinks: {
@@ -201,11 +201,11 @@
             key: 'hero',
             data: {
                 subtitle: 'INTERNATIONAL CONFERENCE ON',
-                title: 'renewable energy & TURBOMACHINERY',
-                description: 'International Conference on renewable energy & Turbomachinery, where global experts unite to shape the future of engineering dynamics. Discover ground-breaking innovations in fluid systems, connect with top mechanical engineers, and explore solutions transforming industrial efficiency.',
+                title: 'FLUID MECHANICS & TURBOMACHINERY',
+                description: 'International Conference on Fluid Mechanics & Turbomachinery, where global experts unite to shape the future of engineering dynamics. Discover ground-breaking innovations in fluid systems, connect with top mechanical engineers, and explore solutions transforming industrial efficiency.',
                 conferenceDate: 'March 23-25, 2027',
                 venue: 'Munich, Germany',
-                countdownTarget: '2026-12-14T09:00:00+01:00',
+                countdownTarget: '2027-03-23T09:00:00+01:00',
                 showRegister: true,
                 showAbstract: true,
                 showBrochure: true
@@ -214,10 +214,10 @@
         {
             key: 'about',
             data: {
-                subtitle: 'renewable energy & Turbomachinery Engineering',
+                subtitle: 'Fluid Mechanics & Turbomachinery Engineering',
                 title: 'About The Conference',
-                paragraph1: 'The International Conference on renewable energy & Turbomachinery is a premier international platform dedicated to advancing the understanding of fluid dynamics, turbomachinery systems, and their transformative applications in engineering.',
-                paragraph2: 'This conference brings together leading researchers, academicians, mechanical engineers, and industry professionals to explore recent developments, innovative technologies, and real-world applications in renewable energy and turbomachinery design.',
+                paragraph1: 'The International Conference on Fluid Mechanics & Turbomachinery is a premier international platform dedicated to advancing the understanding of fluid dynamics, turbomachinery systems, and their transformative applications in engineering.',
+                paragraph2: 'This conference brings together leading researchers, academicians, mechanical engineers, and industry professionals to explore recent developments, innovative technologies, and real-world applications in fluid mechanics and turbomachinery design.',
                 objectives: [
                     'Global Collaboration: Facilitate networking among researchers, engineers, and industry leaders',
                     'Innovation Showcase: Highlight cutting-edge research and advanced technologies in turbomachinery',
@@ -227,7 +227,7 @@
                     'Knowledge Dissemination: Publish high-quality findings and foster engineering discussions'
                 ],
                 keyThemes: [
-                    'Computational Fluid Dynamics (CFD): Advanced simulations and Climate modeling',
+                    'Computational Fluid Dynamics (CFD): Advanced simulations and turbulence modeling',
                     'Aerodynamics & Hydrodynamics: Flow analysis and propulsion systems',
                     'Turbomachinery Design: Gas turbines, compressors, pumps, and wind turbines',
                     'Heat & Mass Transfer: Thermal management and multiphase flows',
@@ -250,7 +250,7 @@
         {
             key: 'stats',
             data: {
-                title: 'renewable energy & TURBOMACHINERY CONFERENCES APPROACH',
+                title: 'FLUID MECHANICS & TURBOMACHINERY CONFERENCES APPROACH',
                 items: [
                     { number: '15+', label: 'Years Experience' },
                     { number: '100+', label: 'Events' },
@@ -302,8 +302,8 @@
                     'Multiphase Flow Systems',
                     'Combustion & Propulsion',
                     'Flow Control & Optimization',
-                    'Experimental renewable energy',
-                    'Climate Modeling',
+                    'Experimental Fluid Mechanics',
+                    'Turbulence Modeling',
                     'Pump & Compressor Technology',
                     'Wind Energy Aerodynamics',
                     'Marine Propulsion Systems',
@@ -580,7 +580,7 @@
 
     // ??? Seed Data for All Conferences ????????????????????????????
     const conferences = [
-        { name: 'RECC', defaults: RECCDefaults },
+        { name: 'liutex', defaults: liutexDefaults },
         { name: 'fluid', defaults: fluidDefaults },
         { name: 'foodagri', defaults: foodagriDefaults },
         {
@@ -789,7 +789,7 @@
                 {
                     key: 'hero',
                     data: {
-                        subtitle: 'ANNUAL INTERNATIONAL CONFERENCE ON',
+                        subtitle: 'INTERNATIONAL CONFERENCE ON',
                         title: 'CYBERSECURITY AND QUANTUM COMPUTING',
                         description: 'Global Summit on Cybersecurity and Quantum Computing, where global experts unite to shape the future of digital security and quantum technologies. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
                         conferenceDate: 'December 07-09, 2027',
@@ -988,7 +988,7 @@
                 {
                     key: 'hero',
                     data: {
-                        subtitle: 'ANNUAL INTERNATIONAL CONFERENCE ON',
+                        subtitle: 'INTERNATIONAL CONFERENCE ON',
                         title: 'POWER ENERGY AND ELECTRICAL ENGINEERING',
                         description: 'Annual International Conference on Power Energy and Electrical Engineering, where global experts unite to shape the future of sustainable energy. Discover ground-breaking power technologies, connect with top industry professionals, and explore solutions transforming our planet\'s energy grid.',
                         conferenceDate: 'March 23-25, 2027',
@@ -1190,7 +1190,7 @@
                     key: 'hero', 
                     data: {
                     
-                        subtitle: 'ANNUAL INTERNATIONAL CONFERENCE ON', 
+                        subtitle: 'INTERNATIONAL CONFERENCE ON', 
                         title: 'POLYMERS AND COMPOSITE MATERIALS', 
                         description: 'Annual International Conference on Polymers and Composite Materials, where global experts unite to advance polymer science and composite engineering. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming the future of materials.', 
                         conferenceDate: 'November 16-18, 2026', 

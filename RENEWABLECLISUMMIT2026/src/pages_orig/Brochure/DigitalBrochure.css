@@ -40,7 +40,7 @@
     padding: 4rem;
 }
 
-.Climate-background {
+.vortex-background {
     position: absolute;
     top: -50%;
     left: -50%;
@@ -51,7 +51,7 @@
         conic-gradient(from 180deg at center, var(--color-dark-void), #3478DF, #3478DF, var(--color-dark-void));
     opacity: 0.3;
     filter: blur(60px);
-    animation: ClimateRotate 20s linear infinite;
+    animation: vortexRotate 20s linear infinite;
     z-index: 1;
 }
 

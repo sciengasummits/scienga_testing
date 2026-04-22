@@ -11,10 +11,10 @@ import UniversitiesMarquee from '../components/sections/UniversitiesMarquee/Univ
 import '../pages_orig/Home/Home.css';
 
 export const metadata = {
-    title: 'Home | RECC 2027',
-    description: 'RECC 2027 – International Conference on Renewable Energy & Climate Change. December 14–16, 2026, Munich, Germany. Submit abstracts and register now.',
+    title: 'Home | RENEWABLECLISUMMIT2026',
+    description: 'RENEWABLECLISUMMIT2026 – INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE. December 14–16, 2026, Munich, Germany. Submit abstracts and register now.',
     alternates: {
-        canonical: 'https://RECC 2027.sciengasummits.com/',
+        canonical: 'https://renewableclisummit2026.sciengasummits.com/',
     }
 };
 

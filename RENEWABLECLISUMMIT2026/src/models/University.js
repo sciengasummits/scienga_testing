@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const UniversitySchema = new mongoose.Schema({
-    conference: { type: String, default: 'RECC', index: true }, // 'RECC' | 'foodagri'
+    conference: { type: String, default: 'liutex', index: true }, // 'liutex' | 'foodagri'
     name: { type: String, required: true },
     image: String,
     order: { type: Number, default: 0 },

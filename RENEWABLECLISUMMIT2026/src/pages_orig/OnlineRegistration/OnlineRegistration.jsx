@@ -229,7 +229,7 @@ const OnlineRegistration = () => {
             const { order } = await siteApi.createPaymentOrder({
                 amount: total,
                 registrationId: registration._id,
-                description: `RECC Online Reg: ${formData.fullName}`
+                description: `LIUTEX Online Reg: ${formData.fullName}`
             });
 
             // 3. Open Razorpay Checkout
@@ -237,7 +237,7 @@ const OnlineRegistration = () => {
                 key: key,
                 amount: order.amount,
                 currency: order.currency,
-                name: 'RECC Summit 2026',
+                name: 'LIUTEX Summit 2026',
                 description: `Payment for ${formData.fullName}`,
                 order_id: order.id,
                 prefill: {
@@ -355,7 +355,7 @@ const OnlineRegistration = () => {
                                 <li>📧 A confirmation email will be sent to <strong>{successInfo?.email}</strong></li>
                                 <li>📋 Your registration details are being processed by the organizing team</li>
                                 <li>🗓️ You'll receive agenda and venue details closer to the event</li>
-                                <li>❓ Questions? Contact us at <a href="mailto:RECC@sciengasummits.com">RECC@sciengasummits.com</a></li>
+                                <li>❓ Questions? Contact us at <a href="mailto:contact@RECCClimatesummit.com">contact@RECCClimatesummit.com</a></li>
                             </ul>
                         </div>
 

@@ -9,11 +9,11 @@ import { resolveImageUrl } from '../../../api/utilsApi';
 
 const DEFAULTS = {
     subtitle: 'INTERNATIONAL CONFERENCE ON',
-    title: 'Renewable Energy AND\nClimate Change',
-    description: 'International Conference on Renewable Energy & Climate Change where global experts unite to shape the future of renewable energy. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
+    title: 'RENEWABLE ENERGY &\nCLIMATE CHANGE',
+    description: 'INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE where global experts unite to shape the future of fluid mechanics. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
     conferenceDate: 'March 23-25, 2027',
     venue: 'Munich, Germany',
-    countdownTarget: '2026-12-14T09:00:00+01:00',
+    countdownTarget: '2027-03-23T09:00:00+01:00',
     showRegister: true,
     showAbstract: true,
     showBrochure: true,
@@ -25,7 +25,7 @@ const HeroSection = () => {
     const router = useRouter();
     const navigate = (path) => router.push(path);
     const [hero, setHero] = useState(DEFAULTS);
-
+    const [chairs, setChairs] = useState(null);
     const calcTimeLeft = (target) => {
         const diff = new Date(target).getTime() - Date.now();
         if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -36,13 +36,8 @@ const HeroSection = () => {
             seconds: Math.floor((diff % (1000 * 60)) / 1000),
         };
     };
-    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-    const [isMounted, setIsMounted] = useState(false);
+    const [timeLeft, setTimeLeft] = useState(() => calcTimeLeft(DEFAULTS.countdownTarget));
     const [collaborations, setCollaborations] = useState([]);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
 
     // resolveImageUrl from siteApi.js handles both local (localhost:5050) and
     // production (VITE_API_URL) — never hardcodes localhost for image paths.
@@ -57,7 +52,50 @@ const HeroSection = () => {
                 if (!cancelled && data) setHero(prev => ({ ...prev, ...data }));
             });
 
-
+            fetchContent('heroChairs').then(data => {
+                if (!cancelled) {
+                    if (data && Array.isArray(data)) {
+                        // Top-level array (ideal case)
+                        const validChairs = data.filter(c => c && c.name);
+                        setChairs(validChairs);
+                    } else if (data && data._items && Array.isArray(data._items)) {
+                        // ✅ Deployed backend stores array as data._items — most recent save wins
+                        const validChairs = data._items.filter(c => c && c.name);
+                        setChairs(validChairs);
+                    } else if (data && (data.chair?.name || data.viceChair?.name || data.coChair?.name)) {
+                        // Legacy schema migration
+                        const migrated = [];
+                        ['chair', 'viceChair', 'coChair'].forEach(k => {
+                            if (data[k] && data[k].name) {
+                                migrated.push({ id: k, ...data[k] });
+                            }
+                        });
+                        setChairs(migrated);
+                    } else if (data && typeof data === 'object') {
+                        // Recover from corrupted save: { "0":{...}, "1":{...} }
+                        const numKeys = Object.keys(data)
+                            .filter(k => !isNaN(k))
+                            .sort((a, b) => Number(a) - Number(b));
+                        if (numKeys.length > 0) {
+                            const recovered = numKeys.map(k => data[k]).filter(c => c && c.name);
+                            setChairs(recovered);
+                        } else {
+                            setChairs([]);
+                        }
+                    } else if (data === null || data === undefined) {
+                        // Fallback dummy data if nothing is saved yet
+                        setChairs([
+                            { id: 1, name: 'Dr. Chaoqun Liu', affiliation: 'University of Texas at Arlington', country: 'USA', title: 'Conference Chairman' },
+                            { id: 2, name: 'Dr. Yiqian Wang', affiliation: 'Soochow University', country: 'China', title: 'Conference Co-chairman' },
+                            { id: 3, name: 'Dr. James Chen', affiliation: 'Munich, Germany Food Agency', country: 'Munich, Germany', title: 'Conference Co-chairman' }
+                        ]);
+                    } else {
+                        setChairs([]);
+                    }
+                }
+            }).catch(err => {
+                console.error('Failed to fetch heroChairs:', err);
+            });
 
             // Fetch Collaborations
             import('../../../api/index').then(api => {
@@ -185,7 +223,27 @@ const HeroSection = () => {
                         </div>
                     </div>
 
-
+                    {chairs && chairs.length > 0 && (
+                        <div className="hero__chairs-row">
+                            {chairs.map((chair, idx) => (
+                                <div className="chair-card-v" key={chair.id || idx}>
+                                    <div className="chair-badge-v">{chair.title || 'Conference Chairman'}</div>
+                                    {chair.image ? (
+                                        <img src={resolveUrl(chair.image)} alt={chair.name} className="chair-card-bg" />
+                                    ) : (
+                                        <div className="chair-placeholder-v"><User size={40} color="#fff" /></div>
+                                    )}
+                                    <div className="chair-card-overlay">
+                                        <h4 className="chair-name-v">{chair.name}</h4>
+                                        <p className="chair-aff-v">{chair.affiliation}</p>
+                                        {chair.country && (
+                                            <p className="chair-country-v"><MapPin size={12} /> {chair.country}</p>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
 

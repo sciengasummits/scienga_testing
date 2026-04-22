@@ -7,8 +7,8 @@ import usePageSEO from '../../hooks/usePageSEO';
 const Sessions = () => {
     usePageSEO({
         title: 'Sessions & Key Themes',
-        description: 'Explore RECC 2027 technical sessions covering Renewable Energy and Climate Change, Climate Change Methods (Q, λ2, Ω, RECC), CFD Applications, Aerospace Climate Dynamics, and AI in Flow Field Analysis.',
-        canonical: 'https://RECC 2027.com/sessions',
+        description: 'Explore RENEWABLECLISUMMIT2026 technical sessions covering Liutex Theory and Turbulence Mechanism, Vortex Identification Methods (Q, λ2, Ω, Liutex), CFD Applications, Aerospace Vortex Dynamics, and AI in Flow Field Analysis.',
+        canonical: 'https://liutex2026.com/sessions',
     });
     return (
         <div className="pt-5">

@@ -10,8 +10,8 @@ import usePageSEO from '../../hooks/usePageSEO';
 const Subscribe = () => {
     usePageSEO({
         title: 'Subscribe',
-        description: 'Subscribe to get the latest updates and news from the RECC Climate Summit 2026.',
-        canonical: 'https://RECCClimatesummit.com/subscribe',
+        description: 'Subscribe to get the latest updates and news from the Liutex Vortex Summit 2026.',
+        canonical: 'https://renewableclisummit2026.sciengasummits.com/subscribe',
     });
 
     const [form, setForm] = useState({ name: '', email: '', number: '' });
@@ -54,7 +54,7 @@ const Subscribe = () => {
                             <div className="subscribe-success">
                                 <CheckCircle size={64} className="subscribe-success__icon" />
                                 <h2>You're Subscribed!</h2>
-                                <p>Thank you for subscribing. You'll receive the latest updates and news from RECC Climate Summit 2026.</p>
+                                <p>Thank you for subscribing. You'll receive the latest updates and news from Liutex Vortex Summit 2026.</p>
                                 <Button onClick={() => { setSuccess(false); setForm({ name: '', email: '', number: '' }); }}>
                                     Subscribe Another
                                 </Button>
@@ -63,7 +63,7 @@ const Subscribe = () => {
                             <>
                                 <div className="form-header">
                                     <h3>Subscribe for Updates</h3>
-                                    <p>Get the latest news and announcements from RECC Climate Summit 2026.</p>
+                                    <p>Get the latest news and announcements from Liutex Vortex Summit 2026.</p>
                                 </div>
 
                                 <form className="subscribe-form" onSubmit={handleSubmit}>

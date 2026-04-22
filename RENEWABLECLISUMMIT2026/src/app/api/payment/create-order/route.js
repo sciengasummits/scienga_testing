@@ -15,7 +15,7 @@ export async function POST(req) {
       return NextResponse.json({ success: false, error: 'Razorpay is not configured' }, { status: 503 });
     }
 
-    const { amount, currency = 'USD', registrationId, conference = 'RECC', description = 'Conference Registration' } = await req.json();
+    const { amount, currency = 'USD', registrationId, conference = 'liutex', description = 'Conference Registration' } = await req.json();
 
     if (!amount || amount <= 0) {
       return NextResponse.json({ success: false, error: 'Invalid amount.' }, { status: 400 });

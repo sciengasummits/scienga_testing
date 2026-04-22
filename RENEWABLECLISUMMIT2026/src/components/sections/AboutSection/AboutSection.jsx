@@ -9,32 +9,33 @@ import { fetchContent } from '../../../api/contentApi';
 const ICON_MAP = { CalendarDays, CheckCircle, Clock, Star, Calendar, MapPin };
 
 const DEFAULT_ABOUT = {
+
     title: 'About The Conference',
-    paragraph1: 'The International Conference on Renewable Energy & Climate Change (RECC) is a premier global platform dedicated to advancing the understanding of sustainable energy solutions and their transformative role in mitigating environmental challenges.',
-    paragraph2: 'This summit brings together leading researchers, academicians, computational scientists, engineers, and industry professionals to explore recent developments, theoretical foundations, numerical methods, and real-world applications of renewable technology and climate modeling.',
+    paragraph1: 'The INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE is a premier international platform dedicated to advancing the understanding of Liutex theory and its transformative applications in turbulence mechanisms.',
+    paragraph2: 'This conference brings together leading researchers, academicians, computational scientists, engineers, and industry professionals to explore recent developments, theoretical foundations, numerical methods, and real-world applications of Liutex-based vortex analysis.',
     objectives: [
-        'Promote advancements in Renewable Energy technologies',
-        'Explore innovations in Climate Change mitigation techniques',
-        'Discuss computational and experimental approaches in sustainability',
-        'Bridge academia and industry in clean energy research',
-        'Encourage collaboration across environmental, mechanical, and civil engineering domains',
+        'Promote advancements in Liutex theory',
+        'Explore innovations in vortex identification techniques',
+        'Discuss computational and experimental approaches in vortex dynamics',
+        'Bridge academia and industry in fluid mechanics research',
+        'Encourage collaboration across aerospace, mechanical, civil, and environmental engineering domains',
     ],
     keyThemes: [
-        'Solar & Wind Energy Innovations',
-        'Hydrogen Economy & Biofuels',
-        'Grid Decarbonization & Smart Systems',
-        'Climate Modeling & Fluid Dynamics',
-        'Carbon Capture & Storage Technologies',
-        'AI & Data-Driven Approaches in Sustainability',
+        'Fundamentals of Liutex Theory',
+        'Vortex Identification Methods (Q-criterion, λ2, Ω method, Liutex)',
+        'Turbulence Modeling and Analysis',
+        'Computational Fluid Dynamics (CFD) Applications',
+        'Vortex Dynamics in Aerospace Engineering',
+        'Data-Driven and AI Approaches in Flow Field Identification',
     ],
 };
 
 const DEFAULT_DATES = {
     dates: [
-        { month: 'SEP', day: '15', year: '2026', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
-        { month: 'OCT', day: '25', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
-        { month: 'DEC', day: '15', year: '2026', event: 'Submission Deadline', icon: 'Clock' },
-        { month: 'MAR', day: '23', year: '2027', event: 'Conference Date', icon: 'Star', sub: 'March 23-25, 2027, Munich, Germany' },
+        { month: 'JUN', day: '15', year: '2026', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
+        { month: 'SEP', day: '25', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
+        { month: 'OCT', day: '30', year: '2026', event: 'Submission Deadline', icon: 'Clock' },
+        { month: 'DEC', day: '14', year: '2026', event: 'Conference Date', icon: 'Star', sub: 'December 14-17, 2026, Munich, Germany' },
     ],
 };
 

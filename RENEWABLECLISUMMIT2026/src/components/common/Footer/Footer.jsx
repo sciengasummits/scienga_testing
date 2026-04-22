@@ -29,7 +29,7 @@ const Footer = () => {
                             <Logo />
                         </div>
                         <p className="footer__desc">
-                            Advancing the science of RECC-based Climate Change to unlock deeper insights into Climate and rotational flow dynamics.
+                            Advancing the science of Liutex-based vortex identification to unlock deeper insights into turbulence and rotational flow dynamics.
                         </p>
                         <div className="footer__socials">
                             <a href="https://www.facebook.com/profile.php?id=61588065033161" target="_blank" rel="noopener noreferrer" className="social-icon">FB</a>
@@ -83,7 +83,7 @@ const Footer = () => {
                 </div>
 
                 <div className="footer__bottom">
-                    <p>&copy; {new Date().getFullYear()} International Conference on Renewable Energy & Climate Change. All Rights Reserved by SCIENGA SUMMITS</p>
+                    <p>&copy; {new Date().getFullYear()} INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE. All Rights Reserved by SCIENGA SUMMITS</p>
                 </div>
             </div>
         </footer>

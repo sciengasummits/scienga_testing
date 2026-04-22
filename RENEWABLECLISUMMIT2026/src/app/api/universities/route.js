@@ -7,7 +7,7 @@ export async function GET(req) {
   try {
     await connectDB();
     const { searchParams } = new URL(req.url);
-    const conf = searchParams.get('conference') || 'RECC';
+    const conf = searchParams.get('conference') || 'liutex';
 
     const filter = { visible: true, conference: conf };
 

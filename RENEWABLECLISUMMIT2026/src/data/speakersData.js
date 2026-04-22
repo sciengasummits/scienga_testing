@@ -10,7 +10,7 @@ export const speakers = [
     {
         id: 2,
         name: "Prof. Yifei Chen",
-        title: "Professor of renewable energy",
+        title: "Professor of Fluid Mechanics",
         affiliation: "Tsinghua University, China",
         category: "Invited Speaker",
         image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80"

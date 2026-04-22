@@ -5,14 +5,14 @@ import { escapeHtml } from '@/lib/utils';
 
 export async function POST(req) {
   try {
-    const { name, email, phone, conference = 'RECC' } = await req.json();
+    const { name, email, phone, conference = 'liutex' } = await req.json();
     
     if (!email || !name) {
       return NextResponse.json({ success: false, error: 'Name and Email required' }, { status: 400 });
     }
 
     const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
-    const adminEmail = account ? account.email : 'RECC@sciengasummits.com';
+    const adminEmail = account ? account.email : 'contact@RECCClimatesummit.com';
 
     const emailSender = new RealEmailSender();
     

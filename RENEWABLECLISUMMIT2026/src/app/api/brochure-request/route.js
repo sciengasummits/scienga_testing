@@ -5,14 +5,14 @@ import { escapeHtml } from '@/lib/utils';
 
 export async function POST(req) {
   try {
-    const { name, email, number, conference = 'RECC' } = await req.json();
+    const { name, email, number, conference = 'liutex' } = await req.json();
 
     if (!email || !name) {
       return NextResponse.json({ success: false, error: 'Name and Email required' }, { status: 400 });
     }
 
     const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
-    const adminEmail = account ? account.email : 'RECC@sciengasummits.com';
+    const adminEmail = account ? account.email : 'contact@RECCClimatesummit.com';
 
     const emailSender = new RealEmailSender();
 
@@ -54,7 +54,7 @@ export async function POST(req) {
           <p style="color: #64748b; font-size: 14px; margin: 20px 0 0 0;">If you have any questions, feel free to reach out to us.</p>
         </div>
         <div style="text-align: center; margin-top: 20px; padding: 20px;">
-          <p style="color: #94a3b8; font-size: 12px; margin: 0;">© 2026 RECC SUMMIT. All rights reserved.</p>
+          <p style="color: #94a3b8; font-size: 12px; margin: 0;">© 2026 LIUTEX SUMMIT. All rights reserved.</p>
         </div>
       </div>`,
       'BROCHURE',

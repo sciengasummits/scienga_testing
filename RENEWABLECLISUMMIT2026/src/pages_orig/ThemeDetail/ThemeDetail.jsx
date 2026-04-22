@@ -8,52 +8,52 @@ import Button from '../../components/common/Button/Button';
 import usePageSEO from '../../hooks/usePageSEO';
 
 const themesData = {
-    'RECC-fundamentals': {
-        title: 'RECC Fundamentals',
+    'liutex-fundamentals': {
+        title: 'Liutex Fundamentals',
         icon: <Compass size={48} />,
-        description: 'Exploring the mathematical foundations and definition of RECC as a physical quantity for rotation.',
+        description: 'Exploring the mathematical foundations and definition of Liutex as a physical quantity for rotation.',
         topics: [
-            'Mathematical Definition of RECC', 'Vector Decompositions', 'Principal Coordinate System', 'RECC vs. Vorticity', 'Rotational Strength Analysis'
+            'Mathematical Definition of Liutex', 'Vector Decompositions', 'Principal Coordinate System', 'Liutex vs. Vorticity', 'Rotational Strength Analysis'
         ]
     },
-    'Climate-identification': {
-        title: 'Climate Change',
+    'vortex-identification': {
+        title: 'Vortex Identification',
         icon: <Target size={48} />,
-        description: 'Advanced methods for identifying and extracting Climate structures from complex flow fields.',
+        description: 'Advanced methods for identifying and extracting vortex structures from complex flow fields.',
         topics: [
-            'Omega (Ω) Method', 'Q-criterion & λ2-criterion', 'Objective Climate Change', 'Threshold Selection Strategies', 'Comparative Study of Methods'
+            'Omega (Ω) Method', 'Q-criterion & λ2-criterion', 'Objective Vortex Identification', 'Threshold Selection Strategies', 'Comparative Study of Methods'
         ]
     },
-    'Climate-modeling': {
-        title: 'Climate Modeling',
+    'turbulence-modeling': {
+        title: 'Turbulence Modeling',
         icon: <Layers size={48} />,
-        description: 'Applying Renewable Energy to enhance Climate models and understand energy cascades.',
+        description: 'Applying Liutex theory to enhance turbulence models and understand energy cascades.',
         topics: [
-            'RECC-based RANS Models', 'LES & Wall-bounded Flows', 'DNS Data Analysis', 'Subgrid Scale Modeling', 'Turbulent Structure Extraction'
+            'Liutex-based RANS Models', 'LES & Wall-bounded Flows', 'DNS Data Analysis', 'Subgrid Scale Modeling', 'Turbulent Structure Extraction'
         ]
     },
     'aerospace-applications': {
         title: 'Aerospace Engineering',
         icon: <Wind size={48} />,
-        description: 'Climate dynamics in aerodynamics, wing tip vortices, and propulsion systems.',
+        description: 'Vortex dynamics in aerodynamics, wing tip vortices, and propulsion systems.',
         topics: [
-            'Wing-tip Climate Control', 'Delta Wing Aerodynamics', 'Turbomachinery Flows', 'Supersonic Climate Stability', 'Unsteady Lift Generation'
+            'Wing-tip Vortex Control', 'Delta Wing Aerodynamics', 'Turbomachinery Flows', 'Supersonic Vortex Stability', 'Unsteady Lift Generation'
         ]
     },
     'cfd-algorithms': {
         title: 'CFD & Algorithms',
         icon: <Cpu size={48} />,
-        description: 'High-order numerical schemes and hardware-accelerated Climate tracking.',
+        description: 'High-order numerical schemes and hardware-accelerated vortex tracking.',
         topics: [
-            'High-Order Spectral Methods', 'Real-time Climate Detection', 'GPU Accelerated Solvers', 'Adaptive Mesh Refinement', 'Flow Field Reconstruction'
+            'High-Order Spectral Methods', 'Real-time Vortex Detection', 'GPU Accelerated Solvers', 'Adaptive Mesh Refinement', 'Flow Field Reconstruction'
         ]
     },
     'ai-flow-analysis': {
         title: 'AI & Flow Analysis',
         icon: <Terminal size={48} />,
-        description: 'Leveraging machine learning for automated Climate feature extraction and prediction.',
+        description: 'Leveraging machine learning for automated vortex feature extraction and prediction.',
         topics: [
-            'Deep Learning for Climate Tracking', 'Physics-Informed Neural Networks', 'Reduced Order Modeling', 'Reinforcement Learning in Flow Control', 'Big Data in renewable energy'
+            'Deep Learning for Vortex Tracking', 'Physics-Informed Neural Networks', 'Reduced Order Modeling', 'Reinforcement Learning in Flow Control', 'Big Data in Fluid Mechanics'
         ]
     }
 };
@@ -65,9 +65,9 @@ const ThemeDetail = () => {
     usePageSEO({
         title: theme ? `${theme.title} – Sessions` : 'Session Theme',
         description: theme
-            ? `RECC 2027 session: ${theme.title}. ${theme.description} Topics include: ${(theme.topics || []).slice(0, 3).join(', ')}.`
-            : 'RECC 2027 conference session on Renewable Energy, Climate Dynamics, and CFD.',
-        canonical: `https://RECC 2027.com/sessions/${themeId || ''}`,
+            ? `RENEWABLECLISUMMIT2026 session: ${theme.title}. ${theme.description} Topics include: ${(theme.topics || []).slice(0, 3).join(', ')}.`
+            : 'RENEWABLECLISUMMIT2026 conference session on Liutex Theory, Vortex Dynamics, and CFD.',
+        canonical: `https://liutex2026.com/sessions/${themeId || ''}`,
     });
 
     if (!theme) {

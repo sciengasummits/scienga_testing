@@ -8,8 +8,8 @@ import usePageSEO from '../../hooks/usePageSEO';
 const Unsubscribe = () => {
     usePageSEO({
         title: 'Unsubscribe',
-        description: 'Unsubscribe from RECC 2027 mailing list.',
-        canonical: 'https://RECC 2027.com/unsubscribe',
+        description: 'Unsubscribe from RENEWABLECLISUMMIT2026 mailing list.',
+        canonical: 'https://liutex2026.com/unsubscribe',
     });
 
     // noindex for utility page
@@ -68,7 +68,7 @@ const Unsubscribe = () => {
                             <h2>Unsubscribed Successfully</h2>
                             <p>
                                 You have been successfully unsubscribed from our mailing list.
-                                You will no longer receive updates from RECC 2027.
+                                You will no longer receive updates from RENEWABLECLISUMMIT2026.
                             </p>
                             <Button onClick={() => window.location.href = '/'}>Back to Home</Button>
                         </div>

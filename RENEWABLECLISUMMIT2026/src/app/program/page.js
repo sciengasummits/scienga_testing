@@ -1,10 +1,10 @@
 import Program from '../../pages_orig/Program/Program';
 
 export const metadata = {
-    title: 'Program | RECC 2027',
-    description: 'Conference program and schedule for RECC 2027.',
+    title: 'Program | RENEWABLECLISUMMIT2026',
+    description: 'Conference program and schedule for RENEWABLECLISUMMIT2026.',
     alternates: {
-        canonical: 'https://RECC 2027.com/program',
+        canonical: 'https://liutex2026.com/program',
     }
 };
 
