@@ -8,8 +8,13 @@ const nextConfig = {
     return config;
   },
   // Turbopack config (used by Next.js 16+ production builds)
-  turbopack: {
-    resolveExtensions: ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
+  experimental: {
+    turbo: {
+      resolveExtensions: ['.jsx', '.tsx', '.ts', '.js', '.mjs', '.json'],
+      rules: {
+        '*.jsx': ['@vercel/webpack-loader'],
+      }
+    },
   },
 };
 
