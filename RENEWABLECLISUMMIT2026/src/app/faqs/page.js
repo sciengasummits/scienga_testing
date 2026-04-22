@@ -1,4 +1,4 @@
-import FAQ from '../../pages_orig/FAQ/FAQ';
+import FAQ from '../../pages_orig/FAQ';
 
 export const metadata = {
     title: 'FAQs | RENEWABLECLISUMMIT2026',

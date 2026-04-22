@@ -1,4 +1,4 @@
-import Sponsors from '../../pages_orig/Sponsors/Sponsors';
+import Sponsors from '../../pages_orig/Sponsors';
 
 export const metadata = {
     title: 'Sponsors | RENEWABLECLISUMMIT2026',

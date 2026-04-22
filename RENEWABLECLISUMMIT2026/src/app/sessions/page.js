@@ -1,4 +1,4 @@
-import Sessions from '../../pages_orig/Sessions/Sessions';
+import Sessions from '../../pages_orig/Sessions';
 
 export const metadata = {
     title: 'Sessions | RENEWABLECLISUMMIT2026',

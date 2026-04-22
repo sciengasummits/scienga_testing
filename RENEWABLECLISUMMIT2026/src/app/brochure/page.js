@@ -1,4 +1,4 @@
-import Brochure from '../../pages_orig/Brochure/Brochure';
+import Brochure from '../../pages_orig/Brochure';
 
 export const metadata = {
     title: 'Brochure | RENEWABLECLISUMMIT2026',

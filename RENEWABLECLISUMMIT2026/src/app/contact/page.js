@@ -1,4 +1,4 @@
-import Contact from '../../pages_orig/Contact/Contact';
+import Contact from '../../pages_orig/Contact';
 
 export const metadata = {
     title: 'Contact Us | RENEWABLECLISUMMIT2026',

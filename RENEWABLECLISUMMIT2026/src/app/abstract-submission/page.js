@@ -1,4 +1,4 @@
-import AbstractSubmission from '../../pages_orig/AbstractSubmission/AbstractSubmission';
+import AbstractSubmission from '../../pages_orig/AbstractSubmission';
 
 export const metadata = {
     title: 'Abstract Submission | RENEWABLECLISUMMIT2026',

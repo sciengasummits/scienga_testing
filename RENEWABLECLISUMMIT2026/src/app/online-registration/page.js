@@ -1,4 +1,4 @@
-import OnlineRegistration from '../../pages_orig/OnlineRegistration/OnlineRegistration';
+import OnlineRegistration from '../../pages_orig/OnlineRegistration';
 
 export const metadata = {
     title: 'Online Registration | RENEWABLECLISUMMIT2026',

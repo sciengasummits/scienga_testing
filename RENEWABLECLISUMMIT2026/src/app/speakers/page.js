@@ -1,4 +1,4 @@
-import Speakers from '../../pages_orig/Speakers/Speakers';
+import Speakers from '../../pages_orig/Speakers';
 
 export const metadata = {
     title: 'Speakers | RENEWABLECLISUMMIT2026',

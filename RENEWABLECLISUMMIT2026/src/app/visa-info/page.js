@@ -1,4 +1,4 @@
-import VisaInfo from '../../pages_orig/VisaInfo/VisaInfo';
+import VisaInfo from '../../pages_orig/VisaInfo';
 
 export const metadata = {
     title: 'Visa Info | RENEWABLECLISUMMIT2026',

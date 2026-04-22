@@ -1,4 +1,4 @@
-import ThemeDetail from '../../../pages_orig/ThemeDetail/ThemeDetail';
+import ThemeDetail from '../../../pages_orig/ThemeDetail';
 
 // Generate dynamic metadata based on the URL parameter if needed
 // Or use a generic one

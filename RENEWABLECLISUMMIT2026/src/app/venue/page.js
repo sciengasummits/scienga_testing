@@ -1,4 +1,4 @@
-import Venue from '../../pages_orig/Venue/Venue';
+import Venue from '../../pages_orig/Venue';
 
 export const metadata = {
     title: 'Venue | RENEWABLECLISUMMIT2026',

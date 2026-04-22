@@ -1,4 +1,4 @@
-import Program from '../../pages_orig/Program/Program';
+import Program from '../../pages_orig/Program';
 
 export const metadata = {
     title: 'Program | RENEWABLECLISUMMIT2026',

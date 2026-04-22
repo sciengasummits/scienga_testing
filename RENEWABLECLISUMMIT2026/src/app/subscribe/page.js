@@ -1,4 +1,4 @@
-import Subscribe from '../../pages_orig/Subscribe/Subscribe';
+import Subscribe from '../../pages_orig/Subscribe';
 
 export const metadata = {
     title: 'Subscribe | RENEWABLECLISUMMIT2026',

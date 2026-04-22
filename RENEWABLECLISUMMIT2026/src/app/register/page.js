@@ -1,4 +1,4 @@
-import Register from '../../pages_orig/Register/Register';
+import Register from '../../pages_orig/Register';
 
 export const metadata = {
     title: 'Register Online | RENEWABLECLISUMMIT2026',

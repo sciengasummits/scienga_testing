@@ -1,4 +1,4 @@
-import Unsubscribe from '../../pages_orig/Unsubscribe/Unsubscribe';
+import Unsubscribe from '../../pages_orig/Unsubscribe';
 
 export const metadata = {
     title: 'Unsubscribe | RENEWABLECLISUMMIT2026',
