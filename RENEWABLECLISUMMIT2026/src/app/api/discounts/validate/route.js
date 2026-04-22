@@ -5,7 +5,7 @@ import Discount from '@/models/Discount';
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { coupon, conference = 'RECC' } = body;
+    const { coupon, conference = 'liutex' } = body;
 
     if (!coupon) {
       return NextResponse.json({ valid: false, message: 'Coupon code required' }, { status: 400 });

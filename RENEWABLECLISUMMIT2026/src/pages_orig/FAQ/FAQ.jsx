@@ -38,7 +38,7 @@ const DEFAULTS = {
             category: 'Registration',
             items: [
                 {
-                    question: 'How can I register for the International Conference on Renewable Energy & Climate Change?',
+                    question: 'How can I register for the INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE?',
                     answer: "You can register online through our website by visiting the 'Register' page. Early bird registration is available until the specified deadline.",
                 },
                 {
@@ -115,8 +115,8 @@ const DEFAULTS = {
 const FAQ = () => {
     usePageSEO({
         title: 'Frequently Asked Questions',
-        description: 'Find answers to common questions about RECC 2027 – registration, abstract submission, visa & travel, accommodation, and the conference program. Contact us for further help.',
-        canonical: 'https://RECC 2027.com/faqs',
+        description: 'Find answers to common questions about RENEWABLECLISUMMIT2026 – registration, abstract submission, visa & travel, accommodation, and the conference program. Contact us for further help.',
+        canonical: 'https://liutex2026.com/faqs',
     });
     const [faqData, setFaqData] = useState(DEFAULTS);
     const [activeIndex, setActiveIndex] = useState(null);

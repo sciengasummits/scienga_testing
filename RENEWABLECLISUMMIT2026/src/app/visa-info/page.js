@@ -1,10 +1,10 @@
 import VisaInfo from '../../pages_orig/VisaInfo/VisaInfo';
 
 export const metadata = {
-    title: 'Visa Info | RECC 2027',
-    description: 'Visa information for attendees traveling to Munich, Germany for RECC 2027.',
+    title: 'Visa Info | RENEWABLECLISUMMIT2026',
+    description: 'Visa information for attendees traveling to Munich, Germany for RENEWABLECLISUMMIT2026.',
     alternates: {
-        canonical: 'https://RECC 2027.com/visa-info',
+        canonical: 'https://liutex2026.com/visa-info',
     }
 };
 

@@ -160,7 +160,7 @@ const SpeakersSection = ({ showViewAll }) => {
                                 <h3 className="modal-title">{selectedSpeaker.name}</h3>
                                 <span className="modal-type">{selectedSpeaker.title}</span>
                                 <p className="modal-affiliation-highlight">{selectedSpeaker.affiliation}</p>
-                                <p className="modal-desc">{selectedSpeaker.bio || "A distinguished expert in the field of Climate dynamics and renewable energy, contributing significantly to research and computational analysis."}</p>
+                                <p className="modal-desc">{selectedSpeaker.bio || "A distinguished expert in the field of vortex dynamics and fluid mechanics, contributing significantly to research and computational analysis."}</p>
                             </div>
                         </div>
                     </div>

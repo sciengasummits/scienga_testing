@@ -4,7 +4,7 @@ export async function submitAbstract(payload) {
     const res = await fetch(`${BASE_URL}/abstracts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...payload, conference: 'RECC' }),
+        body: JSON.stringify({ ...payload, conference: 'liutex' }),
     });
     if (!res.ok) throw new Error('Server error');
     return res.json();

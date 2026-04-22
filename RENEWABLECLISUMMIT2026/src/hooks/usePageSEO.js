@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { fetchContent } from '../api/contentApi';
 
-const SITE_NAME = 'RECC 2027';
-const BASE_URL = 'https://RECC 2027.com';
+const SITE_NAME = 'RENEWABLECLISUMMIT2026';
+const BASE_URL = 'https://liutex2026.com';
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
 const DEFAULT_DESC =
-  'International Conference on Renewable Energy & Climate Change. December 14–16, 2026 · Munich, Germany.';
+  'INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE. December 14–16, 2026 · Munich, Germany.';
 
 // Cache so we only fetch once per session
 let _metaCache = null;
@@ -36,7 +36,7 @@ const usePageSEO = ({ pageKey, title, description, image, canonical } = {}) => {
             const rawTitle = db.title || title;
             const fullTitle = rawTitle
                 ? (rawTitle.includes(SITE_NAME) ? rawTitle : `${rawTitle} | ${SITE_NAME}`)
-                : `${SITE_NAME} | International Conference on Renewable Energy & Climate Change – Munich, Germany`;
+                : `${SITE_NAME} | INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE – Munich, Germany`;
 
             const desc = db.description || description || DEFAULT_DESC;
             const keywords = db.keywords || '';

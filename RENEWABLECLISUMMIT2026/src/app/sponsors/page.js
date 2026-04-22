@@ -1,10 +1,10 @@
 import Sponsors from '../../pages_orig/Sponsors/Sponsors';
 
 export const metadata = {
-    title: 'Sponsors | RECC 2027',
-    description: 'Meet the sponsors and partners of the RECC 2027 conference.',
+    title: 'Sponsors | RENEWABLECLISUMMIT2026',
+    description: 'Meet the sponsors and partners of the RENEWABLECLISUMMIT2026 conference.',
     alternates: {
-        canonical: 'https://RECC 2027.com/sponsors',
+        canonical: 'https://liutex2026.com/sponsors',
     }
 };
 

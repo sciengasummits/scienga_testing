@@ -8,21 +8,21 @@ import usePageSEO from '../../hooks/usePageSEO';
 const DigitalBrochure = () => {
     usePageSEO({
         title: 'Digital Brochure',
-        description: 'View the RECC 2027 digital brochure online – conference overview, core objectives, key themes including RECC Fundamentals, Climate Dynamics, CFD, and AI in Flow Analysis.',
-        canonical: 'https://RECC 2027.com/digital-brochure',
+        description: 'View the RENEWABLECLISUMMIT2026 digital brochure online – conference overview, core objectives, key themes including Liutex Fundamentals, Vortex Dynamics, CFD, and AI in Flow Analysis.',
+        canonical: 'https://liutex2026.com/digital-brochure',
     });
     return (
         <div className="digital-brochure">
             <div className="brochure-page-container">
                 {/* PAGE 1: COVER */}
                 <div className="brochure-sheet cover-page">
-                    <div className="Climate-background"></div>
+                    <div className="vortex-background"></div>
                     <div className="brochure-content">
                         <header className="brochure-header">
                             <h4 className="brochure-subtitle-top">INTERNATIONAL</h4>
                             <h1 className="brochure-main-title">
-                                CONFERENCE ON Renewable Energy <br />
-                                <span>AND Climate Change</span>
+                                CONFERENCE ON LIUTEX THEORY <br />
+                                <span>AND TURBULENCE MECHANISM</span>
                             </h1>
                         </header>
 
@@ -48,7 +48,7 @@ const DigitalBrochure = () => {
                         </div>
                     </div>
                     <footer className="brochure-footer-brand">
-                        RECC Climate SUMMIT 2026
+                        LIUTEX VORTEX SUMMIT 2026
                     </footer>
                 </div>
 
@@ -58,17 +58,17 @@ const DigitalBrochure = () => {
                         <div className="sheet-side-accent"></div>
                         <h2 className="sheet-title">Conference Overview</h2>
                         <p className="sheet-description">
-                            The International Conference on Renewable Energy & Climate Change is the premier gathering for experts in Climate Change and Climate science. This summit bridges the gap between pure mathematics and practical engineering.
+                            The INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY & CLIMATE CHANGE is the premier gathering for experts in vortex identification and turbulence science. This summit bridges the gap between pure mathematics and practical engineering.
                         </p>
 
                         <div className="sheet-grid">
                             <div className="sheet-section">
                                 <h3><Award size={20} className="section-icon" /> Core Objectives</h3>
                                 <ul className="sheet-list">
-                                    <li><CheckCircle size={14} /> Advance the knowledge of RECC-based rotation definitions.</li>
-                                    <li><CheckCircle size={14} /> Solve the "shear contamination" problem in Climate Change.</li>
-                                    <li><CheckCircle size={14} /> Promote cross-disciplinary research in CFD and renewable energy.</li>
-                                    <li><CheckCircle size={14} /> Implement AI-driven Climate detection frameworks.</li>
+                                    <li><CheckCircle size={14} /> Advance the knowledge of Liutex-based rotation definitions.</li>
+                                    <li><CheckCircle size={14} /> Solve the "shear contamination" problem in vortex identification.</li>
+                                    <li><CheckCircle size={14} /> Promote cross-disciplinary research in CFD and fluid mechanics.</li>
+                                    <li><CheckCircle size={14} /> Implement AI-driven vortex detection frameworks.</li>
                                 </ul>
                             </div>
 
@@ -86,12 +86,12 @@ const DigitalBrochure = () => {
                         <div className="sheet-section full-width">
                             <h3><FileText size={20} className="section-icon" /> Key Themes for 2026</h3>
                             <div className="themes-flex">
-                                <span className="theme-tag">RECC Fundamentals</span>
+                                <span className="theme-tag">Liutex Fundamentals</span>
                                 <span className="theme-tag">Omega Method</span>
-                                <span className="theme-tag">Climate Structure Analysis</span>
+                                <span className="theme-tag">Turbulence Structure Analysis</span>
                                 <span className="theme-tag">Machined Learning in Fluids</span>
                                 <span className="theme-tag">Aerospace Application</span>
-                                <span className="theme-tag">Climate Dynamics</span>
+                                <span className="theme-tag">Vortex Dynamics</span>
                             </div>
                         </div>
                     </div>

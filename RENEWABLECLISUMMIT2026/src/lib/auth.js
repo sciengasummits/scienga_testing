@@ -5,10 +5,10 @@ const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_change_me';
 
 export const CONFERENCE_ACCOUNTS = [
   {
-    username: 'RECC 2027',
-    email: process.env.RECC_EMAIL || 'RECC@sciengasummits.com',
-    conferenceId: 'RECC',
-    displayName: 'RECC SUMMIT 2026',
+    username: 'RENEWABLECLISUMMIT2026',
+    email: process.env.LIUTEX_EMAIL || 'contact@RECCClimatesummit.com',
+    conferenceId: 'liutex',
+    displayName: 'LIUTEX SUMMIT 2026',
   },
   {
     username: 'FOODAGRISUMMIT2026',
@@ -20,7 +20,7 @@ export const CONFERENCE_ACCOUNTS = [
     username: 'FLUIDMECHSUMMIT2026',
     email: process.env.FLUID_EMAIL || 'fluid@sciengasummits.com',
     conferenceId: 'fluid',
-    displayName: 'renewable energy & TURBOMACHINERY 2026',
+    displayName: 'FLUID MECHANICS & TURBOMACHINERY 2026',
   },
   {
     username: 'RENEWABLECLISUMMIT2026',
@@ -44,7 +44,7 @@ export const CONFERENCE_ACCOUNTS = [
     username: 'POLYMATSUMMIT2026',
     email: process.env.POLYMAT_EMAIL || 'contact@polymatsummit.com',
     conferenceId: 'polymat',
-    displayName: 'ANNUAL INTERNATIONAL CONFERENCE ON POLYMERS AND COMPOSITE MATERIALS 2026',
+    displayName: 'INTERNATIONAL CONFERENCE ON POLYMERS AND COMPOSITE MATERIALS 2026',
   },
   {
     username: 'IQCES2026',

@@ -5,9 +5,9 @@ import { escapeHtml } from '@/lib/utils';
 
 export async function POST(req) {
   try {
-    const { name, email, subject, message, conference = 'RECC' } = await req.json();
+    const { name, email, subject, message, conference = 'liutex' } = await req.json();
     const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
-    const adminEmail = account ? account.email : 'RECC@sciengasummits.com';
+    const adminEmail = account ? account.email : 'contact@RECCClimatesummit.com';
 
     const emailSender = new RealEmailSender();
     

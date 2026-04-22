@@ -9,7 +9,7 @@ export async function GET(req) {
   try {
     await connectDB();
     const { searchParams } = new URL(req.url);
-    const conf = searchParams.get('conference') || 'RECC';
+    const conf = searchParams.get('conference') || 'liutex';
     const registrations = await Registration.find({ conference: conf }).sort({ createdAt: -1 });
     return NextResponse.json(registrations);
   } catch (err) {
@@ -24,10 +24,10 @@ export async function POST(req) {
     const reg = new Registration(body);
     await reg.save();
 
-    const { name, email, category, conference = 'RECC' } = body;
+    const { name, email, category, conference = 'liutex' } = body;
     const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
-    const adminEmail = account ? account.email : 'RECC@sciengasummits.com';
-    const siteUrl = process.env.FRONTEND_URL || 'https://RECCClimatesummit.com';
+    const adminEmail = account ? account.email : 'contact@RECCClimatesummit.com';
+    const siteUrl = process.env.FRONTEND_URL || 'https://renewableclisummit2026.sciengasummits.com';
 
     const emailSender = new RealEmailSender();
     

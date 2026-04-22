@@ -14,14 +14,14 @@ dotenv.config();
 export class RealEmailSender {
     constructor() {
         // Legacy / fallback credentials
-        this._defaultUser = process.env.SMTP_USER || 'RECC@sciengasummits.com';
+        this._defaultUser = process.env.SMTP_USER || 'contact@RECCClimatesummit.com';
         this._defaultPass = (process.env.SMTP_PASS || '').replace(/\s/g, '');
 
         // Per-conference credential map  { conferenceId → { user, pass } }
         this._accounts = {
-            RECC: {
-                user: process.env.RECC_SMTP_USER || this._defaultUser,
-                pass: (process.env.RECC_SMTP_PASS || this._defaultPass).replace(/\s/g, ''),
+            liutex: {
+                user: process.env.LIUTEX_SMTP_USER || this._defaultUser,
+                pass: (process.env.LIUTEX_SMTP_PASS || this._defaultPass).replace(/\s/g, ''),
             },
             foodagri: {
                 user: process.env.FOODAGRI_SMTP_USER || this._defaultUser,
@@ -55,7 +55,7 @@ export class RealEmailSender {
             // If the password is a placeholder or empty, we'll fall back to the
             // default transporter at send time instead of crashing at startup.
             if (!creds.pass || creds.pass.startsWith('REPLACE_WITH')) {
-                console.warn(`⚠️  No valid SMTP password for "${confId}" — will fall back to RECC sender`);
+                console.warn(`⚠️  No valid SMTP password for "${confId}" — will fall back to liutex sender`);
                 continue;
             }
 
@@ -65,8 +65,8 @@ export class RealEmailSender {
             });
         }
 
-        // Always build a default/fallback transporter (RECC)
-        this._defaultTransporter = this._transporters['RECC'] || nodemailer.createTransport({
+        // Always build a default/fallback transporter (liutex)
+        this._defaultTransporter = this._transporters['liutex'] || nodemailer.createTransport({
             service: 'gmail',
             auth: { user: this._defaultUser, pass: this._defaultPass },
         });
@@ -83,7 +83,7 @@ export class RealEmailSender {
      * @param {string} subject     - Email subject
      * @param {string} htmlContent - HTML body
      * @param {string} otp         - OTP value (also sent as plain-text)
-     * @param {string} [conferenceId] - Optional: 'RECC' | 'foodagri' | 'fluid' | 'renewable'
+     * @param {string} [conferenceId] - Optional: 'liutex' | 'foodagri' | 'fluid' | 'renewable'
      */
     async sendEmail(to, subject, htmlContent, otp, conferenceId) {
         // Pick the right transporter
@@ -147,7 +147,7 @@ export class RealEmailSender {
                 
                 <div style="text-align: center; margin-top: 20px; padding: 20px;">
                     <p style="color: #94a3b8; font-size: 12px; margin: 0;">
-                        © 2026 RECC SUMMIT. All rights reserved.
+                        © 2026 LIUTEX SUMMIT. All rights reserved.
                     </p>
                 </div>
             </div>

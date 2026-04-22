@@ -1,14 +1,24 @@
 import React from 'react';
 import './PreviousConferenceSection.css';
 
+// Import conference images
+import conf1 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 1.36.37 PM.jpeg';
+import conf2 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 4.24.43 PM.jpeg';
+import conf3 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 4.25.01 PM (1).jpeg';
+import conf4 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 4.25.01 PM.jpeg';
+import conf5 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 4.25.02 PM.jpeg';
+import conf6 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 4.32.41 PM (1).jpeg';
+
+import conf8 from '../../../assets/images/conference/WhatsApp Image 2025-10-21 at 11.21.39 AM.jpeg';
+
 const conferenceImages = [
-    { id: 1, src: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80', alt: 'Solar Energy Innovation' },
-    { id: 2, src: 'https://images.unsplash.com/photo-1548337138-e87d889cc369?auto=format&fit=crop&w=800&q=80', alt: 'Wind Turbine Farm' },
-    { id: 3, src: 'https://images.unsplash.com/photo-1517088455889-bfa75135412c?auto=format&fit=crop&w=800&q=80', alt: 'Sustainable Hydro Power' },
-    { id: 4, src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=800&q=80', alt: 'Sustainable Urban Development' },
-    { id: 5, src: 'https://images.unsplash.com/photo-1473186578172-c141e6798ee4?auto=format&fit=crop&w=800&q=80', alt: 'Ecological Rivers' },
-    { id: 6, src: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80', alt: 'Clean Transportation' },
-    { id: 8, src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80', alt: 'Forest Conservation' }
+    { id: 1, src: conf1, alt: 'Previous Conference 1' },
+    { id: 2, src: conf2, alt: 'Previous Conference 2' },
+    { id: 3, src: conf3, alt: 'Previous Conference 3' },
+    { id: 4, src: conf4, alt: 'Previous Conference 4' },
+    { id: 5, src: conf5, alt: 'Previous Conference 5' },
+    { id: 6, src: conf6, alt: 'Previous Conference 6' },
+    { id: 8, src: conf8, alt: 'Previous Conference 8' }
 ];
 
 const MarqueeRow = ({ items, direction }) => (
@@ -16,7 +26,7 @@ const MarqueeRow = ({ items, direction }) => (
         {[...items, ...items, ...items].map((image, index) => (
             <div key={`${image.id}-${index}`} className="conference-marquee-item">
                 <img
-                    src={image.src}
+                    src={image.src.src || image.src}
                     alt={image.alt}
                     className="conference-image"
                 />
