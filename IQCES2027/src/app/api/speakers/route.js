@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+export const dynamic = 'force-dynamic';
+import mongoose from 'mongoose';
 import connectDB from '../../../lib/mongodb';
 import Speaker from '../../../models/Speaker';
 import { verifyAuth } from '../../../lib/auth';
@@ -16,7 +18,12 @@ export async function GET(req) {
     const speakers = await Speaker.find(filter).sort({ order: 1, createdAt: 1 });
     return NextResponse.json(speakers);
   } catch (err) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error('API Error (speakers):', err);
+    return NextResponse.json({ 
+      error: err.message, 
+      stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+      dbStatus: mongoose.connection.readyState 
+    }, { status: 500 });
   }
 }
 
@@ -32,7 +39,12 @@ export async function POST(req) {
 
     return NextResponse.json(speaker, { status: 201 });
   } catch (err) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error('API Error (speakers):', err);
+    return NextResponse.json({ 
+      error: err.message, 
+      stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+      dbStatus: mongoose.connection.readyState 
+    }, { status: 500 });
   }
 }
 
