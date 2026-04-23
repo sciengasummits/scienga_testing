@@ -13,7 +13,7 @@ export async function GET(req, { params }) {
     const conf = searchParams.get('conference') || 'renewable';
 
     const item = await SiteContent.findOne({ conference: conf, key });
-    if (!item) return NextResponse.json({ error: 'Content not found' }, { status: 404 });
+    if (!item) return NextResponse.json({}, { status: 200 }); // Return empty object gracefully instead of 404
     
     return NextResponse.json(item.data);
   } catch (err) {
