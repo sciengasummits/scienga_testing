@@ -1,67 +1,69 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { fetchContent } from '../../../api/contentApi';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './VenueSection.css';
-import heroImg from '../../../assets/images/Hero.png';
 
-const DEFAULT_IMAGES = [
-    'https://images.unsplash.com/photo-1525625230556-8e8ad8aaad9d?w=1920&q=80',
-    'https://images.unsplash.com/photo-1540575861501-7ad05823c93e?w=1920&q=80',
-    'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1920&q=80',
-    'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=1920&q=80',
-    'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1920&q=80',
+// Import local images
+import img1 from '../../../assets/images/venue/1.jpg';
+import img2 from '../../../assets/images/venue/2.jpg';
+import img3 from '../../../assets/images/venue/3.jpg';
+import img4 from '../../../assets/images/venue/4.jpg';
+import img5 from '../../../assets/images/venue/5.jpg';
+import img6 from '../../../assets/images/venue/6.jpg';
+import img7 from '../../../assets/images/venue/7.jpg';
+import img8 from '../../../assets/images/venue/8.jpg';
+
+const LOCAL_IMAGES = [
+    img1, img2, img3, img4, img5, img6, img7, img8
 ];
 
 const VenueSection = () => {
-    const [images, setImages] = useState(DEFAULT_IMAGES);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const nextSlide = () => {
+        setCurrentIndex((prev) => (prev === LOCAL_IMAGES.length - 1 ? 0 : prev + 1));
+    };
+
+    const prevSlide = () => {
+        setCurrentIndex((prev) => (prev === 0 ? LOCAL_IMAGES.length - 1 : prev - 1));
+    };
 
     useEffect(() => {
-        let cancelled = false;
-
-        const load = () => {
-            fetchContent('venue').then(d => {
-                if (!cancelled && d && d.images && d.images.length > 0) {
-                    setImages(d.images);
-                }
-            });
-        };
-
-        load();
-
-        const interval = setInterval(load, 30000);
-        const onVisible = () => { if (document.visibilityState === 'visible') load(); };
-        document.addEventListener('visibilitychange', onVisible);
-
-        return () => {
-            cancelled = true;
-            clearInterval(interval);
-            document.removeEventListener('visibilitychange', onVisible);
-        };
+        const timer = setInterval(nextSlide, 5000);
+        return () => clearInterval(timer);
     }, []);
 
-    const singleImageUrl = images[0];
-
     return (
-        <section className="venue" id="venue" style={{ backgroundColor: '#083344' }}>
-            <div className="venue__slides">
-                <div className="venue__slide active" style={{ opacity: 1, zIndex: 1 }}>
-                    <img
-                        src={singleImageUrl}
-                        alt="Venue main view"
-                        onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = heroImg;
-                        }}
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                            display: 'block',
-                            position: 'relative',
-                            zIndex: 0,
-                        }}
-                    />
-                    <div className="venue__overlay"></div>
+        <section className="venue" id="venue">
+            <div className="venue__slider">
+                {LOCAL_IMAGES.map((img, index) => (
+                    <div
+                        key={index}
+                        className={`venue__slide ${index === currentIndex ? 'active' : ''}`}
+                    >
+                        <img
+                            src={img.src || img}
+                            alt={`Venue view ${index + 1}`}
+                        />
+                        <div className="venue__overlay"></div>
+                    </div>
+                ))}
+
+                <button className="venue__nav-btn prev" onClick={prevSlide}>
+                    <ChevronLeft size={40} />
+                </button>
+                <button className="venue__nav-btn next" onClick={nextSlide}>
+                    <ChevronRight size={40} />
+                </button>
+
+                <div className="venue__dots">
+                    {LOCAL_IMAGES.map((_, index) => (
+                        <div
+                            key={index}
+                            className={`venue__dot ${index === currentIndex ? 'active' : ''}`}
+                            onClick={() => setCurrentIndex(index)}
+                        ></div>
+                    ))}
                 </div>
             </div>
         </section>

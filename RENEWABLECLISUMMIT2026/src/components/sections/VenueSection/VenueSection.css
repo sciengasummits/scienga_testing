@@ -1,16 +1,14 @@
 .venue {
     position: relative;
-    color: var(--color-white);
-    min-height: 600px;
-    display: flex;
-    align-items: center;
+    width: 100%;
+    height: 85vh;
+    min-height: 700px;
+    background: #000;
     overflow: hidden;
 }
 
-.venue__slides {
-    position: absolute;
-    top: 0;
-    left: 0;
+.venue__slider {
+    position: relative;
     width: 100%;
     height: 100%;
 }
@@ -22,8 +20,21 @@
     width: 100%;
     height: 100%;
     opacity: 0;
-    transform: translateX(100%);
-    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.venue__slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+}
+
+.venue__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .venue__overlay {
@@ -32,125 +43,91 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35));
-    z-index: 1;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.3) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(0,0,0,0.4) 100%
+    );
 }
 
-.venue__slide.active {
-    opacity: 1;
-    transform: translateX(0);
-    z-index: 1;
-}
-
-.venue__slide.active.next {
-    animation: slideInFromRight 0.8s ease-in-out;
-}
-
-.venue__slide.active.prev {
-    animation: slideInFromLeft 0.8s ease-in-out;
-}
-
-@keyframes slideInFromRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Bottom Controls */
-.venue__controls-bottom {
+.venue__nav-btn {
     position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    z-index: 3;
-}
-
-.venue__arrow {
+    top: 50%;
+    transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(8px);
-}
-
-.venue__arrow:hover {
-    background: var(--color-primary-gradient);
-    border-color: transparent;
-    transform: scale(1.15);
-    box-shadow: 0 0 20px rgba(52, 120, 223, 0.6);
-}
-
-.venue__indicators {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-}
-
-.venue__indicator {
-    width: 12px;
-    height: 12px;
+    cursor: pointer;
+    z-index: 10;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.venue__nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.venue__nav-btn.prev {
+    left: 30px;
+}
+
+.venue__nav-btn.next {
+    right: 30px;
+}
+
+.venue__dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.venue__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
-    padding: 0;
 }
 
-
-
-.venue__indicator.active {
-    background: white;
-    width: 40px;
-    border-radius: 6px;
+.venue__dot.active {
+    background: #fff;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    width: 30px;
+    border-radius: 5px;
 }
 
-.venue__indicator:hover {
-    background: rgba(255, 255, 255, 0.7);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
     .venue {
-        min-height: 400px;
+        height: 65vh;
+        min-height: 450px;
     }
-
-    .venue__arrow {
-        width: 38px;
-        height: 38px;
-        font-size: 1.5rem;
+    
+    .venue__nav-btn {
+        width: 45px;
+        height: 45px;
     }
-
-    .venue__controls-bottom {
-        bottom: 1.5rem;
-        gap: 1.5rem;
+    
+    .venue__nav-btn.prev {
+        left: 15px;
+    }
+    
+    .venue__nav-btn.next {
+        right: 15px;
     }
 }

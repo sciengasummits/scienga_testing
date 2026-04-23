@@ -7,7 +7,7 @@ const ALLOWED_ORIGINS = [
   'https://www.sciengasummits.com',
 ];
 
-export function middleware(req) {
+export function proxy(req) {
   const origin = req.headers.get('origin');
   const res = NextResponse.next();
 

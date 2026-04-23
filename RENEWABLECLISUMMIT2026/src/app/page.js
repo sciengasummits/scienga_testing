@@ -5,6 +5,7 @@ import StatsSection from '../components/sections/StatsSection/StatsSection';
 import KeyThemesSection from '../components/sections/KeyThemesSection/KeyThemesSection';
 import SpeakersSection from '../components/sections/SpeakersSection/SpeakersSection';
 import PricingSection from '../components/sections/PricingSection/PricingSection';
+import VenueSection from '../components/sections/VenueSection/VenueSection';
 import SponsorsSection from '../components/sections/SponsorsSection/SponsorsSection';
 import UniversitiesMarquee from '../components/sections/UniversitiesMarquee/UniversitiesMarquee';
 import '../pages_orig/Home/Home.css';
@@ -27,6 +28,7 @@ export default function Home() {
             <SpeakersSection showViewAll={true} />
             <PricingSection />
             <KeyThemesSection showLearnMore={true} />
+            <VenueSection />
             <SponsorsSection />
         </div>
     );
