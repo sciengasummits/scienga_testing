@@ -57,8 +57,18 @@ const AboutSection = () => {
                 {/* Left Side: Content */}
                 <div className="about__content">
                     <h2 className="section-title">{about.title}</h2>
-                    <p className="about__text">{about.paragraph1}</p>
-                    {about.paragraph2 && <p className="about__text">{about.paragraph2}</p>}
+                    
+                    {about.html ? (
+                        <div 
+                            className="about__rich-text" 
+                            dangerouslySetInnerHTML={{ __html: about.html }} 
+                        />
+                    ) : (
+                        <>
+                            <p className="about__text">{about.paragraph1}</p>
+                            {about.paragraph2 && <p className="about__text">{about.paragraph2}</p>}
+                        </>
+                    )}
 
                     {about.objectives?.length > 0 && (
                         <>

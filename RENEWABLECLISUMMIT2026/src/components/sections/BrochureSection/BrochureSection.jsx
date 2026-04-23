@@ -4,9 +4,49 @@ import React from 'react';
 import Button from '../../common/Button/Button';
 import './BrochureSection.css';
 
+import { fetchContent } from '../../../api/contentApi';
+
+const DEFAULT_BROCHURE = {
+    title: 'Conference Brochure',
+    description: 'Download the official conference brochure to get detailed information about:',
+    features: [
+        'Comprehensive Tentative Program',
+        'Speaker Profiles & Keynotes',
+        'Workshop Details',
+        'Sponsorship Opportunities',
+        'Registration Packages',
+    ],
+};
+
 const BrochureSection = () => {
     const router = useRouter();
     const navigate = (path) => router.push(path);
+    const [brochure, setBrochure] = React.useState(DEFAULT_BROCHURE);
+
+    React.useEffect(() => {
+        let cancelled = false;
+
+        const load = () => {
+            fetchContent('brochure').then(d => {
+                if (!cancelled && d) {
+                    setBrochure(prev => ({ ...prev, ...d }));
+                }
+            });
+        };
+
+        load();
+
+        const interval = setInterval(load, 30000);
+        const onVisible = () => { if (document.visibilityState === 'visible') load(); };
+        document.addEventListener('visibilitychange', onVisible);
+
+        return () => {
+            cancelled = true;
+            clearInterval(interval);
+            document.removeEventListener('visibilitychange', onVisible);
+        };
+    }, []);
+
     const handleDownload = () => {
         navigate('/brochure');
     };
@@ -15,15 +55,13 @@ const BrochureSection = () => {
         <section className="brochure-section section-padding" id="brochure">
             <div className="container brochure__container">
                 <div className="brochure__content">
-                    <h2 className="section-title">Conference Brochure</h2>
+                    <h2 className="section-title">{brochure.title}</h2>
                     <p className="brochure__description">
-                        Download the official conference brochure to get detailed information about:
+                        {brochure.description}
                         <ul>
-                            <li>Comprehensive Tentative Program</li>
-                            <li>Speaker Profiles & Keynotes</li>
-                            <li>Workshop Details</li>
-                            <li>Sponsorship Opportunities</li>
-                            <li>Registration Packages</li>
+                            {(brochure.features || []).map((feat, i) => (
+                                <li key={i}>{feat}</li>
+                            ))}
                         </ul>
                     </p>
                     <div className="brochure__cta">

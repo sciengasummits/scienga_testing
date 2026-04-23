@@ -1,24 +1,13 @@
 import React from 'react';
 import './PreviousConferenceSection.css';
 
-// Import conference images
-import conf1 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 1.36.37 PM.jpeg';
-import conf2 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 4.24.43 PM.jpeg';
-import conf3 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 4.25.01 PM (1).jpeg';
-import conf4 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 4.25.01 PM.jpeg';
-import conf5 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 4.25.02 PM.jpeg';
-import conf6 from '../../../assets/images/conference/WhatsApp Image 2025-10-20 at 4.32.41 PM (1).jpeg';
+import { fetchContent } from '../../../api/contentApi';
 
-import conf8 from '../../../assets/images/conference/WhatsApp Image 2025-10-21 at 11.21.39 AM.jpeg';
-
-const conferenceImages = [
-    { id: 1, src: conf1, alt: 'Previous Conference 1' },
-    { id: 2, src: conf2, alt: 'Previous Conference 2' },
-    { id: 3, src: conf3, alt: 'Previous Conference 3' },
-    { id: 4, src: conf4, alt: 'Previous Conference 4' },
-    { id: 5, src: conf5, alt: 'Previous Conference 5' },
-    { id: 6, src: conf6, alt: 'Previous Conference 6' },
-    { id: 8, src: conf8, alt: 'Previous Conference 8' }
+const DEFAULT_IMAGES = [
+    { id: 1, src: 'https://images.unsplash.com/photo-1540575861501-7ad05823c93e?w=800&q=80', alt: 'Conference 1' },
+    { id: 2, src: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80', alt: 'Conference 2' },
+    { id: 3, src: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80', alt: 'Conference 3' },
+    { id: 4, src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80', alt: 'Conference 4' },
 ];
 
 const MarqueeRow = ({ items, direction }) => (
@@ -36,8 +25,23 @@ const MarqueeRow = ({ items, direction }) => (
 );
 
 const PreviousConferenceSection = () => {
-    const row1 = conferenceImages.slice(0, 5);
-    const row2 = conferenceImages.slice(5);
+    const [images, setImages] = React.useState(DEFAULT_IMAGES);
+
+    React.useEffect(() => {
+        fetchContent('previousGlimpses').then(data => {
+            if (data?.images && data.images.length > 0) {
+                setImages(data.images.map((img, i) => ({
+                    id: i,
+                    src: img.url,
+                    alt: img.name || `Conference ${i + 1}`
+                })));
+            }
+        }).catch(err => console.error('Failed to load glimpses:', err));
+    }, []);
+
+    const mid = Math.ceil(images.length / 2);
+    const row1 = images.slice(0, mid);
+    const row2 = images.slice(mid);
 
     return (
         <section className="previous-conference-section">

@@ -3,6 +3,8 @@ import connectDB from '@/lib/mongodb';
 import SiteContent from '@/models/SiteContent';
 import { verifyAuth } from '@/lib/auth';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req, { params }) {
   try {
     await connectDB();

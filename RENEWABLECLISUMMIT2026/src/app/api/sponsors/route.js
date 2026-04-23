@@ -3,6 +3,8 @@ import connectDB from '@/lib/mongodb';
 import Sponsor from '@/models/Sponsor';
 import { verifyAuth } from '@/lib/auth';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req) {
   try {
     await connectDB();
