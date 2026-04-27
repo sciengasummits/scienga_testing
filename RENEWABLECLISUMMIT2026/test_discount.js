@@ -4,6 +4,7 @@ const isDiscounted = true;
 const discountMultiplier = isDiscounted ? 0.8 : 1;
 const applyDiscount = (price) => Math.round(price * discountMultiplier);
 
+
 const baseAcademicPricing = [
     { id: 'speaker', label: 'Speaker Registration', early: 749, standard: 849, onspot: 949 },
     { id: 'delegate', label: 'Delegate Registration', early: 899, standard: 999, onspot: 1099 },
