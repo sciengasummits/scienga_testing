@@ -12,7 +12,7 @@ const ScheduleSection = () => {
     const navigate = (path) => router.push(path);
     const [schedule, setSchedule] = useState(DEFAULT_SCHEDULE);
 
-    const availableDays = schedule.length > 0 ? schedule.filter(day => day.key !== 'day4') : [{ key: 'day1', label: 'Day 01', subLabel: 'Conference', rows: [] }];
+    const availableDays = schedule.length > 0 ? schedule : [{ key: 'day1', label: 'Day 01', subLabel: 'Conference', rows: [] }];
     const activeDayObj = availableDays.find(day => day.key === activeDay) || availableDays[0];
 
     useEffect(() => {
@@ -27,26 +27,30 @@ const ScheduleSection = () => {
             fetchContent('sessions').then(d => {
                 if (!cancelled && d) {
                     if (d.days && Array.isArray(d.days) && d.days.length > 0) {
-                        const days = d.days.map((day, i) => {
-                            const rows = day.rows ?? day.items ?? day.schedule ?? [];
-                            return {
-                                key: day.key || `day${i + 1}`,
-                                label: day.title || day.name || `Day ${String(i + 1).padStart(2, '0')}`,
-                                subLabel: day.subtitle || day.subtitleText || 'Conference',
-                                rows: Array.isArray(rows) ? rows : [],
-                            };
-                        });
+                        const days = d.days
+                            .filter(day => (day.key || `day${d.days.indexOf(day) + 1}`) !== 'day4')
+                            .map((day, i) => {
+                                const rows = day.rows ?? day.items ?? day.schedule ?? [];
+                                return {
+                                    key: day.key || `day${i + 1}`,
+                                    label: day.title || day.name || `Day ${String(i + 1).padStart(2, '0')}`,
+                                    subLabel: day.subtitle || day.subtitleText || 'Conference',
+                                    rows: Array.isArray(rows) ? rows : [],
+                                };
+                            });
                         setSchedule(days);
                     } else if (d.schedule && typeof d.schedule === 'object') {
-                        const days = Object.entries(d.schedule).map(([key, rows], i) => ({
-                            key,
-                            label: `Day ${String(i + 1).padStart(2, '0')}`,
-                            subLabel: 'Conference',
-                            rows: Array.isArray(rows) ? rows : [],
-                        }));
+                        const days = Object.entries(d.schedule)
+                            .filter(([key]) => key !== 'day4')
+                            .map(([key, rows], i) => ({
+                                key,
+                                label: `Day ${String(i + 1).padStart(2, '0')}`,
+                                subLabel: 'Conference',
+                                rows: Array.isArray(rows) ? rows : [],
+                            }));
                         setSchedule(days);
                     } else if (d.day1 || d.day2 || d.day3 || d.day4) {
-                        const days = ['day1', 'day2', 'day3', 'day4']
+                        const days = ['day1', 'day2', 'day3']
                             .filter(dayKey => Array.isArray(d[dayKey]) && d[dayKey].length > 0)
                             .map((dayKey, i) => ({
                                 key: dayKey,
