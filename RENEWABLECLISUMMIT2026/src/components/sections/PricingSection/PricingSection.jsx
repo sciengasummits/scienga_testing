@@ -8,50 +8,7 @@ import './PricingSection.css';
 
 const DEFAULT_PRICING = {
     title: 'REGISTRATION PRICING',
-    packages: [
-        {
-            title: 'Speaker',
-            price: '799',
-            currency: 'USD',
-            features: [
-                'Oral Presentation',
-                'Networking with Fellow Speakers',
-                'E-Abstract Book',
-                'Certificate of Attendance',
-                'Conference Schedule Handout',
-                'Access to All Sessions and Workshops',
-                'Lunch and Coffee Breaks',
-            ],
-        },
-        {
-            title: 'Delegate',
-            price: '899',
-            currency: 'USD',
-            features: [
-                'Delegate Opportunities',
-                'Connect with Fellow Delegates',
-                'E-Abstract Book',
-                'Certificate of Attendance',
-                'Conference Schedule Handout',
-                'Access to All Sessions and Workshops',
-                'Lunch and Coffee Breaks',
-            ],
-        },
-        {
-            title: 'Student',
-            price: '499',
-            currency: 'USD',
-            features: [
-                'Student Presentation',
-                'Meet Our Experts',
-                'E-Abstract Book',
-                'Certificate of Attendance',
-                'Conference Schedule Handout',
-                'Access to All Sessions and Workshops',
-                'Lunch and Coffee Breaks',
-            ],
-        },
-    ],
+    packages: [],
 };
 
 const PricingSection = () => {
@@ -64,7 +21,7 @@ const PricingSection = () => {
 
         const load = () => {
             fetchContent('pricing').then(d => {
-                if (!cancelled && d && d.packages && d.packages.length > 0) {
+                if (!cancelled && d) {
                     setPricing(prev => ({ ...prev, ...d }));
                 }
             });
