@@ -56,10 +56,15 @@ const HeroSection = () => {
                     // Ensure countdownTarget is always set, deriving from conferenceDate if needed
                     const updated = { ...data };
                     
-                    // Try to get countdownTarget from database first
-                    if (updated.countdownTarget) {
-                        console.log('✅ Using countdownTarget from database:', updated.countdownTarget);
-                    } else if (data.conferenceDate) {
+                    // Helper function to validate if a date string represents a future date
+                    const isFutureDate = (dateString) => {
+                        const targetTime = new Date(dateString).getTime();
+                        const now = new Date().getTime();
+                        return targetTime > now;
+                    };
+                    
+                    // Always derive from conferenceDate to ensure it's in the future
+                    if (data.conferenceDate) {
                         console.log('🔄 Deriving countdownTarget from conferenceDate:', data.conferenceDate);
                         // Extract year from conferenceDate (e.g., "March 23-25, 2027")
                         const dateMatch = data.conferenceDate.match(/(\d{4})/);
@@ -69,10 +74,12 @@ const HeroSection = () => {
                             const month = dateMatch2[1];
                             const day = dateMatch2[2];
                             updated.countdownTarget = `${year}-${getMonthNumber(month)}-${String(day).padStart(2, '0')}T09:00:00+01:00`;
-                            console.log('📅 Generated countdownTarget:', updated.countdownTarget);
+                            console.log('📅 Generated countdownTarget from conferenceDate:', updated.countdownTarget);
                         }
+                    } else if (updated.countdownTarget && isFutureDate(updated.countdownTarget)) {
+                        console.log('✅ Using countdownTarget from database (valid future date):', updated.countdownTarget);
                     } else {
-                        console.log('⚠️ No countdownTarget or conferenceDate found, using defaults');
+                        console.log('⚠️ No valid future date found, using defaults');
                         updated.countdownTarget = DEFAULTS.countdownTarget;
                     }
                     
