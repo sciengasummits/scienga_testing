@@ -49,7 +49,7 @@ const ScheduleSection = () => {
                                 rows: Array.isArray(rows) ? rows : [],
                             }));
                         setSchedule(days);
-                    } else if (d.day1 || d.day2 || d.day3 || d.day4) {
+                    } else if (d.day1 || d.day2 || d.day3) {
                         const days = ['day1', 'day2', 'day3']
                             .filter(dayKey => Array.isArray(d[dayKey]) && d[dayKey].length > 0)
                             .map((dayKey, i) => ({
