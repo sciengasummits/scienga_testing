@@ -27,7 +27,6 @@ const ScheduleSection = () => {
             const label = String(day.label || day.title || day.name || '').toLowerCase();
             return key === 'day4' || label.includes('day 4') || label.includes('day04');
         };
-
         let cancelled = false;
         const load = () => {
             fetchContent('sessions').then(d => {
