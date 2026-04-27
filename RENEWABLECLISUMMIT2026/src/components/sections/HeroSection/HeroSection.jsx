@@ -30,6 +30,16 @@ const HeroSection = () => {
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [collaborations, setCollaborations] = useState([]);
 
+    // Helper to convert month name to number (01-12)
+    const getMonthNumber = (monthName) => {
+        const months = {
+            'January': '01', 'February': '02', 'March': '03', 'April': '04',
+            'May': '05', 'June': '06', 'July': '07', 'August': '08',
+            'September': '09', 'October': '10', 'November': '11', 'December': '12'
+        };
+        return months[monthName] || '01';
+    };
+
     // resolveImageUrl from siteApi.js handles both local (localhost:5050) and
     // production (VITE_API_URL) — never hardcodes localhost for image paths.
     const resolveUrl = resolveImageUrl;
@@ -40,7 +50,22 @@ const HeroSection = () => {
 
         const load = () => {
             fetchContent('hero').then(data => {
-                if (!cancelled && data) setHero(prev => ({ ...prev, ...data }));
+                if (!cancelled && data) {
+                    // Ensure countdownTarget is always set, deriving from conferenceDate if needed
+                    const updated = { ...data };
+                    if (!updated.countdownTarget && data.conferenceDate) {
+                        // Extract year from conferenceDate (e.g., "March 23-25, 2027")
+                        const dateMatch = data.conferenceDate.match(/(\d{4})/);
+                        const year = dateMatch ? dateMatch[1] : new Date().getFullYear();
+                        const dateMatch2 = data.conferenceDate.match(/(\w+)\s+(\d+)/);
+                        if (dateMatch2) {
+                            const month = dateMatch2[1];
+                            const day = dateMatch2[2];
+                            updated.countdownTarget = `${year}-${getMonthNumber(month)}-${String(day).padStart(2, '0')}T09:00:00+01:00`;
+                        }
+                    }
+                    setHero(prev => ({ ...prev, ...updated }));
+                }
             });
 
             fetchContent('heroChairs').then(data => {
@@ -117,7 +142,8 @@ const HeroSection = () => {
     useEffect(() => {
         const targetDate = new Date(hero.countdownTarget || DEFAULTS.countdownTarget).getTime();
 
-        const interval = setInterval(() => {
+        // Calculate immediately instead of waiting for first tick
+        const calculateTime = () => {
             const now = new Date().getTime();
             const difference = targetDate - now;
 
@@ -129,9 +155,14 @@ const HeroSection = () => {
 
                 setTimeLeft({ days, hours, minutes, seconds });
             } else {
-                clearInterval(interval);
+                setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
             }
-        }, 1000);
+        };
+
+        // Calculate once immediately
+        calculateTime();
+
+        const interval = setInterval(calculateTime, 1000);
 
         return () => clearInterval(interval);
     }, [hero.countdownTarget]);
