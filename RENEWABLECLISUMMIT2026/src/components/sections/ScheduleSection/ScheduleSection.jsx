@@ -22,13 +22,18 @@ const ScheduleSection = () => {
     }, [availableDays, activeDay]);
 
     useEffect(() => {
+        const isDay4 = (day) => {
+            const key = String(day.key || '').toLowerCase();
+            const label = String(day.label || day.title || day.name || '').toLowerCase();
+            return key === 'day4' || label.includes('day 4') || label.includes('day04');
+        };
+
         let cancelled = false;
         const load = () => {
             fetchContent('sessions').then(d => {
                 if (!cancelled && d) {
                     if (d.days && Array.isArray(d.days) && d.days.length > 0) {
                         const days = d.days
-                            .filter(day => (day.key || `day${d.days.indexOf(day) + 1}`) !== 'day4')
                             .map((day, i) => {
                                 const rows = day.rows ?? day.items ?? day.schedule ?? [];
                                 return {
@@ -37,27 +42,32 @@ const ScheduleSection = () => {
                                     subLabel: day.subtitle || day.subtitleText || 'Conference',
                                     rows: Array.isArray(rows) ? rows : [],
                                 };
-                            });
+                            })
+                            .filter(day => !isDay4(day))
+                            .slice(0, 3);
                         setSchedule(days);
                     } else if (d.schedule && typeof d.schedule === 'object') {
                         const days = Object.entries(d.schedule)
-                            .filter(([key]) => key !== 'day4')
                             .map(([key, rows], i) => ({
                                 key,
                                 label: `Day ${String(i + 1).padStart(2, '0')}`,
                                 subLabel: 'Conference',
                                 rows: Array.isArray(rows) ? rows : [],
-                            }));
+                            }))
+                            .filter(day => !isDay4(day))
+                            .slice(0, 3);
                         setSchedule(days);
-                    } else if (d.day1 || d.day2 || d.day3) {
-                        const days = ['day1', 'day2', 'day3']
+                    } else if (d.day1 || d.day2 || d.day3 || d.day4) {
+                        const days = ['day1', 'day2', 'day3', 'day4']
                             .filter(dayKey => Array.isArray(d[dayKey]) && d[dayKey].length > 0)
                             .map((dayKey, i) => ({
                                 key: dayKey,
                                 label: `Day ${String(i + 1).padStart(2, '0')}`,
                                 subLabel: 'Conference',
                                 rows: d[dayKey],
-                            }));
+                            }))
+                            .filter(day => day.key !== 'day4')
+                            .slice(0, 3);
                         setSchedule(days);
                     }
                 }
