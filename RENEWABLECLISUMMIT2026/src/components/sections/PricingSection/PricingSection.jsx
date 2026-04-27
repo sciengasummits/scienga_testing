@@ -50,8 +50,7 @@ const PricingSection = () => {
                 </div>
 
                 <div className="pricing-cards-container">
-                    {(pricing.packages || [])
-                        .filter(pkg => pkg.title.toLowerCase() !== 'poster')
+                    {(Array.isArray(pricing.packages) ? pricing.packages : [])
                         .map((pkg, index) => (
                         <div className="pricing-card-home" key={index}>
                             <div className="pricing-card-header">
