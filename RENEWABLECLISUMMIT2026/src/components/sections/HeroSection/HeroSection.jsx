@@ -51,9 +51,16 @@ const HeroSection = () => {
         const load = () => {
             fetchContent('hero').then(data => {
                 if (!cancelled && data) {
+                    console.log('📊 Raw hero data from database:', data);
+                    
                     // Ensure countdownTarget is always set, deriving from conferenceDate if needed
                     const updated = { ...data };
-                    if (!updated.countdownTarget && data.conferenceDate) {
+                    
+                    // Try to get countdownTarget from database first
+                    if (updated.countdownTarget) {
+                        console.log('✅ Using countdownTarget from database:', updated.countdownTarget);
+                    } else if (data.conferenceDate) {
+                        console.log('🔄 Deriving countdownTarget from conferenceDate:', data.conferenceDate);
                         // Extract year from conferenceDate (e.g., "March 23-25, 2027")
                         const dateMatch = data.conferenceDate.match(/(\d{4})/);
                         const year = dateMatch ? dateMatch[1] : new Date().getFullYear();
@@ -62,8 +69,14 @@ const HeroSection = () => {
                             const month = dateMatch2[1];
                             const day = dateMatch2[2];
                             updated.countdownTarget = `${year}-${getMonthNumber(month)}-${String(day).padStart(2, '0')}T09:00:00+01:00`;
+                            console.log('📅 Generated countdownTarget:', updated.countdownTarget);
                         }
+                    } else {
+                        console.log('⚠️ No countdownTarget or conferenceDate found, using defaults');
+                        updated.countdownTarget = DEFAULTS.countdownTarget;
                     }
+                    
+                    console.log('✨ Updated hero data:', updated);
                     setHero(prev => ({ ...prev, ...updated }));
                 }
             });
@@ -140,12 +153,20 @@ const HeroSection = () => {
     }, []);
 
     useEffect(() => {
-        const targetDate = new Date(hero.countdownTarget || DEFAULTS.countdownTarget).getTime();
+        const targetDateString = hero.countdownTarget || DEFAULTS.countdownTarget;
+        console.log('⏰ Countdown target string:', targetDateString);
+        
+        const targetDate = new Date(targetDateString).getTime();
+        console.log('⏰ Countdown target (ms):', targetDate);
+        console.log('⏰ Is valid date?', !isNaN(targetDate));
 
         // Calculate immediately instead of waiting for first tick
         const calculateTime = () => {
             const now = new Date().getTime();
             const difference = targetDate - now;
+
+            console.log('🕐 Current time (ms):', now);
+            console.log('🕐 Time difference (ms):', difference);
 
             if (difference > 0) {
                 const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -153,8 +174,10 @@ const HeroSection = () => {
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
+                console.log(`⏳ Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`);
                 setTimeLeft({ days, hours, minutes, seconds });
             } else {
+                console.log('⏳ Target date is in the past');
                 setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
             }
         };
