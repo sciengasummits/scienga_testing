@@ -28,16 +28,7 @@ const SpeakersSection = ({ showViewAll }) => {
         async function load() {
             try {
                 const data = await fetchSpeakers(); // Fetches all visible speakers
-                if ((!data || data.length === 0) && mounted) {
-                    // Fallback dummy data for Renewable Energy conference
-                    const fallback = [
-                        { id: 1, name: 'Dr. Emily Chen', title: 'Director of Solar Research', affiliation: 'Renewable Energy Lab', category: 'Keynote Speaker', image: '', bio: '' },
-                        { id: 2, name: 'Prof. Michael Brown', title: 'Environmental Science Dept.', affiliation: 'Green Tech University', category: 'Plenary Speaker', image: '', bio: '' },
-                        { id: 3, name: 'Dr. Sophia Martinez', title: 'Climate Change Analyst', affiliation: 'Global Climate Institute', category: 'Invited Speaker', image: '', bio: '' },
-                        { id: 4, name: 'James Wilson', title: 'Sustainable Energy Engineer', affiliation: 'Future Power Systems', category: 'Featured', image: '', bio: '' }
-                    ];
-                    setSpeakers(fallback);
-                } else if (data && mounted) {
+                if (data && mounted) {
                     const mapped = data.filter(s => s.visible !== false).map(s => ({
                         id: s._id || s.id,
                         name: s.name,
