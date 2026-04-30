@@ -58,7 +58,7 @@ const Venue = () => {
             image: "https://www.bing.com/th/id/OIP.w-__LWQfcodvks2nfUOsdAHaEj?w=252&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
         },
         {
-            name: 'Singapore Botanic Gardens',
+            name: ' Munich, Germany Botanic Gardens',
             distance: '4.5 km',
             image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80"
         }
@@ -85,12 +85,12 @@ const Venue = () => {
                             ) : (
                                 <>
                                     <p className="city-description">
-                                        Singapore is a global hub for education, innovation, and technology. Known for its
+                                        Munich, Germany is a global hub for education, innovation, and technology. Known for its
                                         stunning skyline, lush green spaces, and diverse cultural heritage, it offers a
                                         unique blend of tradition and modernity.
                                     </p>
                                     <p className="city-description">
-                                        As one of the world's leading conference destinations, Singapore provides
+                                        As one of the world's leading conference destinations,  Munich, Germany provides
                                         state-of-the-art facilities and world-class infrastructure. Outram, located in the
                                         historical heart of the city, offers easy access to major business districts and
                                         iconic landmarks.
@@ -115,7 +115,7 @@ const Venue = () => {
                         <div className="about-city-image">
                             <img
                                 src="https://tse3.mm.bing.net/th/id/OIP.jJNZIfQn_INbB0uopJI_vgHaFH?w=1024&h=708&rs=1&pid=ImgDetMain&o=7&rm=3"
-                                alt="Singapore City Skyline"
+                                alt=" Munich, Germany City Skyline"
                                 style={{ borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', width: '100%', height: 'auto', display: 'block' }}
                                 onError={(e) => {
                                     e.target.src = "https://tse3.mm.bing.net/th/id/OIP.jJNZIfQn_INbB0uopJI_vgHaFH?w=1024&h=708&rs=1&pid=ImgDetMain&o=7&rm=3";

@@ -17,10 +17,10 @@ import { submitProgramRequest } from '../../api/programRequestApi';
 import { resolveImageUrl } from '../../api/utilsApi';
 
 const siteApi = {
-  fetchContent, fetchAllContent, submitAbstract, uploadAbstractFile,
-  fetchSpeakers, fetchUniversities, fetchSponsors, submitRegistration,
-  validateDiscountCode, fetchPaymentKey, createPaymentOrder, verifyPayment,
-  submitSubscribe, submitContactMessage, submitProgramRequest, resolveImageUrl
+    fetchContent, fetchAllContent, submitAbstract, uploadAbstractFile,
+    fetchSpeakers, fetchUniversities, fetchSponsors, submitRegistration,
+    validateDiscountCode, fetchPaymentKey, createPaymentOrder, verifyPayment,
+    submitSubscribe, submitContactMessage, submitProgramRequest, resolveImageUrl
 };
 
 import './VisaInfo.css';
@@ -74,7 +74,7 @@ const DEFAULTS = {
 const VisaInfo = () => {
     usePageSEO({
         title: 'Visa Information',
-        description: 'Visa information for international participants attending LIUTEX2026 in Singapore. Learn about visa requirements, required documents, and how to request an official invitation letter.',
+        description: 'Visa information for international participants attending LIUTEX2026 in  Munich, Germany. Learn about visa requirements, required documents, and how to request an official invitation letter.',
         canonical: 'https://liutex2026.com/visa-info',
     });
     const [visaData, setVisaData] = useState(DEFAULTS);

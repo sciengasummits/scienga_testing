@@ -51,7 +51,7 @@ export const speakers = [
         id: 7,
         name: "Dr. James Chen",
         title: "Senior Agricultural Economist",
-        affiliation: "Singapore Food Agency",
+        affiliation: " Munich, Germany Food Agency",
         category: "Poster Presenter",
         image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
     },
@@ -347,7 +347,7 @@ export const speakers = [
         id: 44,
         name: "Prof. Sarah Lee",
         title: "Sustainability Director",
-        affiliation: "National University of Singapore",
+        affiliation: "National University of  Munich, Germany",
         category: "Keynote Speaker",
         image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
     },
@@ -531,7 +531,7 @@ export const speakers = [
         id: 67,
         name: "Prof. Daniel Kim",
         title: "Green Building Architect",
-        affiliation: "National University of Singapore",
+        affiliation: "National University of  Munich, Germany",
         category: "Plenary Speaker",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
     },

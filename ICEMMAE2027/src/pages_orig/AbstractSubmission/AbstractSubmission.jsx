@@ -14,7 +14,7 @@ const DEFAULT_DATES = [
     {
         month: 'DEC', day: '14', year: '2026',
         event: 'Conference Date',
-        sub: 'December 14–16, 2026, Singapore',
+        sub: 'December 14–16, 2026,  Munich, Germany',
         icon: 'Star',
     },
 ];

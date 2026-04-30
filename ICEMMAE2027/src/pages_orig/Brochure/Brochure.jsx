@@ -10,8 +10,8 @@ import usePageSEO from '../../hooks/usePageSEO';
 
 const DEFAULTS = {
     pdfUrl: '',
-    title: 'International Conference on Liutex Theory and Applications in Vortex Identification and Vortex Dynamics',
-    description: 'Download the official conference brochure to get comprehensive information about the International Conference on Liutex Theory and Applications in Vortex Identification and Vortex Dynamics. It serves as your complete guide to the event, featuring detailed schedules, speaker profiles, and venue information.',
+    title: 'International Conference on Energy, Materials, Mechanical, Aerospace Engineering',
+    description: 'Download the official conference brochure to get comprehensive information about the International Conference on Energy, Materials, Mechanical, Aerospace Engineering. It serves as your complete guide to the event, featuring detailed schedules, speaker profiles, and venue information.',
     note: '* PDF will be available soon. Format: PDF',
     features: [
         'Complete 3-Day Program Schedule',
@@ -25,8 +25,8 @@ const DEFAULTS = {
 const Brochure = () => {
     usePageSEO({
         title: 'Conference Brochure',
-        description: 'Download the official LIUTEX2026 conference brochure – program schedule, keynote speaker profiles, workshop details, venue maps, and sponsorship opportunities.',
-        canonical: 'https://liutex2026.com/brochure',
+        description: 'Download the official ICEMMAE2027 conference brochure – program schedule, keynote speaker profiles, workshop details, venue maps, and sponsorship opportunities.',
+        canonical: 'https://icemmae2027.sciengasummits.com/brochure',
     });
     const router = useRouter();
     const navigate = (path) => router.push(path);
@@ -71,7 +71,7 @@ const Brochure = () => {
                     name: formData.name,
                     email: formData.email,
                     number: formData.number,
-                    conference: 'liutex',
+                    conference: 'icemmae2027',
                 }),
             });
             const data = await res.json();
@@ -103,8 +103,8 @@ const Brochure = () => {
                         <div className="brochure-preview">
                             <div className="preview-card">
                                 <div className="preview-header">
-                                    <div className="preview-logo-placeholder">LTVS 2026</div>
-                                    <div className="preview-badge">2026 Edition</div>
+                                    <div className="preview-logo-placeholder">ME Summit</div>
+                                    <div className="preview-badge">2027 Edition</div>
                                 </div>
                                 <div className="preview-main">
                                     <div className="vortex-accent"></div>
@@ -113,7 +113,7 @@ const Brochure = () => {
                                     <p className="preview-subtitle">Official Conference Brochure</p>
                                 </div>
                                 <div className="preview-footer">
-                                    <p>December 14-17, 2026</p>
+                                    <p>February 11-13, 2027</p>
                                     <p>Munich, Germany</p>
                                 </div>
                             </div>

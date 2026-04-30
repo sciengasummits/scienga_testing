@@ -10,7 +10,7 @@ import usePageSEO from '../../hooks/usePageSEO';
 const Sponsors = () => {
     usePageSEO({
         title: 'Sponsorship Opportunities',
-        description: 'Sponsor LIUTEX2026 – Platinum, Gold, Silver, and Exhibitor packages available. Showcase your brand to global fluid mechanics researchers and engineers in Singapore, December 2026.',
+        description: 'Sponsor LIUTEX2026 – Platinum, Gold, Silver, and Exhibitor packages available. Showcase your brand to global fluid mechanics researchers and engineers in  Munich, Germany, December 2026.',
         canonical: 'https://liutex2026.com/sponsors',
     });
     const router = useRouter();
