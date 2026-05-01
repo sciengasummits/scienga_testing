@@ -1,8 +1,8 @@
 import Program from '../../pages_orig/Program/Program';
 
 export const metadata = {
-    title: 'Program | ICEMMAE2027',
-    description: 'Conference program and schedule for ICEMMAE2027.',
+    title: 'Program | ICEMMA2027',
+    description: 'Conference program and schedule for ICEMMA2027.',
     alternates: {
         canonical: 'https://icemmae2027.sciengasummits.com/program',
     }

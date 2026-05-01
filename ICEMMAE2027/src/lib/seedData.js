@@ -7,7 +7,7 @@ const icemmae2027Defaults = [
             description: 'International Conference on Energy, Materials, Mechanical, Aerospace Engineering, where global experts unite to shape the future of engineering. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
             conferenceDate: 'February 2027',
             venue: 'Munich, Germany',
-            countdownTarget: '2027-02-15T09:00:00+01:00',
+            countdownTarget: '2027-02-11T09:00:00+01:00',
             showRegister: true,
             showAbstract: true,
             showBrochure: true
@@ -41,17 +41,17 @@ const icemmae2027Defaults = [
         key: 'importantDates',
         data: {
             dates: [
-                { month: 'JUN', day: '15', year: '2026', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
-                { month: 'SEP', day: '25', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
-                { month: 'OCT', day: '30', year: '2026', event: 'Submission Deadline', icon: 'Clock' },
-                { month: 'DEC', day: '14', year: '2026', event: 'Conference Date', icon: 'Star', sub: 'December 14-16, 2026,  Munich, Germany' }
+                { month: 'AUG', day: '01', year: '2026', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
+                { month: 'NOV', day: '15', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
+                { month: 'DEC', day: '31', year: '2026', event: 'Submission Deadline', icon: 'Clock' },
+                { month: 'FEB', day: '11', year: '2027', event: 'Conference Date', icon: 'Star', sub: 'February 11-13, 2027, Munich, Germany' }
             ]
         }
     },
     {
         key: 'stats',
         data: {
-            title: 'ICEMMAE2027 CONFERENCES APPROACH',
+            title: 'ICEMMA2027 CONFERENCES APPROACH',
             items: [
                 { number: '15+', label: 'Years Experience' },
                 { number: '100+', label: 'Events' },
@@ -202,23 +202,23 @@ const icemmae2027Defaults = [
         key: 'meta_tags',
         data: {
             home: {
-                title: 'ICEMMAE2027 | International Conference on Energy, Materials, Mechanical, Aerospace Engineering',
-                description: 'Join the premier International Conference on Energy, Materials, Mechanical, Aerospace Engineering (ICEMMAE2027) in Munich, Germany. February 2027.',
-                keywords: 'ICEMMAE2027, Engineering Conference, Mechanical Engineering, Aerospace Engineering, Mechatronics, Munich Germany'
+                title: 'ICEMMA2027 | International Conference on Energy, Materials, Mechanical, Aerospace Engineering',
+                description: 'Join the premier International Conference on Energy, Materials, Mechanical, Aerospace Engineering (ICEMMA2027) in Munich, Germany. February 2027.',
+                keywords: 'ICEMMA2027, Engineering Conference, Mechanical Engineering, Aerospace Engineering, Mechatronics, Munich Germany'
             },
             speakers: {
-                title: 'Global Speakers | ICEMMAE2027',
-                description: 'Distinguished keynote and plenary speakers at ICEMMAE2027, sharing innovations in energy, materials, and aerospace engineering.',
-                keywords: 'Speakers, Keynote, Engineering Experts, ICEMMAE2027'
+                title: 'Global Speakers | ICEMMA2027',
+                description: 'Distinguished keynote and plenary speakers at ICEMMA2027, sharing innovations in energy, materials, and aerospace engineering.',
+                keywords: 'Speakers, Keynote, Engineering Experts, ICEMMA2027'
             },
             registration: {
-                title: 'Registration | ICEMMAE2027',
-                description: 'Register now for ICEMMAE2027. Early bird discounts available for speakers, delegates, and students.',
-                keywords: 'Registration, Conference Fees, Early Bird, ICEMMAE2027'
+                title: 'Registration | ICEMMA2027',
+                description: 'Register now for ICEMMA2027. Early bird discounts available for speakers, delegates, and students.',
+                keywords: 'Registration, Conference Fees, Early Bird, ICEMMA2027'
             },
             venue: {
-                title: 'Venue & Location | ICEMMAE2027',
-                description: 'Explore the conference venue in Munich, Germany. Travel and accommodation details for ICEMMAE2027 participants.',
+                title: 'Venue & Location | ICEMMA2027',
+                description: 'Explore the conference venue in Munich, Germany. Travel and accommodation details for ICEMMA2027 participants.',
                 keywords: 'Venue, Munich Germany, Travel, Accommodation'
             }
         }

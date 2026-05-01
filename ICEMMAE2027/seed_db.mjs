@@ -35,7 +35,7 @@ const icemmae2027Defaults = [
             description: 'International Conference on Energy, Materials, Mechanical, Aerospace Engineering, where global experts unite to shape the future of engineering. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
             conferenceDate: 'February 2027',
             venue: 'Munich, Germany',
-            countdownTarget: '2027-02-15T09:00:00+01:00',
+            countdownTarget: '2027-02-11T09:00:00+01:00',
             showRegister: true,
             showAbstract: true,
             showBrochure: true
@@ -46,7 +46,7 @@ const icemmae2027Defaults = [
         data: {
             subtitle: 'Energy, Materials, Mechanical, Aerospace Engineering',
             title: 'About The Conference',
-            paragraph1: 'The International Conference on Energy, Materials, Mechanical, and Aerospace Engineering (ICEMMAE2027) is a premier global platform dedicated to advancing interdisciplinary research and innovations that are reshaping the future of engineering. Held in Munich, Germany — a world-class hub of engineering excellence — ICEMMAE2027 brings together the brightest minds across four critical engineering domains.',
+            paragraph1: 'The International Conference on Energy, Materials, Mechanical, and Aerospace Engineering (ICEMMA2027) is a premier global platform dedicated to advancing interdisciplinary research and innovations that are reshaping the future of engineering. Held in Munich, Germany — a world-class hub of engineering excellence — ICEMMA2027 brings together the brightest minds across four critical engineering domains.',
             paragraph2: 'This conference unites leading researchers, academicians, engineers, and industry professionals to explore cutting-edge developments in sustainable energy systems, advanced materials science, precision mechanical engineering, and next-generation aerospace technologies. Participants will benefit from keynote lectures, technical paper presentations, workshops, and extensive networking opportunities.',
             objectives: [
                 'Promote interdisciplinary research in energy, materials, mechanical, and aerospace engineering',
@@ -73,17 +73,17 @@ const icemmae2027Defaults = [
         key: 'importantDates',
         data: {
             dates: [
-                { month: 'JUN', day: '15', year: '2026', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
-                { month: 'SEP', day: '25', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
-                { month: 'OCT', day: '30', year: '2026', event: 'Submission Deadline', icon: 'Clock' },
-                { month: 'DEC', day: '14', year: '2026', event: 'Conference Date', icon: 'Star', sub: 'December 14-16, 2026, Singapore' }
+                { month: 'AUG', day: '01', year: '2026', event: 'Abstract Submission Opens', icon: 'CalendarDays' },
+                { month: 'NOV', day: '15', year: '2026', event: 'Early Bird Deadline', icon: 'CheckCircle' },
+                { month: 'DEC', day: '31', year: '2026', event: 'Submission Deadline', icon: 'Clock' },
+                { month: 'FEB', day: '11', year: '2027', event: 'Conference Date', icon: 'Star', sub: 'February 11-13, 2027, Munich, Germany' }
             ]
         }
     },
     {
         key: 'stats',
         data: {
-            title: 'ICEMMAE2027 CONFERENCES APPROACH',
+            title: 'ICEMMA2027 CONFERENCES APPROACH',
             items: [
                 { number: '15+', label: 'Years Experience' },
                 { number: '100+', label: 'Events' },
@@ -298,23 +298,23 @@ const icemmae2027Defaults = [
         key: 'meta_tags',
         data: {
             home: {
-                title: 'ICEMMAE2027 | International Conference on Energy, Materials, Mechanical, Aerospace Engineering',
-                description: 'Join the premier International Conference on Energy, Materials, Mechanical, Aerospace Engineering (ICEMMAE2027) in Munich, Germany. February 2027.',
-                keywords: 'ICEMMAE2027, Engineering Conference, Mechanical Engineering, Aerospace Engineering, Mechatronics, Munich Germany'
+                title: 'ICEMMA2027 | International Conference on Energy, Materials, Mechanical, Aerospace Engineering',
+                description: 'Join the premier International Conference on Energy, Materials, Mechanical, Aerospace Engineering (ICEMMA2027) in Munich, Germany. February 2027.',
+                keywords: 'ICEMMA2027, Engineering Conference, Mechanical Engineering, Aerospace Engineering, Mechatronics, Munich Germany'
             },
             speakers: {
-                title: 'Global Speakers | ICEMMAE2027',
-                description: 'Distinguished keynote and plenary speakers at ICEMMAE2027, sharing innovations in energy, materials, and aerospace engineering.',
-                keywords: 'Speakers, Keynote, Engineering Experts, ICEMMAE2027'
+                title: 'Global Speakers | ICEMMA2027',
+                description: 'Distinguished keynote and plenary speakers at ICEMMA2027, sharing innovations in energy, materials, and aerospace engineering.',
+                keywords: 'Speakers, Keynote, Engineering Experts, ICEMMA2027'
             },
             registration: {
-                title: 'Registration | ICEMMAE2027',
-                description: 'Register now for ICEMMAE2027. Early bird discounts available for speakers, delegates, and students.',
-                keywords: 'Registration, Conference Fees, Early Bird, ICEMMAE2027'
+                title: 'Registration | ICEMMA2027',
+                description: 'Register now for ICEMMA2027. Early bird discounts available for speakers, delegates, and students.',
+                keywords: 'Registration, Conference Fees, Early Bird, ICEMMA2027'
             },
             venue: {
-                title: 'Venue & Location | ICEMMAE2027',
-                description: 'Explore the conference venue in Munich, Germany. Travel and accommodation details for ICEMMAE2027 participants.',
+                title: 'Venue & Location | ICEMMA2027',
+                description: 'Explore the conference venue in Munich, Germany. Travel and accommodation details for ICEMMA2027 participants.',
                 keywords: 'Venue, Munich Germany, Travel, Accommodation'
             }
         }
@@ -324,12 +324,12 @@ const icemmae2027Defaults = [
         data: {
             faqs: [
                 {
-                    question: 'What is ICEMMAE2027?',
-                    answer: 'ICEMMAE2027 is the International Conference on Energy, Materials, Mechanical, and Aerospace Engineering, scheduled to be held in Munich, Germany from February 11–13, 2027. It is a premier global platform for researchers, engineers, and industry professionals.'
+                    question: 'What is ICEMMA2027?',
+                    answer: 'ICEMMA2027 is the International Conference on Energy, Materials, Mechanical, and Aerospace Engineering, scheduled to be held in Munich, Germany from February 11–13, 2027. It is a premier global platform for researchers, engineers, and industry professionals.'
                 },
                 {
-                    question: 'Who can attend ICEMMAE2027?',
-                    answer: 'ICEMMAE2027 welcomes researchers, academicians, engineers, postdoctoral fellows, PhD students, and industry professionals from all over the world working in the fields of energy, materials, mechanical, and aerospace engineering.'
+                    question: 'Who can attend ICEMMA2027?',
+                    answer: 'ICEMMA2027 welcomes researchers, academicians, engineers, postdoctoral fellows, PhD students, and industry professionals from all over the world working in the fields of energy, materials, mechanical, and aerospace engineering.'
                 },
                 {
                     question: 'How do I submit an abstract?',
@@ -341,7 +341,7 @@ const icemmae2027Defaults = [
                 },
                 {
                     question: 'Will my paper be published?',
-                    answer: 'Accepted papers will be published in peer-reviewed conference proceedings and considered for publication in reputed indexed international journals affiliated with ICEMMAE2027.'
+                    answer: 'Accepted papers will be published in peer-reviewed conference proceedings and considered for publication in reputed indexed international journals affiliated with ICEMMA2027.'
                 },
                 {
                     question: 'What presentation modes are available?',
@@ -353,7 +353,7 @@ const icemmae2027Defaults = [
                 },
                 {
                     question: 'Where is the conference venue?',
-                    answer: 'ICEMMAE2027 will be held in Munich, Germany. Munich is well-connected by international flights and is one of Europe\'s leading cities for science, technology, and engineering.'
+                    answer: 'ICEMMA2027 will be held in Munich, Germany. Munich is well-connected by international flights and is one of Europe\'s leading cities for science, technology, and engineering.'
                 },
                 {
                     question: 'Do I need a visa to attend?',
@@ -374,7 +374,7 @@ const icemmae2027Defaults = [
             country: 'Germany',
             name: 'Munich International Conference Centre',
             address: 'Munich, Bavaria, Germany',
-            description: 'ICEMMAE2027 will be held in Munich, Germany — one of Europe\'s leading cities for science, technology, and engineering. Munich is home to world-renowned institutions including the Technical University of Munich (TUM) and Ludwig Maximilian University, making it an ideal host city for this international engineering conference.',
+            description: 'ICEMMA2027 will be held in Munich, Germany — one of Europe\'s leading cities for science, technology, and engineering. Munich is home to world-renowned institutions including the Technical University of Munich (TUM) and Ludwig Maximilian University, making it an ideal host city for this international engineering conference.',
             highlights: [
                 'World-class conference facilities with modern lecture halls',
                 'Advanced audio-visual and presentation equipment',
@@ -398,10 +398,10 @@ const icemmae2027Defaults = [
     {
         key: 'visa-info',
         data: {
-            title: 'Visa Information for ICEMMAE2027',
+            title: 'Visa Information for ICEMMA2027',
             country: 'Germany',
             visaType: 'Schengen Visa (Type C – Short Stay)',
-            overview: 'To attend ICEMMAE2027 in Munich, Germany, most international participants will require a Schengen Visa. Germany is a member of the Schengen Area, so a valid Schengen Visa grants entry to all Schengen member states.',
+            overview: 'To attend ICEMMA2027 in Munich, Germany, most international participants will require a Schengen Visa. Germany is a member of the Schengen Area, so a valid Schengen Visa grants entry to all Schengen member states.',
             invitationLetter: 'Registered participants may request an official invitation letter from the organizing committee to support their visa application. Please contact us at icmmae@sciengasummits.com after completing your registration.',
             requirements: [
                 'Valid passport with at least 6 months validity beyond your stay',
@@ -414,7 +414,7 @@ const icemmae2027Defaults = [
                 'Travel health insurance covering at least €30,000'
             ],
             process: [
-                'Register for ICEMMAE2027 and receive your confirmation',
+                'Register for ICEMMA2027 and receive your confirmation',
                 'Request an official invitation letter from the organizers',
                 'Book your accommodation in Munich',
                 'Apply for a Schengen Visa at the German Embassy/Consulate in your country',

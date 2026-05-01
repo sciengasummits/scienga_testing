@@ -1,8 +1,8 @@
 import OnlineRegistration from '../../../pages_orig/OnlineRegistration/OnlineRegistration';
 
 export const metadata = {
-    title: 'Discount Registration | ICEMMAE2027',
-    description: 'Use your discount code for online registration to ICEMMAE2027.',
+    title: 'Discount Registration | ICEMMA2027',
+    description: 'Use your discount code for online registration to ICEMMA2027.',
     alternates: {
         canonical: 'https://icemmae2027.sciengasummits.com/register/discount',
     }

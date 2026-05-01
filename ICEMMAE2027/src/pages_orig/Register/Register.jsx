@@ -199,12 +199,12 @@ const Register = ({ isDiscounted = false }) => {
             const { key } = await siteApi.fetchPaymentKey();
             const fullDescription = descParts.length > 0
                 ? descParts.join(' | ')
-                : 'ICEMMAE2027 Registration';
+                : 'ICEMMA2027 Registration';
 
             const { order } = await siteApi.createPaymentOrder({
                 amount: total,
                 registrationId: registration._id,
-                description: `ICEMMAE2027 Registration: ${formData.fullName} — ${fullDescription}`
+                description: `ICEMMA2027 Registration: ${formData.fullName} — ${fullDescription}`
             });
 
             // 3. Open Razorpay Checkout
@@ -212,7 +212,7 @@ const Register = ({ isDiscounted = false }) => {
                 key: key,
                 amount: order.amount,
                 currency: order.currency,
-                name: 'ICEMMAE2027',
+                name: 'ICEMMA2027',
                 description: descParts.length > 0
                     ? descParts.join(' | ')
                     : `Registration for ${formData.fullName}`,

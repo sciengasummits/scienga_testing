@@ -16,7 +16,7 @@ const Logo = ({ className = '', linkTo = '/', onClick }) => {
                 </div>
             </div>
             <div className="logo-text-container">
-                <span className="logo-text-main">ICEMMAE2027</span>
+                <span className="logo-text-main">ICEMMA2027</span>
             </div>
         </Link>
     );

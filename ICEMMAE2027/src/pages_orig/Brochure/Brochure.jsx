@@ -25,7 +25,7 @@ const DEFAULTS = {
 const Brochure = () => {
     usePageSEO({
         title: 'Conference Brochure',
-        description: 'Download the official ICEMMAE2027 conference brochure – program schedule, keynote speaker profiles, workshop details, venue maps, and sponsorship opportunities.',
+        description: 'Download the official ICEMMA2027 conference brochure – program schedule, keynote speaker profiles, workshop details, venue maps, and sponsorship opportunities.',
         canonical: 'https://icemmae2027.sciengasummits.com/brochure',
     });
     const router = useRouter();
