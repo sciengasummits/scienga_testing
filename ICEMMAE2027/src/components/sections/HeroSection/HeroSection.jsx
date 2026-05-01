@@ -8,8 +8,8 @@ import { fetchContent } from '../../../api/contentApi';
 import { resolveImageUrl } from '../../../api/utilsApi';
 
 const DEFAULTS = {
-    subtitle: 'INTERNATIONAL CONFERENCE AND EXPO ON',
-    title: 'MECHANICAL, MECHATRONICS\nAND AEROSPACE ENGINEERING',
+    subtitle: 'INTERNATIONAL CONFERENCE ON',
+    title: 'ENERGY, MATERIALS, MECHANICAL,\nAEROSPACE ENGINEERING',
     description: 'International Conference and Expo on Mechanical, Mechatronics and Aerospace Engineering where global experts unite to shape the future of engineering. Discover ground-breaking technologies, connect with top researchers, and explore solutions transforming our world.',
     conferenceDate: 'February 11-13, 2027',
     venue: 'Munich, Germany',

@@ -6,7 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_change_me';
 export const CONFERENCE_ACCOUNTS = [
   {
     username: 'ICEMMAE2027',
-    email: process.env.ICEMMAE2027_EMAIL || 'icemmae2027@sciengasummits.com',
+    email: process.env.ICEMMAE_EMAIL || 'icemmae2027@sciengasummits.com',
     conferenceId: 'icemmae2027',
     displayName: 'ICEMMAE2027',
   },

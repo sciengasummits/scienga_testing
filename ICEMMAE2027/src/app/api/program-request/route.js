@@ -5,14 +5,15 @@ import { escapeHtml } from '@/lib/utils';
 
 export async function POST(req) {
   try {
-    const { name, email, phone, conference = 'icemmae2027' } = await req.json();
+    const { name, email, phone, number, conference = 'icemmae2027' } = await req.json();
+    const contactPhone = phone || number || 'N/A';
     
     if (!email || !name) {
       return NextResponse.json({ success: false, error: 'Name and Email required' }, { status: 400 });
     }
 
     const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
-    const adminEmail = account ? account.email : 'icemmae2027@sciengasummits.com';
+    const adminEmail = account ? account.email : 'icmmae@sciengasummits.com';
 
     const emailSender = new RealEmailSender();
     
@@ -20,7 +21,13 @@ export async function POST(req) {
     await emailSender.sendEmail(
       adminEmail,
       `📩 Program Schedule Requested - ${conference.toUpperCase()}`,
-      `<div style="font-family: Arial; padding: 20px;"><h2>Program Schedule Request</h2><p>Name: ${escapeHtml(name)}</p><p>Email: ${escapeHtml(email)}</p><p>Phone: ${escapeHtml(phone || 'N/A')}</p></div>`,
+      `<div style="font-family: Arial; padding: 20px;">
+        <h2>Program Schedule Request</h2>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(contactPhone)}</p>
+        <p><strong>Conference:</strong> ${conference.toUpperCase()}</p>
+      </div>`,
       'PROGRAM',
       conference
     );

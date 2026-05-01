@@ -20,8 +20,8 @@ export class RealEmailSender {
         // Per-conference credential map  { conferenceId → { user, pass } }
         this._accounts = {
             icemmae2027: {
-                user: process.env.ICEMMAE2027_SMTP_USER || this._defaultUser,
-                pass: (process.env.ICEMMAE2027_SMTP_PASS || this._defaultPass).replace(/\s/g, ''),
+                user: process.env.ICEMMAE_SMTP_USER || this._defaultUser,
+                pass: (process.env.ICEMMAE_SMTP_PASS || this._defaultPass).replace(/\s/g, ''),
             },
             foodagri: {
                 user: process.env.FOODAGRI_SMTP_USER || this._defaultUser,

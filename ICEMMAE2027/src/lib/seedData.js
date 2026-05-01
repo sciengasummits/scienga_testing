@@ -170,7 +170,7 @@ const icemmae2027Defaults = [
         key: 'contact',
         data: {
             email: 'info@icemmae2027.sciengasummits.com',
-            phone: '+49 0000 0000',
+            phone: '+91 7842090097',
             address: 'Munich, Germany',
             socialLinks: {
                 facebook: '',
@@ -196,6 +196,31 @@ const icemmae2027Defaults = [
                 'Caltech',
                 'University of Cambridge'
             ]
+        }
+    },
+    {
+        key: 'meta_tags',
+        data: {
+            home: {
+                title: 'ICEMMAE2027 | International Conference on Energy, Materials, Mechanical, Aerospace Engineering',
+                description: 'Join the premier International Conference on Energy, Materials, Mechanical, Aerospace Engineering (ICEMMAE2027) in Munich, Germany. February 2027.',
+                keywords: 'ICEMMAE2027, Engineering Conference, Mechanical Engineering, Aerospace Engineering, Mechatronics, Munich Germany'
+            },
+            speakers: {
+                title: 'Global Speakers | ICEMMAE2027',
+                description: 'Distinguished keynote and plenary speakers at ICEMMAE2027, sharing innovations in energy, materials, and aerospace engineering.',
+                keywords: 'Speakers, Keynote, Engineering Experts, ICEMMAE2027'
+            },
+            registration: {
+                title: 'Registration | ICEMMAE2027',
+                description: 'Register now for ICEMMAE2027. Early bird discounts available for speakers, delegates, and students.',
+                keywords: 'Registration, Conference Fees, Early Bird, ICEMMAE2027'
+            },
+            venue: {
+                title: 'Venue & Location | ICEMMAE2027',
+                description: 'Explore the conference venue in Munich, Germany. Travel and accommodation details for ICEMMAE2027 participants.',
+                keywords: 'Venue, Munich Germany, Travel, Accommodation'
+            }
         }
     }
 ];
