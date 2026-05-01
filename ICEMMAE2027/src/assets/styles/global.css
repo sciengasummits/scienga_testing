@@ -117,38 +117,47 @@ img {
 /* Global Responsive Adjustments */
 @media (max-width: 768px) {
     .page-title {
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 8vw, 2.5rem);
     }
 
     .section-padding {
-        padding: 50px 0;
+        padding: clamp(3rem, 10vw, 5rem) 0;
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: clamp(1.75rem, 7vw, 2.25rem);
     }
 
     h2 {
-        font-size: 1.75rem;
+        font-size: clamp(1.5rem, 6vw, 1.85rem);
     }
 
     h3 {
-        font-size: 1.5rem;
+        font-size: clamp(1.25rem, 5vw, 1.5rem);
+    }
+    
+    p, li {
+        font-size: 0.95rem;
+        line-height: 1.5;
     }
 }
 
 @media (max-width: 480px) {
     .page-title {
-        font-size: 2rem;
-        padding: 0 1rem;
+        font-size: 1.8rem;
+        padding: 0 0.5rem;
     }
 
     .page-header {
-        padding: 120px 0 50px;
+        padding: 110px 0 40px;
     }
 
     .container {
-        padding: 0 15px;
+        padding: 0 12px;
+    }
+    
+    .section-padding {
+        padding: 2.5rem 0;
     }
 }
 

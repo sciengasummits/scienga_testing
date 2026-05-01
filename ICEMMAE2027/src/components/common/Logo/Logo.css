@@ -98,3 +98,13 @@
 .footer__coll-logo .logo-text-sub {
     color: var(--color-primary-start);
 }
+
+@media (max-width: 480px) {
+    .logo-text-main {
+        font-size: 1.25rem;
+    }
+    
+    .app-logo {
+        gap: 6px;
+    }
+}

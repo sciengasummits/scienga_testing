@@ -43,12 +43,19 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-    };
-
     const closeMobileMenu = () => {
         setIsMobileMenuOpen(false);
+        document.body.style.overflow = 'auto';
+    };
+
+    const toggleMobileMenu = () => {
+        const nextState = !isMobileMenuOpen;
+        setIsMobileMenuOpen(nextState);
+        if (nextState) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
     };
 
     const navLinks = [
@@ -84,22 +91,22 @@ const Navbar = () => {
                         <a
                             className="contact-item"
                             href={`mailto:${contactInfo.email}`}
-                            style={{ textDecoration: 'none', color: 'inherit' }}
+                            title="Email Us"
                         >
                             <Mail size={18} className="contact-icon" />
                             <div className="contact-info">
-                                <span className="contact-label">SEND US AN EMAIL</span>
+                                <span className="contact-label">EMAIL</span>
                                 <span className="contact-value">{contactInfo.email}</span>
                             </div>
                         </a>
                         <a
                             className="contact-item"
                             href={`tel:${contactInfo.phone}`}
-                            style={{ textDecoration: 'none', color: 'inherit' }}
+                            title="Call Us"
                         >
                             <Phone size={18} className="contact-icon" />
                             <div className="contact-info">
-                                <span className="contact-label">CALL US NOW</span>
+                                <span className="contact-label">CALL</span>
                                 <span className="contact-value">{contactInfo.phone}</span>
                             </div>
                         </a>
@@ -108,7 +115,7 @@ const Navbar = () => {
                             href={`https://wa.me/${contactInfo.whatsapp.replace(/\D/g, '')}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ textDecoration: 'none', color: 'inherit' }}
+                            title="WhatsApp"
                         >
                             <MessageCircle size={18} className="contact-icon" />
                             <div className="contact-info">

@@ -1,0 +1,45 @@
+﻿node : file:///C:/Users/lo
+kes/Downloads/litux_workfl
+ow/frontend_next/src/api/s
+plitApi.mjs:254
+At line:1 char:1
++ node splitApi.mjs 2> 
+error.log
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (f  
+  ile:///C:/User...plit   
+ Api.mjs:254:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+      return \`import { 
+\${imps.join(', ')} } 
+from '\${prefix}/api/\${mo
+d}';\`;
+             ^
+
+SyntaxError: Invalid or 
+unexpected token
+    at 
+compileSourceTextModule (n
+ode:internal/modules/esm/u
+tils:349:16)
+    at ModuleLoader.module
+Strategy (node:internal/mo
+dules/esm/translators:106:
+18)
+    at #translate (node:in
+ternal/modules/esm/loader:
+544:12)
+    at ModuleLoader.loadAn
+dTranslate (node:internal/
+modules/esm/loader:591:27)
+    at async #link (node:i
+nternal/modules/esm/module
+_job:134:19)
+
+Node.js v24.0.0
