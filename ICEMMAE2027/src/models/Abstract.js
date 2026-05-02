@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const AbstractSchema = new mongoose.Schema({
-    conference: { type: String, default: 'icemmae2027', index: true }, // 'icemmae2027' | 'foodagri'
+    conference: { type: String, default: 'icmmae2027', index: true }, // 'icmmae2027' | 'foodagri'
     title: { type: String, default: '' },
     name: { type: String, required: true },
     email: { type: String, required: true },

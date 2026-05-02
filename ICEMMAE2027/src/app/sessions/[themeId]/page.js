@@ -6,7 +6,7 @@ export function generateMetadata({ params }) {
     // We would destructure themeId from Promise in Next.js 15
     // But since we are just wrapping, we set a generic title here
     return {
-        title: 'Theme Details | ICEMMA2027',
+        title: 'Theme Details | ICMMAE2027',
         description: 'Details and information about specific themes and sessions.',
     };
 }

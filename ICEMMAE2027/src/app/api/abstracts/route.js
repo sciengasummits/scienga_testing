@@ -9,7 +9,7 @@ export async function GET(req) {
   try {
     await connectDB();
     const { searchParams } = new URL(req.url);
-    const conf = searchParams.get('conference') || 'icemmae2027';
+    const conf = searchParams.get('conference') || 'icmmae2027';
     const abstracts = await Abstract.find({ conference: conf }).sort({ createdAt: -1 });
     return NextResponse.json(abstracts);
   } catch (err) {
@@ -24,9 +24,9 @@ export async function POST(req) {
     const abs = new Abstract(body);
     await abs.save();
 
-    const { name, email, title, conference = 'icemmae2027' } = body;
+    const { name, email, title, conference = 'icmmae2027' } = body;
     const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
-    const adminEmail = account ? account.email : 'icemmae2027@sciengasummits.com';
+    const adminEmail = account ? account.email : 'icmmae2027@sciengasummits.com';
     const siteUrl = process.env.FRONTEND_URL || 'https://icemmae2027.sciengasummits.com';
 
     const emailSender = new RealEmailSender();

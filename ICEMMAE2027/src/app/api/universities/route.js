@@ -7,7 +7,7 @@ export async function GET(req) {
   try {
     await connectDB();
     const { searchParams } = new URL(req.url);
-    const conf = searchParams.get('conference') || 'icemmae2027';
+    const conf = searchParams.get('conference') || 'icmmae2027';
 
     const filter = { visible: true, conference: conf };
 

@@ -8,7 +8,7 @@ export async function GET(req, { params }) {
     await connectDB();
     const { key } = await params;
     const { searchParams } = new URL(req.url);
-    const conf = searchParams.get('conference') || 'icemmae2027';
+    const conf = searchParams.get('conference') || 'icmmae2027';
 
     const item = await SiteContent.findOne({ conference: conf, key });
     if (!item) return NextResponse.json({ error: 'Content not found' }, { status: 404 });
@@ -27,7 +27,7 @@ export async function PUT(req, { params }) {
     await connectDB();
     const { key } = await params;
     const body = await req.json();
-    const { conference: conf = 'icemmae2027', _items, ...bodyData } = body;
+    const { conference: conf = 'icmmae2027', _items, ...bodyData } = body;
 
     let updateOp;
     if (_items !== undefined) {

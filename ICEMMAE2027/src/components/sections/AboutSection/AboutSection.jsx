@@ -11,7 +11,7 @@ const ICON_MAP = { CalendarDays, CheckCircle, Clock, Star, Calendar, MapPin };
 const DEFAULT_ABOUT = {
 
     title: 'About The Conference',
-    paragraph1: 'The International Conference and Expo on Mechanical, Mechatronics and Aerospace Engineering (ICEMMA2027) is a premier international platform dedicated to advancing the understanding of mechanical systems, mechatronics integration, and aerospace technologies.',
+    paragraph1: 'The International Conference and Expo on Mechanical, Mechatronics and Aerospace Engineering (ICMMAE2027) is a premier international platform dedicated to advancing the understanding of mechanical systems, mechatronics integration, and aerospace technologies.',
     paragraph2: 'This conference brings together leading researchers, academicians, engineers, and industry professionals to explore recent developments, theoretical foundations, innovative technologies, and real-world applications in mechanical, mechatronics, and aerospace engineering.',
     objectives: [
         'Promote advancements in mechanical engineering technologies',

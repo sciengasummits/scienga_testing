@@ -14,12 +14,12 @@ dotenv.config();
 export class RealEmailSender {
     constructor() {
         // Legacy / fallback credentials
-        this._defaultUser = process.env.SMTP_USER || 'icemmae2027@sciengasummits.com';
+        this._defaultUser = process.env.SMTP_USER || 'icmmae2027@sciengasummits.com';
         this._defaultPass = (process.env.SMTP_PASS || '').replace(/\s/g, '');
 
         // Per-conference credential map  { conferenceId → { user, pass } }
         this._accounts = {
-            icemmae2027: {
+            icmmae2027: {
                 user: process.env.ICEMMAE_SMTP_USER || this._defaultUser,
                 pass: (process.env.ICEMMAE_SMTP_PASS || this._defaultPass).replace(/\s/g, ''),
             },
@@ -55,7 +55,7 @@ export class RealEmailSender {
             // If the password is a placeholder or empty, we'll fall back to the
             // default transporter at send time instead of crashing at startup.
             if (!creds.pass || creds.pass.startsWith('REPLACE_WITH')) {
-                console.warn(`⚠️  No valid SMTP password for "${confId}" — will fall back to icemmae2027 sender`);
+                console.warn(`⚠️  No valid SMTP password for "${confId}" — will fall back to icmmae2027 sender`);
                 continue;
             }
 
@@ -65,8 +65,8 @@ export class RealEmailSender {
             });
         }
 
-        // Always build a default/fallback transporter (icemmae2027)
-        this._defaultTransporter = this._transporters['icemmae2027'] || nodemailer.createTransport({
+        // Always build a default/fallback transporter (icmmae2027)
+        this._defaultTransporter = this._transporters['icmmae2027'] || nodemailer.createTransport({
             service: 'gmail',
             auth: { user: this._defaultUser, pass: this._defaultPass },
         });
@@ -83,7 +83,7 @@ export class RealEmailSender {
      * @param {string} subject     - Email subject
      * @param {string} htmlContent - HTML body
      * @param {string} otp         - OTP value (also sent as plain-text)
-     * @param {string} [conferenceId] - Optional: 'icemmae2027' | 'foodagri' | 'fluid' | 'renewable'
+     * @param {string} [conferenceId] - Optional: 'icmmae2027' | 'foodagri' | 'fluid' | 'renewable'
      */
     async sendEmail(to, subject, htmlContent, otp, conferenceId) {
         // Pick the right transporter
@@ -147,7 +147,7 @@ export class RealEmailSender {
                 
                 <div style="text-align: center; margin-top: 20px; padding: 20px;">
                     <p style="color: #94a3b8; font-size: 12px; margin: 0;">
-                        © 2027 ICEMMAE2027. All rights reserved.
+                        © 2027 ICMMAE2027. All rights reserved.
                     </p>
                 </div>
             </div>

@@ -10,8 +10,8 @@ import UniversitiesMarquee from '../components/sections/UniversitiesMarquee/Univ
 import '../pages_orig/Home/Home.css';
 
 export const metadata = {
-    title: 'Home | ICEMMA2027',
-    description: 'ICEMMA2027 – International Conference and Expo on Mechanical, Mechatronics and Aerospace Engineering. February 11–13, 2027, Munich, Germany. Submit abstracts and register now.',
+    title: 'Home | ICMMAE2027',
+    description: 'ICMMAE2027 – International Conference and Expo on Mechanical, Mechatronics and Aerospace Engineering. February 11–13, 2027, Munich, Germany. Submit abstracts and register now.',
     alternates: {
         canonical: 'https://icemmae2027.sciengasummits.com/',
     }

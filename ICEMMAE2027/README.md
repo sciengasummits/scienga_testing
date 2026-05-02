@@ -1,15 +1,15 @@
-# ICEMMAE2027 - International Conference and Expo on Mechanical, Mechatronics and Aerospace Engineering
+# ICMMAE2027 - International Conference and Expo on Mechanical, Mechatronics and Aerospace Engineering
 
 ## Conference Information
 
 - **Conference Title**: International Conference and Expo on Mechanical, Mechatronics and Aerospace Engineering
-- **Short Name**: ICEMMAE2027
+- **Short Name**: ICMMAE2027
 - **Dates**: February 11-13, 2027
 - **Venue**: Munich, Germany
 
 ## About
 
-This is a [Next.js](https://nextjs.org) conference website for ICEMMAE2027, featuring:
+This is a [Next.js](https://nextjs.org) conference website for ICMMAE2027, featuring:
 - Abstract submission system
 - Registration management
 - Speaker profiles

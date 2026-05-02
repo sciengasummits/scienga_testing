@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const SiteContentSchema = new mongoose.Schema({
-  conference: { type: String, default: 'icemmae2027', index: true }, // 'icemmae2027' | 'foodagri'
+  conference: { type: String, default: 'icmmae2027', index: true }, // 'icmmae2027' | 'foodagri'
   key: { type: String, required: true }, // e.g. 'hero', 'about', 'stats', etc.
   data: { type: mongoose.Schema.Types.Mixed, required: true },
   updatedAt: { type: Date, default: Date.now }

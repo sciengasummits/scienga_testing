@@ -1,4 +1,4 @@
-const icemmae2027Defaults = [
+const icmmae2027Defaults = [
     {
         key: 'hero',
         data: {
@@ -51,7 +51,7 @@ const icemmae2027Defaults = [
     {
         key: 'stats',
         data: {
-            title: 'ICEMMA2027 CONFERENCES APPROACH',
+            title: 'ICMMAE 2027 CONFERENCES APPROACH',
             items: [
                 { number: '15+', label: 'Years Experience' },
                 { number: '100+', label: 'Events' },
@@ -169,7 +169,7 @@ const icemmae2027Defaults = [
     {
         key: 'contact',
         data: {
-            email: 'info@icemmae2027.sciengasummits.com',
+            email: 'info@ICMMAE2027.sciengasummits.com',
             phone: '+91 7842090097',
             address: 'Munich, Germany',
             socialLinks: {
@@ -202,23 +202,23 @@ const icemmae2027Defaults = [
         key: 'meta_tags',
         data: {
             home: {
-                title: 'ICEMMA2027 | International Conference on Energy, Materials, Mechanical, Aerospace Engineering',
-                description: 'Join the premier International Conference on Energy, Materials, Mechanical, Aerospace Engineering (ICEMMA2027) in Munich, Germany. February 2027.',
-                keywords: 'ICEMMA2027, Engineering Conference, Mechanical Engineering, Aerospace Engineering, Mechatronics, Munich Germany'
+                title: 'ICMMAE2027 | International Conference on Energy, Materials, Mechanical, Aerospace Engineering',
+                description: 'Join the premier International Conference on Energy, Materials, Mechanical, Aerospace Engineering (ICMMAE2027) in Munich, Germany. February 2027.',
+                keywords: 'ICMMAE2027, Engineering Conference, Mechanical Engineering, Aerospace Engineering, Mechatronics, Munich Germany'
             },
             speakers: {
-                title: 'Global Speakers | ICEMMA2027',
-                description: 'Distinguished keynote and plenary speakers at ICEMMA2027, sharing innovations in energy, materials, and aerospace engineering.',
-                keywords: 'Speakers, Keynote, Engineering Experts, ICEMMA2027'
+                title: 'Global Speakers | ICMMAE2027',
+                description: 'Distinguished keynote and plenary speakers at ICMMAE2027, sharing innovations in energy, materials, and aerospace engineering.',
+                keywords: 'Speakers, Keynote, Engineering Experts, ICMMAE2027'
             },
             registration: {
-                title: 'Registration | ICEMMA2027',
-                description: 'Register now for ICEMMA2027. Early bird discounts available for speakers, delegates, and students.',
-                keywords: 'Registration, Conference Fees, Early Bird, ICEMMA2027'
+                title: 'Registration | ICMMAE2027',
+                description: 'Register now for ICMMAE2027. Early bird discounts available for speakers, delegates, and students.',
+                keywords: 'Registration, Conference Fees, Early Bird, ICMMAE2027'
             },
             venue: {
-                title: 'Venue & Location | ICEMMA2027',
-                description: 'Explore the conference venue in Munich, Germany. Travel and accommodation details for ICEMMA2027 participants.',
+                title: 'Venue & Location | ICMMAE2027',
+                description: 'Explore the conference venue in Munich, Germany. Travel and accommodation details for ICMMAE2027 participants.',
                 keywords: 'Venue, Munich Germany, Travel, Accommodation'
             }
         }
@@ -610,7 +610,7 @@ const foodagriDefaults = [
 
 // ??? Seed Data for All Conferences ????????????????????????????
 const conferences = [
-    { name: 'icemmae2027', defaults: icemmae2027Defaults },
+    { name: 'icmmae2027', defaults: icmmae2027Defaults },
     { name: 'fluid', defaults: fluidDefaults },
     { name: 'foodagri', defaults: foodagriDefaults },
     {
@@ -868,7 +868,7 @@ const conferences = [
             {
                 key: 'stats',
                 data: {
-                    title: 'SCIENGA SUMMITS CONFERENCES APPROACH',
+                    title: 'ICMMAE 2027 CONFERENCES APPROACH',
                     items: [
                         { number: '15+', label: 'Years Experience' },
                         { number: '100+', label: 'Annual Events' },
@@ -1067,7 +1067,7 @@ const conferences = [
             {
                 key: 'stats',
                 data: {
-                    title: 'SCIENGA SUMMITS CONFERENCES APPROACH',
+                    title: 'ICMMAE 2027 CONFERENCES APPROACH',
                     items: [
                         { number: '15+', label: 'Years Experience' },
                         { number: '100+', label: 'Annual Events' },

@@ -5,7 +5,7 @@ export async function validateDiscountCode(coupon) {
         const res = await fetch(`${BASE_URL}/discounts/validate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ coupon, conference: 'icemmae2027' }),
+            body: JSON.stringify({ coupon, conference: 'icmmae2027' }),
         });
         if (!res.ok) throw new Error('Server error');
         return res.json();

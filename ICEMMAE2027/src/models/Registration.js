@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const RegistrationSchema = new mongoose.Schema({
-    conference:         { type: String, default: 'icemmae2027', index: true },
+    conference:         { type: String, default: 'icmmae2027', index: true },
     title:              { type: String, default: '' },
     name:               { type: String, required: true },
     email:              { type: String, required: true },

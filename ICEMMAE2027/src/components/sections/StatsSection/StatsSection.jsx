@@ -25,7 +25,7 @@ const ICONS = [
 ];
 
 const DEFAULT_STATS = {
-    title: 'SCIENGA SUMMITS CONFERENCES APPROACH',
+    title: 'ICMMAE 2027 CONFERENCES APPROACH',
     items: [
         { number: '15+', label: 'Years Experience' },
         { number: '100+', label: 'Events' },
@@ -70,7 +70,7 @@ const StatsSection = () => {
             <div className="container">
                 <div className="text-center mb-5">
                     <h2 className="section-title" style={{ marginBottom: '3rem', color: 'var(--color-text-header)' }}>
-                        {statsData.title || 'SCIENGA SUMMITS CONFERENCES APPROACH'}
+                        {statsData.title || 'ICMMAE 2027 CONFERENCES APPROACH'}
                     </h2>
                 </div>
 

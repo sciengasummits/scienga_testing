@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const DiscountSchema = new mongoose.Schema({
-    conference: { type: String, default: 'icemmae2027', index: true }, // 'icemmae2027' | 'foodagri'
+    conference: { type: String, default: 'icmmae2027', index: true }, // 'icmmae2027' | 'foodagri'
     coupon: { type: String, required: true, uppercase: true, trim: true },
     category: { type: String, default: 'registration' }, // 'registration' | 'accommodation' | 'both'
     percentage: { type: Number, required: true, min: 1, max: 100 },

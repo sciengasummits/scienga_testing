@@ -5,7 +5,7 @@ import { escapeHtml } from '@/lib/utils';
 
 export async function POST(req) {
   try {
-    const { name, email, phone, number, conference = 'icemmae2027' } = await req.json();
+    const { name, email, phone, number, conference = 'icmmae2027' } = await req.json();
     const contactPhone = phone || number || 'N/A';
     
     if (!email || !name) {
