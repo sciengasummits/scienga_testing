@@ -25,7 +25,10 @@ export async function POST(req) {
 
     await writeFile(filePath, buffer);
 
-    const url = `/uploads/${uniqueName}`;
+    // Build absolute URL from request host so links work from any dashboard/email
+    const host = req.headers.get('host') || 'icmmae2027.sciengasummits.com';
+    const proto = req.headers.get('x-forwarded-proto') || 'https';
+    const url = `${proto}://${host}/uploads/${uniqueName}`;
 
     return NextResponse.json({
       url,
