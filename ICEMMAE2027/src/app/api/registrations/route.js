@@ -25,23 +25,27 @@ export async function POST(req) {
     await reg.save();
 
     const {
-      name, email, registrationCategory, conference = 'ICEMMAE2027',
+      name, email, registrationCategory, conference = 'icemmae2027',
       phone, company, address
     } = body;
-    const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
+    const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference.toLowerCase());
     const adminEmail = account ? account.email : 'ICEMMAE2027@sciengasummits.com';
     const siteUrl = process.env.FRONTEND_URL || 'https://icemmae2027.sciengasummits.com';
 
     const emailSender = new RealEmailSender();
     
     // User confirmation
-    emailSender.sendEmail(
-      email,
-      `✅ Registration Received - ${conference.toUpperCase()}`,
-      `<div style="font-family: Arial; padding: 20px;"><h2>Registration Received</h2><p>Hello ${escapeHtml(name)}, your registration for <strong>${conference.toUpperCase()}</strong> has been received.</p></div>`,
-      'REGISTRATION',
-      conference
-    ).catch(e => console.error('User email error:', e.message));
+    try {
+      await emailSender.sendEmail(
+        email,
+        `✅ Registration Received - ${conference.toUpperCase()}`,
+        `<div style="font-family: Arial; padding: 20px;"><h2>Registration Received</h2><p>Hello ${escapeHtml(name)}, your registration for <strong>${conference.toUpperCase()}</strong> has been received.</p></div>`,
+        'REGISTRATION',
+        conference
+      );
+    } catch (e) {
+      console.error('User email error:', e.message);
+    }
 
     const submittedAt = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
@@ -64,6 +68,7 @@ export async function POST(req) {
     <p style="margin:0;"><strong>Email:</strong> ${email}</p>
     <p style="margin:0;"><strong>Phone:</strong> ${escapeHtml(phone || '—')}</p>
     <p style="margin:0;"><strong>Company/Affiliation:</strong> ${escapeHtml(company || '—')}</p>
+    <p style="margin:0;"><strong>Address:</strong> ${escapeHtml(address || '—')}</p>
     <p style="margin:0;"><strong>Category:</strong> ${escapeHtml(registrationCategory || '—')}</p>
     <p style="margin:0;"><strong>Conference:</strong> ${escapeHtml(conference.toUpperCase())}</p>
     ${body.amount ? `<p style="margin:0;"><strong>Amount Paid:</strong> ${body.amount} ${body.currency || 'USD'}</p>` : ''}
@@ -76,13 +81,17 @@ export async function POST(req) {
   </div>
 </div></body></html>`;
 
-    emailSender.sendEmail(
-      adminEmail,
-      `📝 New Registration - ${conference.toUpperCase()}`,
-      adminHtml,
-      'REGISTRATION',
-      conference
-    ).catch(e => console.error('Admin email error:', e.message));
+    try {
+      await emailSender.sendEmail(
+        adminEmail,
+        `📝 New Registration - ${conference.toUpperCase()}`,
+        adminHtml,
+        'REGISTRATION',
+        conference
+      );
+    } catch (e) {
+      console.error('Admin email error:', e.message);
+    }
 
     return NextResponse.json(reg, { status: 201 });
   } catch (err) {

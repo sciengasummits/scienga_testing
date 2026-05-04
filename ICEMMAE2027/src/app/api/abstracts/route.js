@@ -25,11 +25,10 @@ export async function POST(req) {
     await abs.save();
 
     const {
-      name, email, title, conference = 'ICEMMAE2027',
+      name, email, title, conference = 'icemmae2027',
       phone, organization, country, interest, topic, address, fileName, fileUrl
     } = body;
-
-    const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
+    const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference.toLowerCase());
     const adminEmail = account ? account.email : 'ICEMMAE2027@sciengasummits.com';
     const submittedAt = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
@@ -70,7 +69,10 @@ export async function POST(req) {
     <p style="margin:0;"><strong>Abstract Date:</strong> ${submittedAt}</p>
     <p style="margin:0;"><strong>Email:</strong> ${email}</p>
     <p style="margin:0;"><strong>Mobile Number:</strong> ${escapeHtml(phone)}</p>
+    <p style="margin:0;"><strong>Organization:</strong> ${escapeHtml(organization)}</p>
     <p style="margin:0;"><strong>Country:</strong> ${escapeHtml(country)}</p>
+    <p style="margin:0;"><strong>Address:</strong> ${escapeHtml(address)}</p>
+    <p style="margin:0;"><strong>Abstract Title:</strong> ${escapeHtml(title)}</p>
     <p style="margin:0;"><strong>Session:</strong> ${escapeHtml(topic)}</p>
     <p style="margin:0;"><strong>Category:</strong> ${escapeHtml(interest)}</p>
     <p style="margin:0;"><strong>Download Abstract:</strong> ${fileName && absoluteFileUrl ? `<a href="${absoluteFileUrl}" style="color:#2563eb;text-decoration:underline;">Click Here</a>` : '—'}</p>
@@ -81,13 +83,17 @@ export async function POST(req) {
   </div>
 </div></body></html>`;
 
-    emailSender.sendEmail(
-      adminEmail,
-      `📄 New Abstract: ${name} – ${conference.toUpperCase()}`,
-      adminHtml,
-      'ABSTRACT',
-      conference
-    ).catch(e => console.error('Admin email error:', e.message));
+    try {
+      await emailSender.sendEmail(
+        adminEmail,
+        `📄 New Abstract: ${name} – ${conference.toUpperCase()}`,
+        adminHtml,
+        'ABSTRACT',
+        conference
+      );
+    } catch (e) {
+      console.error('Admin email error:', e.message);
+    }
 
     // ── User confirmation ──
     const userHtml = `<!DOCTYPE html><html><body style="font-family:Arial,sans-serif;background:#f3f4f6;padding:24px;">
@@ -108,13 +114,17 @@ export async function POST(req) {
   </div>
 </div></body></html>`;
 
-    emailSender.sendEmail(
-      email,
-      `✅ Abstract Received – ${conference.toUpperCase()}`,
-      userHtml,
-      'ABSTRACT',
-      conference
-    ).catch(e => console.error('User email error:', e.message));
+    try {
+      await emailSender.sendEmail(
+        email,
+        `✅ Abstract Received – ${conference.toUpperCase()}`,
+        userHtml,
+        'ABSTRACT',
+        conference
+      );
+    } catch (e) {
+      console.error('User email error:', e.message);
+    }
 
     return NextResponse.json(abs, { status: 201 });
   } catch (err) {

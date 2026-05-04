@@ -5,8 +5,8 @@ import { escapeHtml } from '@/lib/utils';
 
 export async function POST(req) {
   try {
-    const { name, email, subject, message, conference = 'ICEMMAE2027' } = await req.json();
-    const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
+    const { name, email, subject, message, conference = 'icemmae2027' } = await req.json();
+    const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference.toLowerCase());
     const adminEmail = account ? account.email : 'ICEMMAE2027@sciengasummits.com';
 
     const emailSender = new RealEmailSender();

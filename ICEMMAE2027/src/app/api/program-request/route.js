@@ -5,14 +5,14 @@ import { escapeHtml } from '@/lib/utils';
 
 export async function POST(req) {
   try {
-    const { name, email, phone, number, conference = 'ICEMMAE2027' } = await req.json();
+    const { name, email, phone, number, conference = 'icemmae2027' } = await req.json();
     const contactPhone = phone || number || 'N/A';
     
     if (!email || !name) {
       return NextResponse.json({ success: false, error: 'Name and Email required' }, { status: 400 });
     }
 
-    const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
+    const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference.toLowerCase());
     const adminEmail = account ? account.email : 'icmmae@sciengasummits.com';
 
     const emailSender = new RealEmailSender();

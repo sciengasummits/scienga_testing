@@ -1,4 +1,4 @@
-﻿import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -86,13 +86,14 @@ export class RealEmailSender {
      * @param {string} [conferenceId] - Optional: 'icemmae2027' | 'foodagri' | 'fluid' | 'renewable'
      */
     async sendEmail(to, subject, htmlContent, otp, conferenceId) {
+        const id = (conferenceId || '').toLowerCase();
         // Pick the right transporter
-        const transporter = (conferenceId && this._transporters[conferenceId])
-            ? this._transporters[conferenceId]
+        const transporter = (id && this._transporters[id])
+            ? this._transporters[id]
             : this._defaultTransporter;
 
-        const fromUser = (conferenceId && this._accounts[conferenceId] && this._transporters[conferenceId])
-            ? this._accounts[conferenceId].user
+        const fromUser = (id && this._accounts[id] && this._transporters[id])
+            ? this._accounts[id].user
             : this.user;
 
         try {

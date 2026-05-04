@@ -5,13 +5,13 @@ import { escapeHtml } from '@/lib/utils';
 
 export async function POST(req) {
   try {
-    const { name, email, number, conference = 'ICEMMAE2027' } = await req.json();
+    const { name, email, number, conference = 'icemmae2027' } = await req.json();
 
     if (!email || !name) {
       return NextResponse.json({ success: false, error: 'Name and Email required' }, { status: 400 });
     }
 
-    const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
+    const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference.toLowerCase());
     const adminEmail = account ? account.email : 'ICEMMAE2027@sciengasummits.com';
 
     const emailSender = new RealEmailSender();
