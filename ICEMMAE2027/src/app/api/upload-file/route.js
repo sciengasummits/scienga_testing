@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
+import connectDB from '@/lib/mongodb';
+import Media from '@/models/Media';
 
 export async function POST(req) {
   try {
+    await connectDB();
     const formData = await req.formData();
     const file = formData.get('file');
+    const conference = formData.get('conference') || 'icemmae2027';
 
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
@@ -14,25 +15,27 @@ export async function POST(req) {
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
+    const dataUrl = `data:${file.type};base64,${buffer.toString('base64')}`;
 
-    const uploadsDir = join(process.cwd(), 'public', 'uploads');
-    if (!existsSync(uploadsDir)) {
-      await mkdir(uploadsDir, { recursive: true });
-    }
+    const media = new Media({
+      filename: file.name,
+      mimetype: file.type,
+      data: dataUrl,
+      conference
+    });
 
-    const uniqueName = `${Date.now()}-${file.name.replace(/[^a-z0-9.]/gi, '_').toLowerCase()}`;
-    const filePath = join(uploadsDir, uniqueName);
+    await media.save();
 
-    await writeFile(filePath, buffer);
-
-    // Build absolute URL from request host so links work from any dashboard/email
-    const host = req.headers.get('host') || 'ICEMMAE2027.sciengasummits.com';
+    // Build absolute URL using host so links work everywhere
+    const host = req.headers.get('host') || 'icemmae2027.sciengasummits.com';
     const proto = req.headers.get('x-forwarded-proto') || 'https';
-    const url = `${proto}://${host}/uploads/${uniqueName}`;
+    const url = `${proto}://${host}/api/media/${media._id}`;
 
     return NextResponse.json({
       url,
-      originalName: file.name
+      id: media._id,
+      originalName: file.name,
+      message: 'File saved to database successfully'
     });
 
   } catch (err) {
