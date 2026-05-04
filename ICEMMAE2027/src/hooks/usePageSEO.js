@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { fetchContent } from '../api/contentApi';
 
-const SITE_NAME = 'ICMMAE2027';
+const SITE_NAME = 'ICEMMAE2027';
 const BASE_URL = 'https://icemmae2027.sciengasummits.com';
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
 const DEFAULT_DESC =

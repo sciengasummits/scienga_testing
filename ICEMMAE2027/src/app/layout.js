@@ -6,7 +6,7 @@ import Footer from '../components/common/Footer/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'ICMMAE2027',
+  title: 'ICEMMAE2027',
   description: 'International Conference and Expo on Mechanical, Mechatronics and Aerospace Engineering',
 };
 

@@ -1,10 +1,10 @@
-const BASE_URL = '/api';
+﻿const BASE_URL = '/api';
 
 export async function submitAbstract(payload) {
     const res = await fetch(`${BASE_URL}/abstracts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...payload, conference: 'icmmae2027' }),
+        body: JSON.stringify({ ...payload, conference: 'icemmae2027' }),
     });
     if (!res.ok) throw new Error('Server error');
     return res.json();
@@ -20,3 +20,4 @@ export async function uploadAbstractFile(file) {
     }
     return res.json();
 }
+

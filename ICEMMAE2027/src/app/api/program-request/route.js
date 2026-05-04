@@ -5,7 +5,7 @@ import { escapeHtml } from '@/lib/utils';
 
 export async function POST(req) {
   try {
-    const { name, email, phone, number, conference = 'icmmae2027' } = await req.json();
+    const { name, email, phone, number, conference = 'ICEMMAE2027' } = await req.json();
     const contactPhone = phone || number || 'N/A';
     
     if (!email || !name) {
@@ -17,17 +17,38 @@ export async function POST(req) {
 
     const emailSender = new RealEmailSender();
     
-    // Admin notification
+    const submittedAt = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+
+    // Admin notification (2nd Image Format)
+    const adminHtml = `<!DOCTYPE html><html><body style="font-family:Arial,sans-serif;background:#f3f4f6;padding:24px;">
+<div style="max-width:650px;margin:0 auto;background:#fff;padding:40px;border-radius:4px;box-shadow:0 0 10px rgba(0,0,0,0.05);">
+  <div style="text-align:center;margin-bottom:30px;">
+    <h1 style="margin:0;color:#000;font-size:22px;font-weight:700;line-height:1.4;">
+      Program Schedule Requested for <br/> 
+      ${escapeHtml(account?.displayName || conference.toUpperCase())}
+    </h1>
+    <p style="margin:10px 0 0;color:#4b5563;font-size:14px;">
+      Request Received for ${escapeHtml(conference.toUpperCase())} conference. Please find the details below
+    </p>
+  </div>
+  
+  <div style="background:#e5e7eb;padding:30px;border-radius:4px;color:#000;line-height:2.2;font-size:15px;">
+    <p style="margin:0;"><strong>Name:</strong> ${escapeHtml(name)}</p>
+    <p style="margin:0;"><strong>Date:</strong> ${submittedAt}</p>
+    <p style="margin:0;"><strong>Email:</strong> ${escapeHtml(email)}</p>
+    <p style="margin:0;"><strong>Mobile Number:</strong> ${escapeHtml(contactPhone)}</p>
+    <p style="margin:0;"><strong>Conference:</strong> ${escapeHtml(conference.toUpperCase())}</p>
+  </div>
+  
+  <div style="margin-top:30px;color:#000;font-size:15px;">
+    <p style="margin:0;">Regards,<br/>${escapeHtml(account?.displayName || 'Organizing Committee')}</p>
+  </div>
+</div></body></html>`;
+
     await emailSender.sendEmail(
       adminEmail,
       `📩 Program Schedule Requested - ${conference.toUpperCase()}`,
-      `<div style="font-family: Arial; padding: 20px;">
-        <h2>Program Schedule Request</h2>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Phone:</strong> ${escapeHtml(contactPhone)}</p>
-        <p><strong>Conference:</strong> ${conference.toUpperCase()}</p>
-      </div>`,
+      adminHtml,
       'PROGRAM',
       conference
     );

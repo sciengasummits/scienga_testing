@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+﻿import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -14,12 +14,12 @@ dotenv.config();
 export class RealEmailSender {
     constructor() {
         // Legacy / fallback credentials
-        this._defaultUser = process.env.SMTP_USER || 'icmmae2027@sciengasummits.com';
+        this._defaultUser = process.env.SMTP_USER || 'icemmae2027@sciengasummits.com';
         this._defaultPass = (process.env.SMTP_PASS || '').replace(/\s/g, '');
 
-        // Per-conference credential map  { conferenceId → { user, pass } }
+        // Per-conference credential map  { conferenceId â†’ { user, pass } }
         this._accounts = {
-            icmmae2027: {
+            icemmae2027: {
                 user: process.env.ICEMMAE_SMTP_USER || this._defaultUser,
                 pass: (process.env.ICEMMAE_SMTP_PASS || this._defaultPass).replace(/\s/g, ''),
             },
@@ -55,7 +55,7 @@ export class RealEmailSender {
             // If the password is a placeholder or empty, we'll fall back to the
             // default transporter at send time instead of crashing at startup.
             if (!creds.pass || creds.pass.startsWith('REPLACE_WITH')) {
-                console.warn(`⚠️  No valid SMTP password for "${confId}" — will fall back to icmmae2027 sender`);
+                console.warn(`âš ï¸  No valid SMTP password for "${confId}" â€” will fall back to icemmae2027 sender`);
                 continue;
             }
 
@@ -65,8 +65,8 @@ export class RealEmailSender {
             });
         }
 
-        // Always build a default/fallback transporter (icmmae2027)
-        this._defaultTransporter = this._transporters['icmmae2027'] || nodemailer.createTransport({
+        // Always build a default/fallback transporter (icemmae2027)
+        this._defaultTransporter = this._transporters['icemmae2027'] || nodemailer.createTransport({
             service: 'gmail',
             auth: { user: this._defaultUser, pass: this._defaultPass },
         });
@@ -83,7 +83,7 @@ export class RealEmailSender {
      * @param {string} subject     - Email subject
      * @param {string} htmlContent - HTML body
      * @param {string} otp         - OTP value (also sent as plain-text)
-     * @param {string} [conferenceId] - Optional: 'icmmae2027' | 'foodagri' | 'fluid' | 'renewable'
+     * @param {string} [conferenceId] - Optional: 'icemmae2027' | 'foodagri' | 'fluid' | 'renewable'
      */
     async sendEmail(to, subject, htmlContent, otp, conferenceId) {
         // Pick the right transporter
@@ -96,7 +96,7 @@ export class RealEmailSender {
             : this.user;
 
         try {
-            console.log(`📧 Attempting Gmail send → from: ${fromUser}  to: ${to}`);
+            console.log(`ðŸ“§ Attempting Gmail send â†’ from: ${fromUser}  to: ${to}`);
 
             const info = await transporter.sendMail({
                 from: `"Conference Management System" <${fromUser}>`,
@@ -106,10 +106,10 @@ export class RealEmailSender {
                 text: `Your OTP is: ${otp}. It is valid for 10 minutes.`,
             });
 
-            console.log(`✅ Email sent! Message ID: ${info.messageId}`);
+            console.log(`âœ… Email sent! Message ID: ${info.messageId}`);
             return { success: true, messageId: info.messageId };
         } catch (error) {
-            console.error(`❌ Nodemailer Gmail error:`, error.message);
+            console.error(`âŒ Nodemailer Gmail error:`, error.message);
             return { success: false, error: error.message };
         }
     }
@@ -135,7 +135,7 @@ export class RealEmailSender {
                     
                     <div style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 6px; padding: 15px; margin: 20px 0;">
                         <p style="color: #92400e; margin: 0; font-size: 14px;">
-                            <strong>⚠️ Important:</strong> This OTP is valid for <strong>10 minutes</strong> only. 
+                            <strong>âš ï¸ Important:</strong> This OTP is valid for <strong>10 minutes</strong> only. 
                             Do not share this code with anyone.
                         </p>
                     </div>
@@ -147,7 +147,7 @@ export class RealEmailSender {
                 
                 <div style="text-align: center; margin-top: 20px; padding: 20px;">
                     <p style="color: #94a3b8; font-size: 12px; margin: 0;">
-                        © 2027 ICMMAE2027. All rights reserved.
+                        Â© 2027 ICEMMAE2027. All rights reserved.
                     </p>
                 </div>
             </div>

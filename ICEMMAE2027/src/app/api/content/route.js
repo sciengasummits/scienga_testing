@@ -6,7 +6,7 @@ export async function GET(req) {
   try {
     await connectDB();
     const { searchParams } = new URL(req.url);
-    const conf = searchParams.get('conference') || 'icmmae2027';
+    const conf = searchParams.get('conference') || 'ICEMMAE2027';
     
     const all = await SiteContent.find({ conference: conf });
     const result = {};

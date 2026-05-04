@@ -8,7 +8,7 @@ export async function GET(req) {
     await connectDB();
     const { searchParams } = new URL(req.url);
     const category = searchParams.get('category');
-    const conf = searchParams.get('conference') || 'icmmae2027';
+    const conf = searchParams.get('conference') || 'ICEMMAE2027';
 
     const filter = { visible: true, conference: conf };
     if (category) filter.category = category;

@@ -1,11 +1,12 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 
 const MediaSchema = new mongoose.Schema({
     filename: { type: String, required: true },
     mimetype: { type: String, required: true },
     data: { type: String, required: true }, // Base64 encoded data
-    conference: { type: String, default: 'icmmae2027' },
+    conference: { type: String, default: 'icemmae2027' },
     createdAt: { type: Date, default: Date.now }
 });
 
 export default mongoose.models.Media || mongoose.model('Media', MediaSchema);
+

@@ -1,4 +1,4 @@
-const BASE_URL = '/api';
+﻿const BASE_URL = '/api';
 
 export async function fetchPaymentKey() {
     const res = await fetch(`${BASE_URL}/payment/key`);
@@ -10,7 +10,7 @@ export async function createPaymentOrder(payload) {
     const res = await fetch(`${BASE_URL}/payment/create-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...payload, conference: 'icmmae2027' }),
+        body: JSON.stringify({ ...payload, conference: 'icemmae2027' }),
     });
     if (!res.ok) {
         const err = await res.json();
@@ -31,3 +31,4 @@ export async function verifyPayment(payload) {
     }
     return res.json();
 }
+

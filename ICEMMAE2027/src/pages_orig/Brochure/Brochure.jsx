@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import React, { useState, useEffect } from 'react';
 
 import './Brochure.css';
@@ -25,7 +25,7 @@ const DEFAULTS = {
 const Brochure = () => {
     usePageSEO({
         title: 'Conference Brochure',
-        description: 'Download the official ICMMAE2027 conference brochure – program schedule, keynote speaker profiles, workshop details, venue maps, and sponsorship opportunities.',
+        description: 'Download the official ICEMMAE2027 conference brochure â€“ program schedule, keynote speaker profiles, workshop details, venue maps, and sponsorship opportunities.',
         canonical: 'https://icemmae2027.sciengasummits.com/brochure',
     });
     const router = useRouter();
@@ -36,7 +36,7 @@ const Brochure = () => {
     const [formData, setFormData] = useState({ name: '', email: '', number: '' });
     const [submitting, setSubmitting] = useState(false);
 
-    /* ── Load from backend ── */
+    /* â”€â”€ Load from backend â”€â”€ */
     useEffect(() => {
         fetchContent('brochure').then(data => {
             if (data) {
@@ -71,7 +71,7 @@ const Brochure = () => {
                     name: formData.name,
                     email: formData.email,
                     number: formData.number,
-                    conference: 'icmmae2027',
+                    conference: 'icemmae2027',
                 }),
             });
             const data = await res.json();
@@ -167,3 +167,4 @@ const Brochure = () => {
 };
 
 export default Brochure;
+

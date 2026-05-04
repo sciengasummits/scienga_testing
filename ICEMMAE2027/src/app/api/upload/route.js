@@ -7,7 +7,7 @@ export async function POST(req) {
     await connectDB();
     const formData = await req.formData();
     const file = formData.get('image');
-    const conference = formData.get('conference') || 'icmmae2027';
+    const conference = formData.get('conference') || 'ICEMMAE2027';
 
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });

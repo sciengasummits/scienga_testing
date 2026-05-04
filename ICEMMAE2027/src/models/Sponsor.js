@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 
 const SponsorSchema = new mongoose.Schema({
-    conference: { type: String, default: 'icmmae2027', index: true }, // 'icmmae2027' | 'foodagri'
+    conference: { type: String, default: 'icemmae2027', index: true }, // 'icemmae2027' | 'foodagri'
     name: { type: String, required: true },
     logo: String,
     link: String,
@@ -12,4 +12,5 @@ const SponsorSchema = new mongoose.Schema({
 });
 
 export default mongoose.models.Sponsor || mongoose.model('Sponsor', SponsorSchema);
+
 

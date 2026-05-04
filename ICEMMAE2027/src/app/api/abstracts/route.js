@@ -9,7 +9,7 @@ export async function GET(req) {
   try {
     await connectDB();
     const { searchParams } = new URL(req.url);
-    const conf = searchParams.get('conference') || 'icmmae2027';
+    const conf = searchParams.get('conference') || 'ICEMMAE2027';
     const abstracts = await Abstract.find({ conference: conf }).sort({ createdAt: -1 });
     return NextResponse.json(abstracts);
   } catch (err) {
@@ -25,16 +25,16 @@ export async function POST(req) {
     await abs.save();
 
     const {
-      name, email, title, conference = 'icmmae2027',
+      name, email, title, conference = 'ICEMMAE2027',
       phone, organization, country, interest, topic, address, fileName, fileUrl
     } = body;
 
     const account = CONFERENCE_ACCOUNTS.find(acc => acc.conferenceId === conference);
-    const adminEmail = account ? account.email : 'icmmae2027@sciengasummits.com';
+    const adminEmail = account ? account.email : 'ICEMMAE2027@sciengasummits.com';
     const submittedAt = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
     // Build siteUrl from the actual request host — avoids wrong FRONTEND_URL env issues
-    const host = req.headers.get('host') || 'icmmae2027.sciengasummits.com';
+    const host = req.headers.get('host') || 'ICEMMAE2027.sciengasummits.com';
     const proto = req.headers.get('x-forwarded-proto') || 'https';
     const siteUrl = `${proto}://${host}`;
 
@@ -52,37 +52,32 @@ export async function POST(req) {
         <td style="padding:8px 12px;color:#111827;font-size:14px;">${val || '—'}</td>
        </tr>`;
 
-    // ── Full admin notification ──
+    // ── Full admin notification (2nd Image Format) ──
     const adminHtml = `<!DOCTYPE html><html><body style="font-family:Arial,sans-serif;background:#f3f4f6;padding:24px;">
-<div style="max-width:640px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
-  <div style="background:linear-gradient(135deg,#0369a1,#2563eb);padding:28px 32px;">
-    <h1 style="margin:0;color:#fff;font-size:20px;">📄 New Abstract Submission</h1>
-    <p style="margin:6px 0 0;color:#bae6fd;font-size:13px;">${escapeHtml(conference.toUpperCase())} · ${submittedAt} IST</p>
+<div style="max-width:650px;margin:0 auto;background:#fff;padding:40px;border-radius:4px;box-shadow:0 0 10px rgba(0,0,0,0.05);">
+  <div style="text-align:center;margin-bottom:30px;">
+    <h1 style="margin:0;color:#000;font-size:22px;font-weight:700;line-height:1.4;">
+      Abstract Submission Confirmation for <br/> 
+      ${escapeHtml(account?.displayName || conference.toUpperCase())}
+    </h1>
+    <p style="margin:10px 0 0;color:#4b5563;font-size:14px;">
+      Abstract Received for ${escapeHtml(conference.toUpperCase())} conference. Please find the details below
+    </p>
   </div>
-  <div style="padding:24px 32px;">
-    <h2 style="color:#0369a1;font-size:15px;margin:0 0 14px;border-bottom:2px solid #e0f2fe;padding-bottom:6px;">👤 Submitter Details</h2>
-    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin-bottom:20px;">
-      ${row('Full Name',    escapeHtml(name),         0)}
-      ${row('Email',        email,                    1)}
-      ${row('Phone',        escapeHtml(phone),         2)}
-      ${row('Organization', escapeHtml(organization), 3)}
-      ${row('Country',      escapeHtml(country),      4)}
-      ${row('Address',      escapeHtml(address),      5)}
-    </table>
-    <h2 style="color:#0369a1;font-size:15px;margin:0 0 14px;border-bottom:2px solid #e0f2fe;padding-bottom:6px;">📋 Abstract Details</h2>
-    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin-bottom:20px;">
-      ${row('Abstract Title',    escapeHtml(title),    0)}
-      ${row('Presentation Type', escapeHtml(interest), 1)}
-      ${row('Topic / Track',     escapeHtml(topic),    2)}
-      ${row('Attached File',
-        fileName && absoluteFileUrl
-          ? `<a href="${absoluteFileUrl}" style="color:#2563eb;">${escapeHtml(fileName)}</a>`
-          : (fileName || '—'),
-        3)}
-    </table>
+  
+  <div style="background:#e5e7eb;padding:30px;border-radius:4px;color:#000;line-height:2.2;font-size:15px;">
+    <p style="margin:0;"><strong>Name:</strong> ${escapeHtml(name)}</p>
+    <p style="margin:0;"><strong>Abstract Date:</strong> ${submittedAt}</p>
+    <p style="margin:0;"><strong>Email:</strong> ${email}</p>
+    <p style="margin:0;"><strong>Mobile Number:</strong> ${escapeHtml(phone)}</p>
+    <p style="margin:0;"><strong>Country:</strong> ${escapeHtml(country)}</p>
+    <p style="margin:0;"><strong>Session:</strong> ${escapeHtml(topic)}</p>
+    <p style="margin:0;"><strong>Category:</strong> ${escapeHtml(interest)}</p>
+    <p style="margin:0;"><strong>Download Abstract:</strong> ${fileName && absoluteFileUrl ? `<a href="${absoluteFileUrl}" style="color:#2563eb;text-decoration:underline;">Click Here</a>` : '—'}</p>
   </div>
-  <div style="background:#f0f9ff;border-top:1px solid #bae6fd;padding:14px 32px;text-align:center;">
-    <p style="margin:0;color:#0369a1;font-size:12px;">Automated notification · ${escapeHtml(conference.toUpperCase())} · <a href="mailto:${escapeHtml(adminEmail)}" style="color:#2563eb;">${escapeHtml(adminEmail)}</a></p>
+  
+  <div style="margin-top:30px;color:#000;font-size:15px;">
+    <p style="margin:0;">Regards,<br/>${escapeHtml(account?.displayName || 'Organizing Committee')}</p>
   </div>
 </div></body></html>`;
 
