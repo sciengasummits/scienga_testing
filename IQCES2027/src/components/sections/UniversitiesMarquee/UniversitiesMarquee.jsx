@@ -15,10 +15,9 @@ const UniversitiesMarquee = () => {
             if (data && data.title) setTitle(data.title);
         }).catch(() => {});
 
-        // Fetch Universities dynamically like Speakers
+        // Fetch Universities dynamically
         fetchUniversities().then(data => {
             if (data && Array.isArray(data)) {
-                // filter visible ones (visible is true by default, but double-check)
                 const visible = data.filter(u => u.visible !== false);
                 setUniversities(visible);
             }
@@ -28,7 +27,6 @@ const UniversitiesMarquee = () => {
     if (universities.length === 0) return null;
 
     const renderItem = (uni, uniqueKey) => {
-        // uni now has .name and .image
         const resolvedUrl = uni.image ? resolveImageUrl(uni.image) : null;
         return (
             <div key={uniqueKey} className="university-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 2rem' }}>
@@ -73,9 +71,7 @@ const UniversitiesMarquee = () => {
                 </div>
             </div>
             <div className="marquee-track">
-                {/* Original Set */}
                 {repeated.map((uni, idx) => renderItem(uni, `orig-${idx}`))}
-                {/* Duplicate Set for Seamless Loop */}
                 {repeated.map((uni, idx) => renderItem(uni, `dup-${idx}`))}
             </div>
         </section>

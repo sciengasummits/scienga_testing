@@ -11,15 +11,29 @@ const SpeakersSection = ({ showViewAll }) => {
     const [selectedSpeaker, setSelectedSpeaker] = useState(null);
     const [speakers, setSpeakers] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [flippedId, setFlippedId] = useState(null);
+
+    const handleCardClick = (speaker) => {
+        // On touch devices, first tap flips, second tap opens modal
+        if (flippedId === speaker.id) {
+            openModal(speaker);
+            setFlippedId(null);
+        } else {
+            setFlippedId(speaker.id);
+        }
+    };
 
     const getDisplayCategory = (category) => {
         if (!category) return '';
         const lower = category.toLowerCase();
+        if (lower.includes('student')) return 'Student';
+        if (lower.includes('keynote')) return 'Keynote Speaker';
+        if (lower.includes('plenary')) return 'Plenary Speaker';
+        if (lower.includes('invited')) return 'Invited Speaker';
+        if (lower.includes('poster')) return 'Poster Presenter';
+        if (lower.includes('delegate')) return 'Delegate';
         if (lower.includes('committee')) return 'Committee';
-        if (lower.includes('keynote')) return 'Keynote';
-        if (lower.includes('poster')) return 'Posters';
-        if (lower.includes('plenary')) return 'Plenary';
-        if (lower.includes('delegate')) return 'Delegates';
+        if (category === '' || category === ' Speaker') return '';
         return category;
     };
 
@@ -51,11 +65,16 @@ const SpeakersSection = ({ showViewAll }) => {
         setLoading(true);
         load();
 
-        const interval = setInterval(load, 15000);
+        const interval = setInterval(load, 60000); // Reflect dashboard changes within 1 min
+
+        // Refresh instantly when user switches back to this tab from dashboard
+        const onVisible = () => { if (document.visibilityState === 'visible') load(); };
+        document.addEventListener('visibilitychange', onVisible);
 
         return () => {
             mounted = false;
             clearInterval(interval);
+            document.removeEventListener('visibilitychange', onVisible);
         };
     }, []);
 
@@ -65,7 +84,7 @@ const SpeakersSection = ({ showViewAll }) => {
         return displayCat === activeCategory;
     });
 
-    const displaySpeakers = filteredSpeakers.slice(0, showViewAll ? 8 : filteredSpeakers.length);
+    const displaySpeakers = filteredSpeakers.slice(0, showViewAll ? 12 : filteredSpeakers.length);
 
     const openModal = (speaker) => {
         setSelectedSpeaker(speaker);
@@ -86,7 +105,7 @@ const SpeakersSection = ({ showViewAll }) => {
                 </div>
 
                 <div className="speakers__filters">
-                    {['All', 'Committee', 'Keynote', 'Posters', 'Plenary', 'Delegates'].map((category) => (
+                    {['All', 'Committee', 'Poster Presenter', 'Student', 'Delegate', 'Plenary Speaker', 'Keynote Speaker', 'Invited Speaker'].map((category) => (
                         <button
                             key={category}
                             className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
@@ -101,32 +120,67 @@ const SpeakersSection = ({ showViewAll }) => {
                     {loading ? (
                         <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '3rem', color: '#666' }}>
                             <div className="loading-spinner" style={{ marginBottom: '1rem' }}></div>
-                            <p>Loading global participants details...</p>
+                            <p>Loading speakers...</p>
                         </div>
                     ) : displaySpeakers.length > 0 ? (
                         displaySpeakers.map((speaker) => (
-                            <div className="speaker-card" key={speaker.id}>
-                                <div className="speaker-img-wrapper">
-                                    {speaker.image ? (
-                                        <img src={resolveImageUrl(speaker.image)} alt={speaker.name} className="speaker-img" />
-                                    ) : (
-                                        <div className="speaker-img-placeholder">
-                                            <User size={48} color="#cbd5e1" />
-                                            <span style={{ color: '#94a3b8', fontSize: '0.8rem', fontWeight: 500, marginTop: '0.5rem' }}>No Photo</span>
+                            <div
+                                className={`sc-flip${flippedId === speaker.id ? ' is-flipped' : ''}`}
+                                key={speaker.id}
+                                onClick={() => handleCardClick(speaker)}
+                            >
+                                <div className="sc-flip__inner">
+
+                                    {/* FRONT */}
+                                    <div className="sc-front">
+                                        {speaker.image ? (
+                                            <img
+                                                src={resolveImageUrl(speaker.image)}
+                                                alt={speaker.name}
+                                                className="sc-front__img"
+                                            />
+                                        ) : (
+                                            <div className="sc-front__fallback">
+                                                <User size={52} color="#94a3b8" />
+                                            </div>
+                                        )}
+                                        <div className="sc-front__overlay">
+                                            {speaker.category && (
+                                                <span className="sc-badge">{getDisplayCategory(speaker.category)}</span>
+                                            )}
+                                            <h3 className="sc-front__name">{speaker.name}</h3>
+                                            {speaker.affiliation && (
+                                                <p className="sc-front__org">{speaker.affiliation}</p>
+                                            )}
                                         </div>
-                                    )}
-                                    <div className="speaker-overlay">
-                                        {/* Social icons could go here */}
                                     </div>
-                                </div>
-                                <div className="speaker-info">
-                                    {speaker.category && <span className="speaker-category">{getDisplayCategory(speaker.category)}</span>}
-                                    <h3 className="speaker-name">{speaker.name}</h3>
-                                    <p className="speaker-title">{speaker.title}</p>
-                                    <p className="speaker-affiliation">{speaker.affiliation}</p>
-                                    <button className="btn-biograph" onClick={() => openModal(speaker)}>
-                                        <User size={16} /> Biography
-                                    </button>
+
+                                    {/* BACK */}
+                                    <div className="sc-back">
+                                        <div className="sc-back__avatar-wrap">
+                                            {speaker.image ? (
+                                                <img
+                                                    src={resolveImageUrl(speaker.image)}
+                                                    alt={speaker.name}
+                                                    className="sc-back__avatar"
+                                                />
+                                            ) : (
+                                                <div className="sc-back__avatar-fallback">
+                                                    <User size={32} color="#3478DF" />
+                                                </div>
+                                            )}
+                                        </div>
+                                        {speaker.category && (
+                                            <span className="sc-badge sc-badge--light">{getDisplayCategory(speaker.category)}</span>
+                                        )}
+                                        <h3 className="sc-back__name">{speaker.name}</h3>
+                                        {speaker.title && <p className="sc-back__role">{speaker.title}</p>}
+                                        {speaker.affiliation && <p className="sc-back__org">{speaker.affiliation}</p>}
+                                        <button className="sc-back__btn" onClick={(e) => { e.stopPropagation(); openModal(speaker); }}>
+                                            View Biography
+                                        </button>
+                                    </div>
+
                                 </div>
                             </div>
                         ))

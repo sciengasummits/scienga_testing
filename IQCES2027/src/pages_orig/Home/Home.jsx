@@ -10,6 +10,7 @@ import PricingSection from '../../components/sections/PricingSection/PricingSect
 import SponsorsSection from '../../components/sections/SponsorsSection/SponsorsSection';
 import PreviousConferenceSection from '../../components/sections/PreviousConferenceSection/PreviousConferenceSection';
 import UniversitiesMarquee from '../../components/sections/UniversitiesMarquee/UniversitiesMarquee';
+
 import './Home.css';
 
 const Home = () => {

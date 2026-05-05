@@ -8,6 +8,7 @@ import PricingSection from '../components/sections/PricingSection/PricingSection
 import SponsorsSection from '../components/sections/SponsorsSection/SponsorsSection';
 import PreviousConferenceSection from '../components/sections/PreviousConferenceSection/PreviousConferenceSection';
 import UniversitiesMarquee from '../components/sections/UniversitiesMarquee/UniversitiesMarquee';
+
 import '../pages_orig/Home/Home.css';
 
 export const metadata = {

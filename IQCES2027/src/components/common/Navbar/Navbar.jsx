@@ -68,6 +68,7 @@ const Navbar = () => {
                 { name: "FAQ'S", path: '/faqs' },
                 { name: 'Venue', path: '/venue' },
                 { name: 'Visa Info', path: '/visa-info' },
+                { name: 'Universities', path: '/universities' },
                 { name: 'Subscribe', path: '/subscribe' }
             ]
         },
