@@ -1,18 +1,70 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { Download, CheckCircle, Calendar, MapPin, Users, Award, FileText } from 'lucide-react';
+import { Download, CheckCircle, Calendar, MapPin, Users, Award, FileText, ArrowLeft } from 'lucide-react';
 import './DigitalBrochure.css';
 import usePageSEO from '../../hooks/usePageSEO';
+import { fetchContent } from '../../api/contentApi';
+import { useRouter } from 'next/navigation';
+
+const DEFAULTS = {
+    title: 'International Quantum Computing & Engineering Summit',
+    description: 'The premier gathering for experts in quantum computing, turbulence mechanisms, and advanced engineering.',
+    date: 'December 14-16, 2026',
+    venue: 'Outram, Singapore',
+    edition: 'OFFICIAL 2026 EDITION',
+    brand: 'IQCES VORTEX SUMMIT 2026',
+    features: [
+        'Advance knowledge of Quantum-based rotation definitions.',
+        'Solve complex turbulence mechanisms in fluid dynamics.',
+        'Promote cross-disciplinary research in CFD and quantum computing.',
+        'Implement AI-driven vortex detection frameworks.',
+    ],
+    themes: [
+        'Quantum Fundamentals', 'Omega Method', 'Turbulence Structure Analysis',
+        'Machine Learning in Fluids', 'Aerospace Application', 'Vortex Dynamics'
+    ]
+};
 
 const DigitalBrochure = () => {
+    const router = useRouter();
+    const [data, setData] = useState(DEFAULTS);
+
     usePageSEO({
-        title: 'Digital Brochure',
-        description: 'View the iqce2027 digital brochure online – conference overview, core objectives, key themes including iqce2027 Fundamentals, Vortex Dynamics, CFD, and AI in Flow Analysis.',
-        canonical: 'https://iqce2027.com/digital-brochure',
+        title: 'Digital Brochure | ' + data.title,
+        description: 'View the digital brochure online – conference overview, core objectives, and key themes.',
+        canonical: 'https://iqces2027.sciengasummits.com/digital-brochure',
     });
+
+    useEffect(() => {
+        fetchContent('brochure').then(res => {
+            if (res) {
+                setData(prev => ({
+                    ...prev,
+                    ...res,
+                    title: res.title || prev.title,
+                    description: res.description || prev.description,
+                }));
+            }
+        }).catch(err => console.error('Failed to fetch brochure content:', err));
+    }, []);
+
+    const handleDownload = () => {
+        if (data.pdfUrl) {
+            window.open(data.pdfUrl, '_blank');
+        } else {
+            window.print();
+        }
+    };
+
     return (
         <div className="digital-brochure">
+            <div className="brochure-nav">
+                <button className="back-btn" onClick={() => router.back()}>
+                    <ArrowLeft size={20} /> Back to Brochure
+                </button>
+            </div>
+
             <div className="brochure-page-container">
                 {/* PAGE 1: COVER */}
                 <div className="brochure-sheet cover-page">
@@ -21,8 +73,8 @@ const DigitalBrochure = () => {
                         <header className="brochure-header">
                             <h4 className="brochure-subtitle-top">INTERNATIONAL</h4>
                             <h1 className="brochure-main-title">
-                                CONFERENCE ON iqce2027 THEORY <br />
-                                <span>AND TURBULENCE MECHANISM</span>
+                                {data.title.split(' ').slice(0, 3).join(' ')} <br />
+                                <span>{data.title.split(' ').slice(3).join(' ')}</span>
                             </h1>
                         </header>
 
@@ -31,24 +83,24 @@ const DigitalBrochure = () => {
                                 <Calendar size={24} />
                                 <div>
                                     <p className="info-label">DATE</p>
-                                    <p className="info-value">December 14-16, 2026</p>
+                                    <p className="info-value">{data.date}</p>
                                 </div>
                             </div>
                             <div className="info-item">
                                 <MapPin size={24} />
                                 <div>
                                     <p className="info-label">VENUE</p>
-                                    <p className="info-value">Outram, Singapore</p>
+                                    <p className="info-value">{data.venue}</p>
                                 </div>
                             </div>
                         </div>
 
                         <div className="brochure-edition-badge">
-                            OFFICIAL 2026 EDITION
+                            {data.edition}
                         </div>
                     </div>
                     <footer className="brochure-footer-brand">
-                        iqce2027 VORTEX SUMMIT 2026
+                        {data.brand}
                     </footer>
                 </div>
 
@@ -58,17 +110,16 @@ const DigitalBrochure = () => {
                         <div className="sheet-side-accent"></div>
                         <h2 className="sheet-title">Conference Overview</h2>
                         <p className="sheet-description">
-                            The INTERNATIONAL CONFERENCE ON iqce2027 THEORY AND TURBULENCE MECHANISM is the premier gathering for experts in vortex identification and turbulence science. This summit bridges the gap between pure mathematics and practical engineering.
+                            {data.description}
                         </p>
 
                         <div className="sheet-grid">
                             <div className="sheet-section">
                                 <h3><Award size={20} className="section-icon" /> Core Objectives</h3>
                                 <ul className="sheet-list">
-                                    <li><CheckCircle size={14} /> Advance the knowledge of iqce2027-based rotation definitions.</li>
-                                    <li><CheckCircle size={14} /> Solve the "shear contamination" problem in vortex identification.</li>
-                                    <li><CheckCircle size={14} /> Promote cross-disciplinary research in CFD and fluid mechanics.</li>
-                                    <li><CheckCircle size={14} /> Implement AI-driven vortex detection frameworks.</li>
+                                    {(data.features || DEFAULTS.features).map((feat, i) => (
+                                        <li key={i}><CheckCircle size={14} /> {feat}</li>
+                                    ))}
                                 </ul>
                             </div>
 
@@ -84,14 +135,11 @@ const DigitalBrochure = () => {
                         </div>
 
                         <div className="sheet-section full-width">
-                            <h3><FileText size={20} className="section-icon" /> Key Themes for 2026</h3>
+                            <h3><FileText size={20} className="section-icon" /> Key Themes</h3>
                             <div className="themes-flex">
-                                <span className="theme-tag">iqce2027 Fundamentals</span>
-                                <span className="theme-tag">Omega Method</span>
-                                <span className="theme-tag">Turbulence Structure Analysis</span>
-                                <span className="theme-tag">Machined Learning in Fluids</span>
-                                <span className="theme-tag">Aerospace Application</span>
-                                <span className="theme-tag">Vortex Dynamics</span>
+                                {(data.themes || DEFAULTS.themes).map((theme, i) => (
+                                    <span key={i} className="theme-tag">{theme}</span>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -100,9 +148,9 @@ const DigitalBrochure = () => {
 
             {/* FLOATING ACTION BAR */}
             <div className="digital-brochure-tools">
-                <button className="tool-btn" onClick={() => window.print()}>
+                <button className="tool-btn" onClick={handleDownload}>
                     <Download size={20} />
-                    Download as PDF
+                    {data.pdfUrl ? 'Download PDF Brochure' : 'Print / Save as PDF'}
                 </button>
             </div>
         </div>
@@ -110,3 +158,4 @@ const DigitalBrochure = () => {
 };
 
 export default DigitalBrochure;
+
